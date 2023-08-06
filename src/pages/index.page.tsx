@@ -1,76 +1,69 @@
-import type { TaskModel } from '$/commonTypesWithClient/models';
-import { useAtom } from 'jotai';
-import type { ChangeEvent, FormEvent } from 'react';
-import { useEffect, useState } from 'react';
-import { Loading } from 'src/components/Loading/Loading';
-import { BasicHeader } from 'src/pages/@components/BasicHeader/BasicHeader';
-import { apiClient } from 'src/utils/apiClient';
-import { returnNull } from 'src/utils/returnNull';
-import { userAtom } from '../atoms/user';
-import styles from './index.module.css';
+import { Rect } from 'react-konva';
 
 const Home = () => {
-  const [user] = useAtom(userAtom);
-  const [tasks, setTasks] = useState<TaskModel[]>();
-  const [label, setLabel] = useState('');
-  const inputLabel = (e: ChangeEvent<HTMLInputElement>) => {
-    setLabel(e.target.value);
-  };
-  const fetchTasks = async () => {
-    const tasks = await apiClient.tasks.$get().catch(returnNull);
+  const windowWidth = Number(window.innerWidth);
+  /*   const [playerPosition, setplayerPosition] = useState([0, 0]);
+  const [enemyPosition, setEnemyPosition] = useState([1000, 500]);
+  const [BulletPosition, setBulletPosition] = useState([
+    playerPosition[0] + 50,
+    playerPosition[1] + 25,
+  ]); */
+  // const [players, setPlayers] = useState([]);
+  // const [enemies, setEnemies] = useState([]);
+  // const [bullets, setBullets] = useState([]);
+  // const windowWidth = Number(window.innerWidth);
+  // const windowHeight = Number(window.innerHeight);
 
-    if (tasks !== null) setTasks(tasks);
-  };
-  const createTask = async (e: FormEvent) => {
-    e.preventDefault();
-    if (!label) return;
+  // const updateplayers = async () => {
+  //   const players = await apiClient.game.player.$get({
+  //     body: {},
+  //   });
+  // };
 
-    await apiClient.tasks.post({ body: { label } });
-    setLabel('');
-    await fetchTasks();
-  };
-  const toggleDone = async (task: TaskModel) => {
-    await apiClient.tasks._taskId(task.id).patch({ body: { done: !task.done } });
-    await fetchTasks();
-  };
-  const deleteTask = async (task: TaskModel) => {
-    await apiClient.tasks._taskId(task.id).delete();
-    await fetchTasks();
-  };
+  // const updatebullets = async () => {
+  //   const bullets = await apiClient.game.bullet.$get({
+  //     body: {},
+  //   });
+  // };
 
-  useEffect(() => {
-    fetchTasks();
-  }, []);
+  /*   const updateplayerBullet = async () => {
+    setBulletPosition((prev) => {
+      if (prev[0] < windowWidth) {
+        return [prev[0] + 10, prev[1]];
+      } else {
+        return prev;
+      }
+    });
+  }; */
 
-  if (!tasks || !user) return <Loading visible />;
+  // useEffect(() => {
+  //   const fetchplayers = setInterval(updateplayers, 50);
+  //   const fetchenemys = setInterval(updateenemies, 50);
+  //   const fetchbullets = setInterval(updatebullets, 50);
+  // });
 
   return (
+    /*     let player = players.map((player) => {
+    }) */
     <>
-      <BasicHeader user={user} />
-      <div className={styles.title} style={{ marginTop: '160px' }}>
-        Welcome to frourio!
-      </div>
+      <Rect x={0} y={0} width={windowWidth} height={windowWidth} fill="black" />
 
-      <form style={{ textAlign: 'center', marginTop: '80px' }} onSubmit={createTask}>
-        <input value={label} type="text" onChange={inputLabel} />
-        <input type="submit" value="ADD" />
-      </form>
-      <ul className={styles.tasks}>
-        {tasks.map((task) => (
-          <li key={task.id}>
-            <label>
-              <input type="checkbox" checked={task.done} onChange={() => toggleDone(task)} />
-              <span>{task.label}</span>
-            </label>
-            <input
-              type="button"
-              value="DELETE"
-              className={styles.deleteBtn}
-              onClick={() => deleteTask(task)}
-            />
-          </li>
-        ))}
-      </ul>
+      {/*       <Stage width={windowWidth} height={windowHeight}>
+        <Layer>
+          <Rect
+            stroke="black"
+            strokeWidth={1}
+            x={0}
+            y={0}
+            width={windowWidth}
+            height={windowHeight}
+    
+      <Rect x={playerPosition[0]} y={playerPosition[1]} width={50} height={50} fill="red" />
+          <Rect x={enemyPosition[0]} y={enemyPosition[1]} width={50} height={50} fill="green" />
+          <Circle x={BulletPosition[0]} y={BulletPosition[1]} radius={10} fill="blue" />
+      </Layer>
+      </Stage>
+      ;  */}
     </>
   );
 };

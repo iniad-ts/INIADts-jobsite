@@ -1,4 +1,4 @@
-import type { TaskId, UserId } from './branded';
+import type { EnemyId, TaskId, UserId } from './branded';
 
 export type UserModel = {
   id: UserId;
@@ -12,4 +12,12 @@ export type TaskModel = {
   label: string;
   done: boolean;
   created: number;
+};
+
+export type EnemyModel = {
+  id: EnemyId;
+  pos: { x: number; y: number };
+  speed: number;
+  hp: number;
+  radius: number;
 };

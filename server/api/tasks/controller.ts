@@ -1,4 +1,4 @@
-import { createTask, getTasks } from '$/repository/tasksRepository';
+import { createTask, getTasks } from '$/Repository/tasksRepository';
 import { defineController } from './$relay';
 
 export default defineController(() => ({

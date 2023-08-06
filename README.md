@@ -1,10 +1,13 @@
 # Next frourio starter
 
+ララテスト
 フロントエンドは src ディレクトリの [Next.js](https://nextjs.org/) 、バックエンドは server ディレクトリの [frourio](https://frourio.com/) で構築された TypeScript で一気通貫開発が可能なモノレポサービス
 
 最新のコミットによるデモ - https://solufa.github.io/next-frourio-starter/
 
 ## 開発手順
+
+kakinoki
 
 ### Node.js のインストール
 
@@ -66,4 +69,3 @@ http://localhost:9001/
 $ cd server
 $ npx prisma studio
 ```
-test

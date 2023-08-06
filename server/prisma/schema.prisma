@@ -13,3 +13,11 @@ model Task {
   done      Boolean
   createdAt DateTime
 }
+
+model Enemy {
+  id     String @id
+  pos    Json
+  speed  Int
+  hp     Int
+  radius Int
+}
