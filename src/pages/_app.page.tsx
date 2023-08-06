@@ -2,6 +2,7 @@ import type { AppProps } from 'next/app';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import Layout from 'src/components/Layout/Layout';
 import { gaPageview } from 'src/utils/gtag';
 import '../styles/globals.css';
 import { AuthLoader } from './@components/AuthLoader';
@@ -25,10 +26,12 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <>
-      <SafeHydrate>
-        <Component {...pageProps} />
-        {loadingElm}
-      </SafeHydrate>
+      <Layout>
+        <SafeHydrate>
+          <Component {...pageProps} />
+          {loadingElm}
+        </SafeHydrate>
+      </Layout>
       <AuthLoader />
     </>
   );
