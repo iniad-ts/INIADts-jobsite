@@ -1,0 +1,32 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  width: 100vw;
+  height: 100vh;
+}
+
+.board {
+  display: grid;
+  width: 70vw;
+  height: 85vh;
+  grid-template-rows: 70vw 1fr 70vw;
+  grid-template-areas: 'joystick' 'none' 'shoot';
+}
+
+.joystick {
+  grid-area: joystick;
+  background-color: #bbb 0.1;
+}
+
+.shoot {
+  grid-area: shoot;
+  background-color: #ddd;
+  border-top: 7px solid #fff;
+  border-right: 5px solid #eee;
+  border-left: 5px solid #ccc;
+  border-bottom: 5px solid #bbb;
+  border-radius: 50%;
+}
