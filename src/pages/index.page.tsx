@@ -3,7 +3,6 @@ import { useAtom } from 'jotai';
 import type { ChangeEvent, FormEvent } from 'react';
 import { useEffect, useState } from 'react';
 import { Loading } from 'src/components/Loading/Loading';
-import UserInfo from 'src/components/UserInfo/UserInfo';
 import { BasicHeader } from 'src/pages/@components/BasicHeader/BasicHeader';
 import { apiClient } from 'src/utils/apiClient';
 import { returnNull } from 'src/utils/returnNull';
@@ -48,7 +47,6 @@ const Home = () => {
   return (
     <>
       <BasicHeader user={user} />
-      <UserInfo object={{ nya: 'nya', nyan: ['meow', 'nya~'] }} objectName="nya" />
       <div className={styles.title} style={{ marginTop: '160px' }}>
         Welcome to frourio!
       </div>

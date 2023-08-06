@@ -1,4 +1,4 @@
-import styles from './userInfo.module.css';
+import styles from './memberInfo.module.css';
 
 const ArrayComponent = ({ array }: { array: string[] }) => {
   return (
