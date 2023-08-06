@@ -1,5 +1,6 @@
 .container {
   background-color: black;
+  grid-area: footer;
 }
 
 .body {

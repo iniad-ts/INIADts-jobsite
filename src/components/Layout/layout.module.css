@@ -9,22 +9,7 @@
   min-height: 100vh;
 }
 
-.header {
-  grid-area: header;
-  border: solid 1px black;
-}
-
-.sidebar {
-  grid-area: sidebar;
-  border: solid 1px black;
-}
-
 .main {
   grid-area: main;
-  border: solid 1px black;
-}
-
-.footer {
-  grid-area: footer;
   border: solid 1px black;
 }
