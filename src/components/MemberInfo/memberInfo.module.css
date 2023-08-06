@@ -1,0 +1,24 @@
+.info {
+  color: #fff;
+  white-space: pre-wrap;
+  font-weight: bold;
+}
+
+.array {
+  color: #f700f5;
+}
+.object {
+  color: #feff8d;
+}
+
+.const {
+  color: #79a5fb;
+}
+
+.key {
+  color: #4ac7f7;
+}
+
+.string {
+  color: #eeb371;
+}
