@@ -2,34 +2,40 @@ import styles from './userInfo.module.css';
 
 const ArrayComponent = ({ array }: { array: string[] }) => {
   return (
-    <span className={styles.array}>
-      [
+    <>
+      <span className={styles.array}>[</span>
       {array.map((item, index) => {
-        return <span key={index}>{`"${item}",`}</span>;
+        const comma = array.length - 1 === index ? '' : ', ';
+        return (
+          <>
+            <span key={index} className={styles.string}>{`"${item}"`}</span>
+            {comma}
+          </>
+        );
       })}
-      ];
-    </span>
+      <span className={styles.array}>]</span>
+    </>
   );
 };
 
 const ObjectComponent = (object: { [key: string]: string | string[] }) => {
   return (
     <>
-      <span>{'{'}</span>
+      <span className={styles.object}>{'{'}</span>
       {Object.keys(object).map((key, index) => {
         return (
-          <div key={index} className={styles.object}>
-            <span>{`  ${key}`}</span>
-            <span>:</span>
+          <div key={index}>
+            <span className={styles.key}>{`  ${key}: `}</span>
             {Array.isArray(object[key]) ? (
               <ArrayComponent array={object[key] as string[]} />
             ) : (
-              <span>{object[key]};</span>
+              <span className={styles.string}>{`"${object[key]}"`}</span>
             )}
+            ,
           </div>
         );
       })}
-      <span>{'}'};</span>
+      <span className={styles.object}>{'}'};</span>
     </>
   );
 };
@@ -42,7 +48,8 @@ type PropsInfo = {
 const UserInfo = ({ object, objectName }: PropsInfo) => {
   return (
     <div className={styles.info}>
-      const {objectName} = <ObjectComponent {...object} />
+      <span className={styles.const}>const</span>{' '}
+      <span className={styles.object}>{objectName}</span> = <ObjectComponent {...object} />
     </div>
   );
 };

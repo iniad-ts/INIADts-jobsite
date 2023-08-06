@@ -1,11 +1,24 @@
 .info {
-  color: blue;
+  color: #fff;
+  white-space: pre-wrap;
+  font-weight: bold;
 }
 
 .array {
-  color: red;
+  color: #f700f5;
+}
+.object {
+  color: #feff8d;
 }
 
-.object {
-  color: green;
+.const {
+  color: #79a5fb;
+}
+
+.key {
+  color: #4ac7f7;
+}
+
+.string {
+  color: #eeb371;
 }
