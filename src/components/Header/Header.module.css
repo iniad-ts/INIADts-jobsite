@@ -1,9 +1,44 @@
-.container {
-  background-color: black;
-  border-radius: 20px 20px 0px 0px;
-  grid-area: header;
+.body {
+  background-color: rgb(31, 31, 31);
+  width: fit-content;
+  border-top: 2px solid #247ccc;
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+  color: aliceblue;
+  display: flex;
+  font-size: 14px;
 }
 
-.body {
-  background-color: gray;
+.text {
+  margin-left: 10px;
+}
+
+.path {
+  height: fit-content;
+  background-color: rgb(31, 31, 31);
+  color: aliceblue;
+  font-size: 12px;
+}
+
+.cross {
+  display: block;
+  position: relative;
+  width: 30px;
+}
+
+.cross::before,
+.cross::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 3px; /* 棒の幅（太さ） */
+  height: 16px; /* 棒の高さ */
+  background: #ffffff; /* バツ印の色 */
+}
+.cross::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.cross::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
 }
