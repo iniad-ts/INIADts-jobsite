@@ -7,21 +7,7 @@ export type SideBarModel = {
 };
 
 export const SideBar = (props: { inSide: SideBarModel }) => {
-  const [side, setSide] = useState<SideBarModel>({
-    directoryName: 'sideBar',
-    body: [
-      { directoryName: 'home', body: ['home'] },
-      {
-        directoryName: 'member',
-        body: [
-          { directoryName: '24', body: ['aaa', 'iii'] },
-          { directoryName: '25', body: ['uuu', 'eee'] },
-        ],
-      },
-      { directoryName: 'contact', body: ['contact'] },
-    ],
-    isDisplay: true,
-  });
+  const [side, setSide] = useState<SideBarModel>(props.inSide);
   let isAlreadyDelete = false;
 
   const deleteTab = (name: string) => {
