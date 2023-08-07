@@ -1,8 +1,12 @@
 .container {
-  background-color: black;
+  background-color: rgb(24, 24, 24);
   grid-area: footer;
 }
 
 .body {
-  background-color: blue;
+  background-color: rgb(24, 24, 24);
+}
+
+.p {
+  color: white;
 }
