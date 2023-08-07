@@ -1,11 +1,11 @@
 .container {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: 160px 40px 1fr;
   grid-template-rows: 50px 1fr 200px;
   grid-template-areas:
-    'sidebar header'
-    'sidebar main'
-    'sidebar footer';
+    'sidebar header header'
+    'sidebar row-number main'
+    'sidebar row-number footer';
   min-height: 100vh;
 }
 
