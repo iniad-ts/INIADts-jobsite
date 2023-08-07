@@ -1,7 +1,11 @@
 .container {
-  background-color: black;
+  background-color: rgb(24, 24, 24);
 }
 
 .body {
-  background-color: blue;
+  background-color: rgb(24, 24, 24);
+}
+
+p {
+  color: white;
 }
