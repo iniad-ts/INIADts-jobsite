@@ -1,10 +1,12 @@
-export const RowNumber = (props: { a: string[] }) => {
-  const { a } = props;
+import styles from './RowNumber.module.css';
+
+export const RowNumber = (props: { array: string[] }) => {
+  const { array } = props;
   return (
-    <>
-      {a.map((b, c) => (
+    <div className={styles.container}>
+      {array.map((b, c) => (
         <div key={`${c}`}>{b}</div>
       ))}{' '}
-    </>
+    </div>
   );
 };
