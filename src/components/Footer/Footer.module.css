@@ -1,11 +1,48 @@
 .container {
   background-color: rgb(24, 24, 24);
+  grid-area: footer;
 }
 
 .body {
+  margin-top: 10px;
   background-color: rgb(24, 24, 24);
 }
 
-p {
+.p {
   color: white;
+}
+
+.git {
+  color: rgb(244, 246, 89);
+}
+
+.circle {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgb(39, 124, 161);
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.tab {
+  display: flex;
+}
+
+.tabItem {
+  font-size: 15px;
+  color: rgb(193, 204, 204);
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+.tabItem:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.choice {
+  color: white;
+  padding-bottom: 5px;
+  border-bottom: 0.5px solid rgb(0, 120, 212);
 }

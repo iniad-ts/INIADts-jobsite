@@ -1,0 +1,15 @@
+.container {
+  display: grid;
+  grid-template-columns: 300px 1fr;
+  grid-template-rows: 25px 1fr 200px;
+  grid-template-areas:
+    'sidebar header'
+    'sidebar main'
+    'sidebar footer';
+  min-height: 100vh;
+}
+
+.main {
+  grid-area: main;
+  border: solid 1px black;
+}
