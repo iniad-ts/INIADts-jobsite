@@ -15,9 +15,45 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
           { directoryName: '25', body: ['uuu', 'eee'] },
         ],
       },
-      { directoryName: 'contact', body: ['contact'] },
+      {
+        directoryName: 'contact',
+        body: [
+          {
+            directoryName: 'sideBar',
+            body: [
+              { directoryName: 'home', body: ['home'] },
+              {
+                directoryName: 'member',
+                body: [
+                  { directoryName: '24', body: ['aaa', 'iii'] },
+                  {
+                    directoryName: '25',
+                    body: [
+                      'uuu',
+                      {
+                        directoryName: 'sideBar',
+                        body: [
+                          { directoryName: 'home', body: ['home'] },
+                          {
+                            directoryName: 'member',
+                            body: [
+                              { directoryName: '24', body: ['aaa', 'iii'] },
+                              { directoryName: '25', body: ['uuu', 'eee'] },
+                            ],
+                          },
+                          { directoryName: 'contact', body: ['contact'] },
+                        ],
+                      },
+                    ],
+                  },
+                ],
+              },
+              { directoryName: 'contact', body: ['contact'] },
+            ],
+          },
+        ],
+      },
     ],
-    isDisplay: true,
   };
   return (
     <div className={styles.container}>

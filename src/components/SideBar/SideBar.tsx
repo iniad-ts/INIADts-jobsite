@@ -5,24 +5,30 @@ export type SideBarModel = {
   body: (string | SideBarModel)[];
   isDisplay?: boolean;
   depth?: number;
+  id?: string;
 };
 
 export const SideBar = (props: { inSide: SideBarModel }) => {
+  const addId = (obj: SideBarModel) => {
+    obj.id = String(Math.random());
+    obj.body.forEach((o) => {
+      typeof o !== 'string' && addId(o);
+    });
+  };
+  addId(props.inSide);
   const [side, setSide] = useState<SideBarModel>(props.inSide);
   let isAlreadyDelete = false;
 
   const deleteTab = (name: string) => {
     console.log(name);
     const searchSide: SideBarModel = JSON.parse(JSON.stringify(side));
-    const deleteTabRecursive = (obj: SideBarModel, n: string): void => {
-      // console.log(obj.name, !isAlreadyDelete);
-      if (obj.directoryName === n && !isAlreadyDelete) {
+    const deleteTabRecursive = (obj: SideBarModel, id: string): void => {
+      if (obj.id === id && !isAlreadyDelete) {
         obj.isDisplay = obj.isDisplay === true ? false : true;
-        // console.log(searchSide);
         setSide(searchSide);
         isAlreadyDelete = true;
       } else {
-        obj.body.forEach((s) => typeof s !== 'string' && deleteTabRecursive(s, n));
+        obj.body.forEach((s) => typeof s !== 'string' && deleteTabRecursive(s, id));
       }
     };
     deleteTabRecursive(searchSide, name);
@@ -30,16 +36,16 @@ export const SideBar = (props: { inSide: SideBarModel }) => {
   const mapper = (obj: SideBarModel, depth: number) => {
     obj.depth = depth + 1;
     return (
-      <li key={`${obj}`} onClick={() => deleteTab(obj.directoryName)}>
-        {`${'_'.repeat(obj.depth ?? 0)}${obj.isDisplay === true ? '⇩' : '>'}${obj.directoryName}`}
-        <ul key={`${obj}1`}>
-          {obj.isDisplay === true &&
-            obj.body.map((o: string | SideBarModel, i: number) =>
-              typeof o !== `string` ? (
+      <li key={`${obj}`} onClick={() => deleteTab(obj.id ?? '')}>
+        {`${'_'.repeat(obj.depth ?? 0)}${obj.isDisplay === true ? 'v' : '>'}${obj.directoryName}`}
+        {obj.isDisplay === true && (
+          <ul key={`${obj}-1`}>
+            {obj.body.map((o: string | SideBarModel, i: number) =>
+              typeof o !== 'string' ? (
                 mapper(o, obj.depth ?? 0)
               ) : (
                 <li
-                  key={`${o}${i}`}
+                  key={`${o}-${i}`}
                   onClick={() => {
                     isAlreadyDelete = true;
                     setTimeout(() => (isAlreadyDelete = false), 0);
@@ -50,10 +56,12 @@ export const SideBar = (props: { inSide: SideBarModel }) => {
                 </li>
               )
             )}
-        </ul>
+          </ul>
+        )}
       </li>
     );
   };
+  console.log(mapper(side, -1));
   return (
     <div className={styles.container}>
       <ul>{mapper(side, -1)}</ul>
