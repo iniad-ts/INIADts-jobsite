@@ -1,0 +1,20 @@
+.container {
+  background-color: rgb(255, 255, 255);
+  grid-area: main;
+}
+
+.body {
+  background-color: rgb(78, 77, 77);
+}
+
+.slash_row {
+  color: aqua;
+}
+
+.normal_row {
+  color: white;
+}
+
+.main_title {
+  font-size: large;
+}
