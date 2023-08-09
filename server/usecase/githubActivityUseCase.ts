@@ -2,7 +2,7 @@ import { GITHUB_API_ORIGIN, GITHUB_USERNAME, S3_BUCKET } from '$/service/envValu
 import { s3Client } from '$/service/s3Client';
 import { GetObjectCommand, ListObjectsCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 
-type GithubActivity = {
+export type GithubActivity = {
   total: Record<string, number>;
   contributions: Array<{
     date: string;
@@ -75,6 +75,7 @@ const getLatestActivity = async (userId: string): Promise<GithubActivity | null>
 };
 
 export const githubActivityUseCase = {
+  fetchActivity,
   fetchAllActivity,
   getLatestActivity,
 };
