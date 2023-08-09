@@ -17,7 +17,7 @@ export const ActivityHistory = () => {
         style={{ gridRow: `repeat(${activityHistory1.length},1fr)` }}
       >
         {activityHistory1.map((activity, i) => (
-          <div key={i} className={styles.description} style={{}}>
+          <div key={i} className={styles.description}>
             <h3>{activity.month}月</h3>
             <p>{activity.description}</p>
             <div className={styles.right}>
