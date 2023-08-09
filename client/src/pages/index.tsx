@@ -2,7 +2,7 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import React from 'react';
-import { ActivityHistory } from '../components/ActivityHistry/ActivityHistry';
+import { ActivityHistory } from '../components/ActivityHistory/ActivityHistory';
 import { Carousel } from '../components/Carousel/Carousel';
 import { MemberIcons } from '../components/MemberIcons/MemberIcons';
 import MainProducts from '../components/Products/MainProducts';

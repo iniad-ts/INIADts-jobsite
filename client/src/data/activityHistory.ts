@@ -32,9 +32,17 @@ export const activityHistory: ActivityHistory[] = [
     course: ['stoic'],
   },
   {
-    month: 7,
+    month: 6,
     title: 'online othello',
     description: 'frourioを用いてフルスタック開発の基礎を学びます',
+    image: 'https://github.com/INIAD-Developers.png',
+    tech: [ReactImg({ size: 2 }), TypeScript({ size: 2 }), Css({ size: 2 }), Prisma({ size: 2 })],
+    course: ['stoic'],
+  },
+  {
+    month: 7,
+    title: 'gradius',
+    description: 'frourioを用いたチーム開発を行い、学際に向けて準備をします',
     image: 'https://github.com/INIAD-Developers.png',
     tech: [ReactImg({ size: 2 }), TypeScript({ size: 2 }), Css({ size: 2 }), Prisma({ size: 2 })],
     course: ['stoic'],

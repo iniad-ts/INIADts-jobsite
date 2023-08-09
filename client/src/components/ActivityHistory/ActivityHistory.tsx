@@ -1,5 +1,5 @@
 import React from 'react';
-import { activityHistory } from '../../data/activityHistry';
+import { activityHistory } from '../../data/activityHistory';
 import styles from './ActivityHistory.module.css';
 
 export const ActivityHistory = () => {
@@ -17,29 +17,21 @@ export const ActivityHistory = () => {
         style={{ gridRow: `repeat(${activityHistory1.length},1fr)` }}
       >
         {activityHistory1.map((activity, i) => (
-          <div
-            key={i}
-            className={styles.description}
-            style={{
-              borderBottom: i !== activityHistory1.length - 1 ? 'solid 1px #aaa' : 'none',
-            }}
-          >
+          <div key={i} className={styles.description} style={{}}>
             <h3>{activity.month}月</h3>
             <p>{activity.description}</p>
-            <div style={{ margin: '0 0 0 auto' }}>
+            <div className={styles.right}>
               <div>tech :</div>
               {activity.tech.map((one, j) => (
-                <div style={{ marginLeft: '1svmin' }} key={j}>
+                <div className={styles.marginLeft} key={j}>
                   {one}
                 </div>
               ))}
             </div>
-            <div style={{ margin: '0 0 0 auto' }}>
+            <div className={styles.right}>
               <div>course :</div>
               {activity.course.map((one, j) => (
-                <div style={{ marginLeft: '1svmin' }} key={j}>
-                  {one}
-                </div>
+                <div key={j}>{one}</div>
               ))}
             </div>
           </div>
@@ -53,27 +45,21 @@ export const ActivityHistory = () => {
         style={{ gridRow: `repeat(${activityHistory1.length},1fr)` }}
       >
         {activityHistory2.map((activity, i) => (
-          <div
-            key={i}
-            className={styles.description}
-            style={{
-              borderBottom: i !== activityHistory1.length - 1 ? 'solid 1px #aaa' : 'none',
-            }}
-          >
+          <div key={i} className={styles.description}>
             <h3>{activity.month}月</h3>
             <p>{activity.description}</p>
-            <div style={{ margin: '0 0 0 auto' }}>
+            <div className={styles.right}>
               <div>tech :</div>
               {activity.tech.map((one, j) => (
-                <div style={{ marginLeft: '1svmin' }} key={j}>
+                <div className={styles.marginLeft} key={j}>
                   {one}
                 </div>
               ))}
             </div>
-            <div style={{ margin: '0 0 0 auto' }}>
+            <div className={styles.right}>
               <div>course :</div>
               {activity.course.map((one, j) => (
-                <div style={{ marginLeft: '1svmin' }} key={j}>
+                <div className={styles.marginLeft} key={j}>
                   {one}
                 </div>
               ))}
