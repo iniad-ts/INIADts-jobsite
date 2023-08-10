@@ -1,8 +1,9 @@
-# Next frourio starter
+# INIAD.ts 公式サイト
 
 フロントエンドは src ディレクトリの [Next.js](https://nextjs.org/) 、バックエンドは server ディレクトリの [frourio](https://frourio.com/) で構築された TypeScript で一気通貫開発が可能なモノレポサービス
 
-最新のコミットによるデモ - https://solufa.github.io/next-frourio-starter/
+本番環境 - https://iniad-ts.com
+開発環境 - https://dev.iniad-ts.com
 
 ## 開発手順
 
@@ -67,5 +68,3 @@ http://localhost:9001/
 $ cd server
 $ npx prisma studio
 ```
-
-test
