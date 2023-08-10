@@ -37,7 +37,7 @@ const stringComponent = (value: string) => {
 };
 
 const numberComponent = (value: number) => {
-  return <span>{value}</span>;
+  return <span className={styles.number}>{value}</span>;
 };
 
 const booleanComponent = (value: boolean) => {
