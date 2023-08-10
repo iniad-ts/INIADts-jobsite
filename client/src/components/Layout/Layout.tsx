@@ -7,36 +7,59 @@ import styles from './layout.module.css';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const side: MiniDirectoryModel = {
+    type: 'dir',
     directoryName: 'INIAD.ts-job-site',
     body: [
-      { directoryName: 'welcome', body: [{ fileName: 'README.md' }] },
+      { type: 'dir', directoryName: 'welcome', body: [{ type: 'file', fileName: 'README.md' }] },
       {
+        type: 'dir',
         directoryName: 'members',
         body: [
-          { directoryName: '24graduates', body: [{ fileName: 'aaa' }, { fileName: 'iii' }] },
           {
+            type: 'dir',
+            directoryName: '24graduates',
+            body: [
+              { type: 'file', fileName: 'aaa' },
+              { type: 'file', fileName: 'iii' },
+            ],
+          },
+          {
+            type: 'dir',
             directoryName: '25graduates',
             body: [
-              { fileName: 'uuu' },
+              { type: 'file', fileName: 'uuu' },
               {
+                type: 'dir',
                 directoryName: 'part-time-job',
-                body: [{ fileName: 'eee' }, { fileName: 'ooo' }],
+                body: [
+                  { type: 'file', fileName: 'eee' },
+                  { type: 'file', fileName: 'ooo' },
+                ],
               },
               {
+                type: 'dir',
                 directoryName: 'intern',
-                body: [{ fileName: 'kkk' }, { fileName: 'sss' }],
+                body: [
+                  { type: 'file', fileName: 'kkk' },
+                  { type: 'file', fileName: 'sss' },
+                ],
               },
               {
+                type: 'dir',
                 directoryName: 'job-hunting',
-                body: [{ fileName: 'ttt' }, { fileName: 'nnn' }],
+                body: [
+                  { type: 'file', fileName: 'ttt' },
+                  { type: 'file', fileName: 'nnn' },
+                ],
               },
             ],
           },
         ],
       },
       {
+        type: 'dir',
         directoryName: 'contact',
-        body: [{ fileName: 'yossuli', url: 'https://github.com/yossuli' }],
+        body: [{ type: 'file', fileName: 'yossuli', url: 'https://github.com/yossuli' }],
       },
     ],
     isDisplay: true,

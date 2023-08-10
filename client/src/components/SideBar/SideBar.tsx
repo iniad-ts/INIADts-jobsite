@@ -20,7 +20,6 @@ const Spacer = (props: { space: number }) => <div style={{ width: `${props.space
 
 export const SideBar = (props: { inSide: DirectoryModel }) => {
   const [side, setSide] = useState(props.inSide);
-
   const deleteTab = (id: string) => {
     const searchSide: DirectoryModel = JSON.parse(JSON.stringify(side));
     const deleteTabRecursive = (obj: DirectoryModel) => {
@@ -36,38 +35,41 @@ export const SideBar = (props: { inSide: DirectoryModel }) => {
     deleteTabRecursive(searchSide);
   };
 
-  const Mapper = (props: { obj: DirectoryModel }) => (
-    <div>
-      <div className={styles.column} onClick={() => deleteTab(props.obj.id)}>
-        <Spacer space={props.obj.depth} />
-        <div style={{ width: 20 }}>
-          <div
-            className={styles.arrow}
-            style={{
-              transform: props.obj.isDisplay ? 'rotate(135deg)' : 'rotate(45deg)',
-            }}
-          />
+  const Mapper = (props: { obj: DirectoryModel }) => {
+    console.log(props.obj.type);
+    return (
+      <div>
+        <div className={styles.column} onClick={() => deleteTab(props.obj.id)}>
+          <Spacer space={props.obj.depth} />
+          <div style={{ width: 20 }}>
+            <div
+              className={styles.arrow}
+              style={{
+                transform: `rotate(${props.obj.isDisplay ? 135 : 45}deg)`,
+              }}
+            />
+          </div>
+          {props.obj.directoryName}
         </div>
-        {props.obj.directoryName}
-      </div>
-      {props.obj.isDisplay && (
-        <div>
-          {props.obj.body.map((o, i) => {
-            return o.type === 'dir' ? (
-              <Mapper obj={o} key={o.id} />
-            ) : (
-              <div key={`${o}-${i}`}>
-                <div className={styles.column} style={{ color: '#f00' }}>
-                  <Spacer space={props.obj.depth + 1} />
-                  <Link href={o.url ?? `./${Math.random()}`}>{o.fileName}</Link>
+        {props.obj.isDisplay && (
+          <div>
+            {props.obj.body.map((o, i) => {
+              return o.type === 'dir' ? (
+                <Mapper obj={o} key={o.id} />
+              ) : (
+                <div key={i}>
+                  <div className={styles.column} style={{ color: '#f00' }}>
+                    <Spacer space={props.obj.depth + 1} />
+                    <Link href={o.url ?? './hoge'}>{o.fileName}</Link>
+                  </div>
                 </div>
-              </div>
-            );
-          })}
-        </div>
-      )}
-    </div>
-  );
+              );
+            })}
+          </div>
+        )}
+      </div>
+    );
+  };
 
   return (
     <div className={styles.container}>

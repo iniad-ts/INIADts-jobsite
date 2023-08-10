@@ -3,11 +3,13 @@
 }
 
 .arrow {
-  width: 10px;
-  height: 10px;
+  position: relative;
+  width: 7px;
+  height: 7px;
   border-top: solid 1px #000;
   border-right: solid 1px #000;
   transform-origin: top right;
+  top: 10px;
 }
 
 .column {

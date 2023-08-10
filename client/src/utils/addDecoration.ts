@@ -1,6 +1,7 @@
 import type { DirectoryModel, FileModel } from 'src/components/SideBar/SideBar';
 
 export type MiniDirectoryModel = {
+  type: 'dir';
   directoryName: string;
   body: (FileModel | MiniDirectoryModel)[];
   isDisplay?: boolean;
