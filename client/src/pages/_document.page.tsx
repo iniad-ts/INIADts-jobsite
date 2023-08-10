@@ -8,7 +8,7 @@ function Document() {
         <title>next-frourio-starter</title>
         <meta name="robots" content="noindex,nofollow" />
         <meta name="description" content="next-frourio-starter" />
-        <link rel="icon" href="favicon.png" />
+        <link rel="icon" href="/favicon.png" />
         <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
         <script
           dangerouslySetInnerHTML={{
