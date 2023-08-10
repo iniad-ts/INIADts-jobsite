@@ -11,6 +11,8 @@ export const githubActivityRepository = {
       Body: data,
     };
 
+    console.log(params);
+
     try {
       const command = new PutObjectCommand(params);
       await s3Client.send(command);
@@ -46,7 +48,7 @@ export const githubActivityRepository = {
         const latestObjectCommand = new GetObjectCommand(latestObjectParams);
         const res = await s3Client.send(latestObjectCommand);
         const dataString = await res.Body?.transformToString();
-        const data: GitHubActivityModel = JSON.parse(dataString ?? '{}');
+        const data: GitHubActivityModel = { ...JSON.parse(dataString ?? '{}'), userId };
 
         return data;
       }

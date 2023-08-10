@@ -21,4 +21,5 @@ export type GitHubActivityModel = {
     count: number;
     level: 0 | 1 | 2 | 3 | 4;
   }[];
+  userId: string;
 };

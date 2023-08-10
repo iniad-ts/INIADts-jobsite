@@ -6,8 +6,8 @@ import { apiClient } from 'src/utils/apiClient';
 
 export const GitHubActivity = ({ userId }: { userId: string }) => {
   const [data, setData] = useState<GitHubActivityModel>();
-  const [loading, setLoading] = useState<boolean>(false);
-  const [error, setError] = useState<boolean>(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
   const theme: ThemeInput = {
     light: ['#ebedf0', '#9be9a8', '#40c463', '#30a14e', '#216e39'],
@@ -19,23 +19,19 @@ export const GitHubActivity = ({ userId }: { userId: string }) => {
   };
 
   const fetchData = useCallback(() => {
+    if (data?.userId === userId) return;
+
     setLoading(true);
     setError(false);
 
     apiClient.github_activity
       .$get({ query: { userId } })
-      .then((res) => {
-        if (res === null) {
-          apiClient.github_activity
-            .$post({ body: { userId } })
-            .then(setData)
-            .catch(() => setError(true));
-          return;
-        }
+      .then(async (res) => {
+        res ??= await apiClient.github_activity.$post({ body: { userId } });
         setData(res);
       })
       .finally(() => setLoading(false));
-  }, [userId]);
+  }, [userId, data]);
 
   useEffect(fetchData, [fetchData]);
 

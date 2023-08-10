@@ -10,6 +10,6 @@ export type Methods = DefineMethods<{
   };
   post: {
     reqBody: { userId: string };
-    resBody: GitHubActivityModel | null;
+    resBody: GitHubActivityModel;
   };
 }>;
