@@ -35,41 +35,38 @@ export const SideBar = (props: { inSide: DirectoryModel }) => {
     deleteTabRecursive(searchSide);
   };
 
-  const Mapper = (props: { obj: DirectoryModel }) => {
-    console.log(props.obj.type);
-    return (
-      <div>
-        <div className={styles.column} onClick={() => deleteTab(props.obj.id)}>
-          <Spacer space={props.obj.depth} />
-          <div style={{ width: 20 }}>
-            <div
-              className={styles.arrow}
-              style={{
-                transform: `rotate(${props.obj.isDisplay ? 135 : 45}deg)`,
-              }}
-            />
-          </div>
-          {props.obj.directoryName}
+  const Mapper = (props: { obj: DirectoryModel }) => (
+    <div>
+      <div className={styles.column} onClick={() => deleteTab(props.obj.id)}>
+        <Spacer space={props.obj.depth} />
+        <div style={{ width: 20 }}>
+          <div
+            className={styles.arrow}
+            style={{
+              transform: `rotate(${props.obj.isDisplay ? 135 : 45}deg)`,
+            }}
+          />
         </div>
-        {props.obj.isDisplay && (
-          <div>
-            {props.obj.body.map((o, i) => {
-              return o.type === 'dir' ? (
-                <Mapper obj={o} key={o.id} />
-              ) : (
-                <div key={i}>
-                  <div className={styles.column} style={{ color: '#f00' }}>
-                    <Spacer space={props.obj.depth + 1} />
-                    <Link href={o.url ?? './hoge'}>{o.fileName}</Link>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        )}
+        {props.obj.directoryName}
       </div>
-    );
-  };
+      {props.obj.isDisplay && (
+        <div>
+          {props.obj.body.map((o, i) =>
+            o.type === 'dir' ? (
+              <Mapper obj={o} key={o.id} />
+            ) : (
+              <div key={i}>
+                <div className={styles.column} style={{ color: '#f00' }}>
+                  <Spacer space={props.obj.depth + 1} />
+                  <Link href={o.url ?? './hoge'}>{o.fileName}</Link>
+                </div>
+              </div>
+            )
+          )}
+        </div>
+      )}
+    </div>
+  );
 
   return (
     <div className={styles.container}>
