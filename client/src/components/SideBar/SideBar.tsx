@@ -1,77 +1,76 @@
+import Link from 'next/link';
 import { useState } from 'react';
 import styles from './SideBar.module.css';
 export type DirectoryModel = {
+  type: 'dir';
   directoryName: string;
-  body: (string | DirectoryModel)[];
-  isDisplay?: boolean;
-  depth?: number;
-  id?: string;
+  body: (FileModel | DirectoryModel)[];
+  isDisplay: boolean;
+  depth: number;
+  id: string;
 };
 
-const Spacer = (props: { space: number }) =>
-  Boolean(props.space) &&
-  [...Array(props.space)].map((_, i) => <div className={styles.spacer} key={`${i}`} />);
-export const SideBar = (props: { inSide: DirectoryModel }) => {
-  const addId = (obj: DirectoryModel) => {
-    obj.id = String(Math.random());
-    obj.body.forEach((o) => {
-      typeof o !== 'string' && addId(o);
-    });
-  };
-  addId(props.inSide);
-  const [side, setSide] = useState<DirectoryModel>(props.inSide);
-  let isAlreadyDelete = false;
+export type FileModel = {
+  type: 'file';
+  fileName: string;
+  url?: string;
+};
 
-  const deleteTab = (name: string) => {
-    console.log(name);
+const Spacer = (props: { space: number }) => <div style={{ width: `${props.space * 20}px` }} />;
+
+export const SideBar = (props: { inSide: DirectoryModel }) => {
+  const [side, setSide] = useState(props.inSide);
+  const deleteTab = (id: string) => {
     const searchSide: DirectoryModel = JSON.parse(JSON.stringify(side));
-    const deleteTabRecursive = (obj: DirectoryModel, id: string) => {
-      if (obj.id === id && !isAlreadyDelete) {
-        obj.isDisplay = obj.isDisplay === true ? false : true;
+    const deleteTabRecursive = (obj: DirectoryModel) => {
+      if (obj.id === id) {
+        obj.isDisplay = !obj.isDisplay;
         setSide(searchSide);
-        isAlreadyDelete = true;
       } else {
-        obj.body.forEach((s) => typeof s !== 'string' && deleteTabRecursive(s, id));
+        obj.body
+          .filter((s): s is DirectoryModel => s.type === 'dir')
+          .forEach((dir) => deleteTabRecursive(dir));
       }
     };
-    deleteTabRecursive(searchSide, name);
+    deleteTabRecursive(searchSide);
   };
-  const mapper = (obj: DirectoryModel, depth = -1) => {
-    obj.depth = depth + 1;
-    return (
-      <div key={`${obj}`}>
-        <div className={styles.column} key={`${obj}-1`} onClick={() => deleteTab(obj.id ?? '')}>
-          <Spacer space={obj.depth} />
+
+  const Mapper = (props: { obj: DirectoryModel }) => (
+    <div>
+      <div className={styles.column} onClick={() => deleteTab(props.obj.id)}>
+        <Spacer space={props.obj.depth} />
+        <div style={{ width: 20 }}>
           <div
-            className={styles.spacer}
+            className={styles.arrow}
             style={{
-              backgroundColor: '#000',
-              clipPath:
-                obj.isDisplay === true
-                  ? 'polygon(25% 65% , 45% 85%, 65% 65%, 65% 60%, 45% 80%, 25% 60%)'
-                  : 'polygon(30% 45%, 50% 65%, 30% 85%, 25% 85%, 45% 65%, 25% 45%)',
+              transform: `rotate(${props.obj.isDisplay ? 135 : 45}deg)`,
             }}
           />
-          {obj.directoryName}
         </div>
-        {obj.isDisplay === true && (
-          <div key={`${obj}-2`}>
-            {obj.body.map((o: string | DirectoryModel, i: number) =>
-              typeof o !== 'string' ? (
-                mapper(o, obj.depth ?? 1)
-              ) : (
-                <div key={`${o}-${i}`}>
-                  <div className={styles.column}>
-                    <Spacer space={(obj.depth ?? 0) + 1} />
-                    {o}
-                  </div>
-                </div>
-              )
-            )}
-          </div>
-        )}
+        {props.obj.directoryName}
       </div>
-    );
-  };
-  return <div className={styles.container}>{mapper(side)}</div>;
+      {props.obj.isDisplay && (
+        <div>
+          {props.obj.body.map((o, i) =>
+            o.type === 'dir' ? (
+              <Mapper obj={o} key={o.id} />
+            ) : (
+              <div key={i}>
+                <div className={styles.column} style={{ color: '#f00' }}>
+                  <Spacer space={props.obj.depth + 1} />
+                  <Link href={o.url ?? './hoge'}>{o.fileName}</Link>
+                </div>
+              </div>
+            )
+          )}
+        </div>
+      )}
+    </div>
+  );
+
+  return (
+    <div className={styles.container}>
+      <Mapper obj={side} />
+    </div>
+  );
 };
