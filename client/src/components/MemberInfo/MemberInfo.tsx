@@ -37,21 +37,17 @@ const StringComponent = ({ value }: { value: string }) => {
   );
 };
 
-const NumberComponent = ({ value }: { value: number }) => {
-  return <span className={styles.number}>{value}</span>;
-};
+const NumberComponent = ({ value }: { value: number }) => (
+  <span className={styles.number}>{value}</span>
+);
 
-const BooleanComponent = ({ value }: { value: boolean }) => {
-  return <span className={styles.boolean}>{value ? 'true' : 'false'}</span>;
-};
+const BooleanComponent = ({ value }: { value: boolean }) => (
+  <span className={styles.boolean}>{value ? 'true' : 'false'}</span>
+);
 
-const NullComponent = () => {
-  return <span className={styles.null}>null</span>;
-};
+const NullComponent = () => <span className={styles.null}>null</span>;
 
-const UndefinedComponent = () => {
-  return <span className={styles.undefined}>undefined</span>;
-};
+const UndefinedComponent = () => <span className={styles.undefined}>undefined</span>;
 
 type ArrayProps = {
   value: value[];
