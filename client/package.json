@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@aspida/axios": "^1.13.3",
+    "@monaco-editor/react": "^4.5.1",
     "api": "file:../server/api",
     "axios": "^1.4.0",
     "commonTypesWithClient": "file:../server/commonTypesWithClient",
