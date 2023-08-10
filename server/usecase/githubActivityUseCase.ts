@@ -11,8 +11,8 @@ const fetchActivity = async (userId: string): Promise<GitHubActivityModel> => {
   return { ...JSON.parse(data ?? '{}'), userId };
 };
 
-const fetchAllActivities = () => {
-  GITHUB_USERNAMES.map(fetchActivity);
+const fetchAllActivities = async () => {
+  await Promise.all(GITHUB_USERNAMES.map(fetchActivity));
 };
 
 export const githubActivityUseCase = {
