@@ -52,7 +52,7 @@ export const SideBar = (props: { inSide: DirectoryModel }) => {
         <div>
           {props.obj.body.map((o, i) => {
             return 'directoryName' in o ? (
-              <Mapper obj={o} key={`${o.id}`} />
+              <Mapper obj={o} key={o.id} />
             ) : (
               <div key={`${o}-${i}`}>
                 <div className={styles.column} style={{ color: '#f00' }}>
