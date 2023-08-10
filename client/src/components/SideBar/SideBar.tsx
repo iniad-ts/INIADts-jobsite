@@ -39,7 +39,7 @@ export const SideBar = (props: { inSide: DirectoryModel }) => {
   const mapper = (obj: DirectoryModel, depth = -1) => {
     obj.depth = depth + 1;
     return (
-      <div key={`${obj}`}>
+      <div key={`${obj.id}`}>
         <div className={styles.column} key={`${obj}-1`} onClick={() => deleteTab(obj.id ?? '')}>
           <Spacer space={obj.depth} />
           <div
@@ -55,7 +55,7 @@ export const SideBar = (props: { inSide: DirectoryModel }) => {
           {obj.directoryName}
         </div>
         {obj.isDisplay === true && (
-          <div key={`${obj}-2`}>
+          <div key={`${obj.id}-2`}>
             {obj.body.map((o: string | DirectoryModel, i: number) =>
               typeof o !== 'string' ? (
                 mapper(o, obj.depth ?? 1)

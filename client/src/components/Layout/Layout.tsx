@@ -5,53 +5,36 @@ import styles from './layout.module.css';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const side = {
-    directoryName: 'sideBar',
+    directoryName: 'INIAD.ts-job-site',
     body: [
-      { directoryName: 'home', body: ['home'] },
+      { directoryName: 'welcome', body: ['README.md'] },
       {
-        directoryName: 'member',
+        directoryName: 'members',
         body: [
-          { directoryName: '24', body: ['aaa', 'iii'] },
-          { directoryName: '25', body: ['uuu', 'eee'] },
+          { directoryName: '24graduates', body: ['aaa', 'iii'] },
+          {
+            directoryName: '25graduates',
+            body: [
+              'uuu',
+              {
+                directoryName: 'part-time-job',
+                body: ['eee', 'ooo'],
+              },
+              {
+                directoryName: 'intern',
+                body: ['kkk', 'sss'],
+              },
+              {
+                directoryName: 'job-hunting',
+                body: ['ttt', 'nnn'],
+              },
+            ],
+          },
         ],
       },
       {
         directoryName: 'contact',
-        body: [
-          {
-            directoryName: 'sideBar',
-            body: [
-              { directoryName: 'home', body: ['home'] },
-              {
-                directoryName: 'member',
-                body: [
-                  { directoryName: '24', body: ['aaa', 'iii'] },
-                  {
-                    directoryName: '25',
-                    body: [
-                      'uuu',
-                      {
-                        directoryName: 'sideBar',
-                        body: [
-                          { directoryName: 'home', body: ['home'] },
-                          {
-                            directoryName: 'member',
-                            body: [
-                              { directoryName: '24', body: ['aaa', 'iii'] },
-                              { directoryName: '25', body: ['uuu', 'eee'] },
-                            ],
-                          },
-                          { directoryName: 'contact', body: ['contact'] },
-                        ],
-                      },
-                    ],
-                  },
-                ],
-              },
-              { directoryName: 'contact', body: ['contact'] },
-            ],
-          },
-        ],
+        body: ['hhh'],
       },
     ],
   };
