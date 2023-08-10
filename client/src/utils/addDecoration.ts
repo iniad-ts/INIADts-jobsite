@@ -16,7 +16,7 @@ export const addDecoration = (object: MiniDirectoryModel): DirectoryModel => {
     obj.isDisplay === null && obj.isDisplay === false;
     obj.depth = depth === undefined ? 0 : depth + 1;
     obj.body.forEach((o) => {
-      'directoryName' in o && addIdDisplayRecursive(o, obj.depth);
+      o.type === `dir` && addIdDisplayRecursive(o, obj.depth);
     });
   };
   addIdDisplayRecursive(sideBarModel);
