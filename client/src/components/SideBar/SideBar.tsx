@@ -58,7 +58,7 @@ export const SideBar = (props: { inSide: DirectoryModel }) => {
               <div key={i}>
                 <div className={styles.column} style={{ color: '#f00' }}>
                   <Spacer space={props.obj.depth + 1} />
-                  <Link href={o.url ?? './hoge'}>{o.fileName}</Link>
+                  <Link href={o.url ?? `./${Math.random()}`}>{o.fileName}</Link>
                 </div>
               </div>
             )

@@ -14,6 +14,10 @@
 
 .column {
   width: 100%;
-  height: 20px;
+  height: 25px;
   display: flex;
+}
+
+.column:hover {
+  background-color: #0008;
 }
