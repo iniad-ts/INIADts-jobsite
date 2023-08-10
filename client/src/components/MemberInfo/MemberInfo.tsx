@@ -1,57 +1,91 @@
-import styles from './memberInfo.module.css';
+type value = string | number | boolean | null | undefined | value[] | { [key: string]: value };
 
-const ArrayComponent = ({ array }: { array: string[] }) => {
+type Props = {
+  value: value;
+  name: string;
+};
+
+// eslint-disable-next-line complexity
+const valueComponent = (value: value) => {
+  if (typeof value === 'string') {
+    return stringComponent(value);
+  } else if (typeof value === 'number') {
+    return numberComponent(value);
+  } else if (typeof value === 'boolean') {
+    return booleanComponent(value);
+  } else if (value === null) {
+    return nullComponent();
+  } else if (value === undefined) {
+    return undefinedComponent();
+  } else if (Array.isArray(value)) {
+    return arrayComponent(value);
+  } else {
+    return objectComponent(value);
+  }
+};
+
+const stringComponent = (value: string) => {
   return (
-    <>
-      <span className={styles.array}>[</span>
-      {array.map((item, index) => {
-        const comma = array.length - 1 === index ? '' : ', ';
-        return (
-          <>
-            <span key={index} className={styles.string}>{`"${item}"`}</span>
-            {comma}
-          </>
-        );
-      })}
-      <span className={styles.array}>]</span>
-    </>
+    <span>
+      {`"`}
+      {value}
+      {`"`}
+    </span>
   );
 };
 
-const ObjectComponent = (object: { [key: string]: string | string[] }) => {
+const numberComponent = (value: number) => {
+  return <span>{value}</span>;
+};
+
+const booleanComponent = (value: boolean) => {
+  return <span>{value ? 'true' : 'false'}</span>;
+};
+
+const nullComponent = () => {
+  return <span>null</span>;
+};
+
+const undefinedComponent = () => {
+  return <span>undefined</span>;
+};
+
+const arrayComponent = (value: value[]) => {
   return (
-    <>
-      <span className={styles.object}>{'{'}</span>
-      {Object.keys(object).map((key, index) => {
-        return (
-          <div key={index}>
-            <span className={styles.key}>{`  ${key}: `}</span>
-            {Array.isArray(object[key]) ? (
-              <ArrayComponent array={object[key] as string[]} />
-            ) : (
-              <span className={styles.string}>{`"${object[key]}"`}</span>
-            )}
-            ,
-          </div>
-        );
-      })}
-      <span className={styles.object}>{'}'};</span>
-    </>
+    <span>
+      {'['}
+      {value.map((v, i) => (
+        <span key={i}>
+          {valueComponent(v)}
+          {i !== value.length - 1 && ', '}
+        </span>
+      ))}
+      {']'}
+    </span>
   );
 };
 
-type PropsInfo = {
-  object: Record<string, string | string[]>;
-  objectName: string;
+const objectComponent = (value: { [key: string]: value }) => {
+  return (
+    <span>
+      {'{'}
+      {Object.entries(value).map(([k, v], i) => (
+        <span key={i}>
+          <span>{k}</span>: {valueComponent(v)}
+          {i !== Object.entries(value).length - 1 && ', '}
+        </span>
+      ))}
+      {'}'}
+    </span>
+  );
 };
 
-const UserInfo = ({ object, objectName }: PropsInfo) => {
+const MemberInfo = ({ value, name }: Props) => {
   return (
-    <div className={styles.info}>
-      <span className={styles.const}>const</span>{' '}
-      <span className={styles.object}>{objectName}</span> = <ObjectComponent {...object} />
+    <div>
+      <span>const</span> <span>{name}</span> = {valueComponent(value)};
     </div>
   );
 };
 
-export default UserInfo;
+export default MemberInfo;
