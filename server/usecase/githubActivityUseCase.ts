@@ -7,7 +7,7 @@ export type GithubActivity = {
   contributions: Array<{
     date: string;
     count: number;
-    level: number;
+    level: 0 | 1 | 2 | 3 | 4;
   }>;
 };
 
@@ -27,7 +27,7 @@ const uploadActivity = async (userName: string, data: string) => {
 };
 
 const fetchActivity = async (userId: string): Promise<GithubActivity | null> => {
-  const res = await fetch(`${GITHUB_API_ORIGIN}/v4/${userId}`);
+  const res = await fetch(`${GITHUB_API_ORIGIN}/v4/${userId}?y=last`);
   const data: GithubActivity = await res.json();
 
   if (data !== null) {
