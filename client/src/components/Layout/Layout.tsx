@@ -1,64 +1,73 @@
+import type { MiniDirectoryModel } from 'src/utils/addDecoration';
+import { addDecoration } from 'src/utils/addDecoration';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
 import { SideBar } from '../SideBar/SideBar';
 import styles from './layout.module.css';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  const side = {
-    directoryName: 'sideBar',
+  const side: MiniDirectoryModel = {
+    type: 'dir',
+    directoryName: 'INIAD.ts-job-site',
     body: [
-      { directoryName: 'home', body: ['home'] },
+      { type: 'dir', directoryName: 'welcome', body: [{ type: 'file', fileName: 'README.md' }] },
       {
-        directoryName: 'member',
-        body: [
-          { directoryName: '24', body: ['aaa', 'iii'] },
-          { directoryName: '25', body: ['uuu', 'eee'] },
-        ],
-      },
-      {
-        directoryName: 'contact',
+        type: 'dir',
+        directoryName: 'members',
         body: [
           {
-            directoryName: 'sideBar',
+            type: 'dir',
+            directoryName: '24graduates',
             body: [
-              { directoryName: 'home', body: ['home'] },
+              { type: 'file', fileName: 'aaa' },
+              { type: 'file', fileName: 'iii' },
+            ],
+          },
+          {
+            type: 'dir',
+            directoryName: '25graduates',
+            body: [
+              { type: 'file', fileName: 'uuu' },
               {
-                directoryName: 'member',
+                type: 'dir',
+                directoryName: 'part-time-job',
                 body: [
-                  { directoryName: '24', body: ['aaa', 'iii'] },
-                  {
-                    directoryName: '25',
-                    body: [
-                      'uuu',
-                      {
-                        directoryName: 'sideBar',
-                        body: [
-                          { directoryName: 'home', body: ['home'] },
-                          {
-                            directoryName: 'member',
-                            body: [
-                              { directoryName: '24', body: ['aaa', 'iii'] },
-                              { directoryName: '25', body: ['uuu', 'eee'] },
-                            ],
-                          },
-                          { directoryName: 'contact', body: ['contact'] },
-                        ],
-                      },
-                    ],
-                  },
+                  { type: 'file', fileName: 'eee' },
+                  { type: 'file', fileName: 'ooo' },
                 ],
               },
-              { directoryName: 'contact', body: ['contact'] },
+              {
+                type: 'dir',
+                directoryName: 'intern',
+                body: [
+                  { type: 'file', fileName: 'kkk' },
+                  { type: 'file', fileName: 'sss' },
+                ],
+              },
+              {
+                type: 'dir',
+                directoryName: 'job-hunting',
+                body: [
+                  { type: 'file', fileName: 'ttt' },
+                  { type: 'file', fileName: 'nnn' },
+                ],
+              },
             ],
           },
         ],
       },
+      {
+        type: 'dir',
+        directoryName: 'contact',
+        body: [{ type: 'file', fileName: 'yossuli', url: 'https://github.com/yossuli' }],
+      },
     ],
+    isDisplay: true,
   };
   return (
     <div className={styles.container}>
       <Header />
-      <SideBar inSide={side} />
+      <SideBar inSide={addDecoration(side)} />
       <main className={styles.main}>{children}</main>
       <Footer />
     </div>
