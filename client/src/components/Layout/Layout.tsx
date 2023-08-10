@@ -1,5 +1,5 @@
-import type { MiniDirectoryModel } from 'src/utils/addIdDisplay';
-import { addIdDisplay } from 'src/utils/addIdDisplay';
+import type { MiniDirectoryModel } from 'src/utils/addDecoration';
+import { addDecoration } from 'src/utils/addDecoration';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
 import { SideBar } from '../SideBar/SideBar';
@@ -44,7 +44,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <div className={styles.container}>
       <Header />
-      <SideBar inSide={addIdDisplay(side)} />
+      <SideBar inSide={addDecoration(side)} />
       <main className={styles.main}>{children}</main>
       <Footer />
     </div>

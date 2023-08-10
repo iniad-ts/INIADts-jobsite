@@ -5,7 +5,7 @@ export type DirectoryModel = {
   directoryName: string;
   body: (FileModel | DirectoryModel)[];
   isDisplay: boolean;
-  depth?: number;
+  depth: number;
   id: string;
 };
 
@@ -35,14 +35,13 @@ export const SideBar = (props: { inSide: DirectoryModel }) => {
     };
     deleteTabRecursive(searchSide, name);
   };
-  const mapper = (obj: DirectoryModel, depth = -1) => {
-    obj.depth = depth + 1;
+  const mapper = (obj: DirectoryModel) => {
     return (
       <div key={`${obj.id}`}>
         <div className={styles.column} onClick={() => deleteTab(obj.id)}>
           <Spacer space={obj.depth} />
           <div
-            className={styles.array}
+            className={styles.arrow}
             style={{
               transform: obj.isDisplay ? 'rotate(0deg)' : 'rotate(-90deg)',
             }}
@@ -53,11 +52,11 @@ export const SideBar = (props: { inSide: DirectoryModel }) => {
           <div>
             {obj.body.map((o, i) => {
               return 'directoryName' in o ? (
-                mapper(o, obj.depth ?? 1)
+                mapper(o)
               ) : (
                 <div key={`${o}-${i}`}>
                   <div className={styles.column} style={{ color: '#f00' }}>
-                    <Spacer space={(obj.depth ?? 0) + 1} />
+                    <Spacer space={obj.depth + 1} />
                     <Link href={o.url ?? './no-url'}>{o.fileName}</Link>
                   </div>
                 </div>
