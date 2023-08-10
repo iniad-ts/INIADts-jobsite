@@ -1,6 +1,6 @@
 .container {
   display: grid;
-  grid-template-columns: 300px 1fr;
+  grid-template-columns: min(300px, 36vw) 1fr;
   grid-template-rows: 25px 1fr 200px;
   grid-template-areas:
     'sidebar header'
