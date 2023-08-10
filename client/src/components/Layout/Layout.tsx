@@ -1,11 +1,12 @@
+import type { MiniDirectoryModel } from 'src/utils/addIdDisplay';
+import { addIdDisplay } from 'src/utils/addIdDisplay';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
-import type { DirectoryModel } from '../SideBar/SideBar';
 import { SideBar } from '../SideBar/SideBar';
 import styles from './layout.module.css';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  const side: DirectoryModel = {
+  const side: MiniDirectoryModel = {
     directoryName: 'INIAD.ts-job-site',
     body: [
       { directoryName: 'welcome', body: [{ fileName: 'README.md' }] },
@@ -38,11 +39,12 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
         body: [{ fileName: 'yossuli', url: 'https://github.com/yossuli' }],
       },
     ],
+    isDisplay: true,
   };
   return (
     <div className={styles.container}>
       <Header />
-      <SideBar inSide={side} />
+      <SideBar inSide={addIdDisplay(side)} />
       <main className={styles.main}>{children}</main>
       <Footer />
     </div>
