@@ -8,7 +8,7 @@
   height: 7px;
   border-top: solid 1px #000;
   border-right: solid 1px #000;
-  transform-origin: top right;
+  transform-origin: 75% 25%;
   top: 10px;
 }
 

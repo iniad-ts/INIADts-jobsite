@@ -16,7 +16,7 @@ export type FileModel = {
   url?: string;
 };
 
-const Spacer = (props: { space: number }) => <div style={{ width: `${props.space * 20}px` }} />;
+const Spacer = (props: { space: number }) => <div style={{ width: `${props.space * 10}px` }} />;
 
 export const SideBar = (props: { inSide: DirectoryModel }) => {
   const [side, setSide] = useState(props.inSide);
