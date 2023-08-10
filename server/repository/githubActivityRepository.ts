@@ -11,8 +11,6 @@ export const githubActivityRepository = {
       Body: data,
     };
 
-    console.log(params);
-
     try {
       const command = new PutObjectCommand(params);
       await s3Client.send(command);
