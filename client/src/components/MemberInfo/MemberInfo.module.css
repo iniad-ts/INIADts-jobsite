@@ -1,0 +1,34 @@
+.info {
+  color: white;
+  font-weight: bold;
+  white-space: pre-wrap;
+}
+
+.name,
+.bracket-1 {
+  color: #feff8d;
+}
+
+.bracket-2 {
+  color: #fb00fa;
+}
+
+.const,
+.null,
+.undefined,
+.boolean,
+.bracket-3 {
+  color: #0078d4;
+}
+
+.key {
+  color: #89fefe;
+}
+
+.string {
+  color: #f3b371;
+}
+
+.number {
+  color: #94cea8;
+}

@@ -3,7 +3,7 @@ import { addDecoration } from 'src/utils/addDecoration';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
 import { SideBar } from '../SideBar/SideBar';
-import styles from './layout.module.css';
+import styles from './Layout.module.css';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const side: MiniDirectoryModel = {

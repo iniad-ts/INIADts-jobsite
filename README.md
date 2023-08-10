@@ -2,7 +2,7 @@
 
 フロントエンドは src ディレクトリの [Next.js](https://nextjs.org/) 、バックエンドは server ディレクトリの [frourio](https://frourio.com/) で構築された TypeScript で一気通貫開発が可能なモノレポサービス
 
-本番環境 - https://iniad-ts.com
+本番環境 - https://iniad-ts.com  
 開発環境 - https://dev.iniad-ts.com
 
 ## 開発手順
