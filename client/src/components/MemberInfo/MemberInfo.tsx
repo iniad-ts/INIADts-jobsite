@@ -1,4 +1,4 @@
-import styles from './memberInfo.module.css';
+import styles from './MemberInfo.module.css';
 
 type value = string | number | boolean | null | undefined | value[] | { [key: string]: value };
 
