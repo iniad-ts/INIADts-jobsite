@@ -1,11 +1,17 @@
+import Link from 'next/link';
 import { useState } from 'react';
 import styles from './SideBar.module.css';
 export type DirectoryModel = {
   directoryName: string;
-  body: (string | DirectoryModel)[];
+  body: (FileModel | DirectoryModel)[];
   isDisplay?: boolean;
   depth?: number;
   id?: string;
+};
+
+export type FileModel = {
+  fileName: string;
+  url?: string;
 };
 
 const Spacer = (props: { space: number }) =>
@@ -15,7 +21,7 @@ export const SideBar = (props: { inSide: DirectoryModel }) => {
   const addId = (obj: DirectoryModel) => {
     obj.id = String(Math.random());
     obj.body.forEach((o) => {
-      typeof o !== 'string' && addId(o);
+      'directoryName' in o && addId(o);
     });
   };
   addId(props.inSide);
@@ -31,7 +37,7 @@ export const SideBar = (props: { inSide: DirectoryModel }) => {
         setSide(searchSide);
         isAlreadyDelete = true;
       } else {
-        obj.body.forEach((s) => typeof s !== 'string' && deleteTabRecursive(s, id));
+        obj.body.forEach((s) => 'directoryName' in s && deleteTabRecursive(s, id));
       }
     };
     deleteTabRecursive(searchSide, name);
@@ -56,18 +62,19 @@ export const SideBar = (props: { inSide: DirectoryModel }) => {
         </div>
         {obj.isDisplay === true && (
           <div key={`${obj.id}-2`}>
-            {obj.body.map((o: string | DirectoryModel, i: number) =>
-              typeof o !== 'string' ? (
+            {obj.body.map((o: FileModel | DirectoryModel, i: number) => {
+              console.log(o);
+              return 'directoryName' in o ? (
                 mapper(o, obj.depth ?? 1)
               ) : (
                 <div key={`${o}-${i}`}>
-                  <div className={styles.column}>
+                  <div className={styles.column} style={{ color: '#f00' }}>
                     <Spacer space={(obj.depth ?? 0) + 1} />
-                    {o}
+                    <Link href={o.url ?? './no-url'}>{o.fileName}</Link>
                   </div>
                 </div>
-              )
-            )}
+              );
+            })}
           </div>
         )}
       </div>

@@ -1,32 +1,33 @@
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
+import type { DirectoryModel } from '../SideBar/SideBar';
 import { SideBar } from '../SideBar/SideBar';
 import styles from './layout.module.css';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
-  const side = {
+  const side: DirectoryModel = {
     directoryName: 'INIAD.ts-job-site',
     body: [
-      { directoryName: 'welcome', body: ['README.md'] },
+      { directoryName: 'welcome', body: [{ fileName: 'README.md' }] },
       {
         directoryName: 'members',
         body: [
-          { directoryName: '24graduates', body: ['aaa', 'iii'] },
+          { directoryName: '24graduates', body: [{ fileName: 'aaa' }, { fileName: 'iii' }] },
           {
             directoryName: '25graduates',
             body: [
-              'uuu',
+              { fileName: 'uuu' },
               {
                 directoryName: 'part-time-job',
-                body: ['eee', 'ooo'],
+                body: [{ fileName: 'eee' }, { fileName: 'ooo' }],
               },
               {
                 directoryName: 'intern',
-                body: ['kkk', 'sss'],
+                body: [{ fileName: 'kkk' }, { fileName: 'sss' }],
               },
               {
                 directoryName: 'job-hunting',
-                body: ['ttt', 'nnn'],
+                body: [{ fileName: 'ttt' }, { fileName: 'nnn' }],
               },
             ],
           },
@@ -34,7 +35,7 @@ const Layout = ({ children }: { children: React.ReactNode }) => {
       },
       {
         directoryName: 'contact',
-        body: ['hhh'],
+        body: [{ fileName: 'yossuli', url: 'https://github.com/yossuli' }],
       },
     ],
   };
