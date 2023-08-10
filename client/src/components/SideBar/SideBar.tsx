@@ -19,31 +19,33 @@ const Spacer = (props: { space: number }) => <div style={{ width: `${props.space
 export const SideBar = (props: { inSide: DirectoryModel }) => {
   const [side, setSide] = useState(props.inSide);
 
-  const deleteTab = (name: string) => {
+  const deleteTab = (id: string) => {
     const searchSide: DirectoryModel = JSON.parse(JSON.stringify(side));
-    const deleteTabRecursive = (obj: DirectoryModel, id: string) => {
+    const deleteTabRecursive = (obj: DirectoryModel) => {
       if (obj.id === id) {
         obj.isDisplay = !obj.isDisplay;
         setSide(searchSide);
       } else {
         obj.body
           .filter((s): s is DirectoryModel => 'directoryName' in s)
-          .forEach((dir) => deleteTabRecursive(dir, id));
+          .forEach((dir) => deleteTabRecursive(dir));
       }
     };
-    deleteTabRecursive(searchSide, name);
+    deleteTabRecursive(searchSide);
   };
 
   const Mapper = (props: { obj: DirectoryModel }) => (
     <div>
       <div className={styles.column} onClick={() => deleteTab(props.obj.id)}>
         <Spacer space={props.obj.depth} />
-        <div
-          className={styles.arrow}
-          style={{
-            transform: props.obj.isDisplay ? 'rotate(0deg)' : 'rotate(-90deg)',
-          }}
-        />
+        <div style={{ width: 20 }}>
+          <div
+            className={styles.arrow}
+            style={{
+              transform: props.obj.isDisplay ? 'rotate(135deg)' : 'rotate(45deg)',
+            }}
+          />
+        </div>
         {props.obj.directoryName}
       </div>
       {props.obj.isDisplay && (

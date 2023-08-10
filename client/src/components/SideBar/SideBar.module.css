@@ -3,10 +3,11 @@
 }
 
 .arrow {
-  width: 20px;
-  height: 20px;
-  background-color: #000;
-  clip-path: polygon(25% 65%, 45% 85%, 65% 65%, 65% 60%, 45% 80%, 25% 60%);
+  width: 10px;
+  height: 10px;
+  border-top: solid 1px #000;
+  border-right: solid 1px #000;
+  transform-origin: top right;
 }
 
 .column {
