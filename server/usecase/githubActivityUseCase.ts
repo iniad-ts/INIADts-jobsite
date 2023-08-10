@@ -61,9 +61,10 @@ const getLatestActivity = async (userId: string): Promise<GithubActivity | null>
       };
 
       const latestObjectCommand = new GetObjectCommand(latestObjectParams);
-      const { Body } = await s3Client.send(latestObjectCommand);
+      const res = await s3Client.send(latestObjectCommand);
+      const dataString = await res.Body?.transformToString();
+      const data: GithubActivity = JSON.parse(dataString ?? '{}');
 
-      const data: GithubActivity = JSON.parse((Body ?? '').toString());
       return data;
     }
 
