@@ -8,12 +8,16 @@
   height: 7px;
   border-top: solid 1px #000;
   border-right: solid 1px #000;
-  transform-origin: top right;
+  transform-origin: 75% 25%;
   top: 10px;
 }
 
 .column {
   width: 100%;
-  height: 20px;
+  height: 25px;
   display: flex;
+}
+
+.column:hover {
+  background-color: #0008;
 }
