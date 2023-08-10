@@ -1,24 +1,27 @@
 .info {
-  color: #fff;
-  white-space: pre-wrap;
+  color: white;
   font-weight: bold;
+  white-space: pre-wrap;
 }
 
-.array {
-  color: #f700f5;
-}
-.object {
+.name,
+.bracket-1 {
   color: #feff8d;
 }
 
-.const {
-  color: #79a5fb;
+.bracket-2 {
+  color: #fb00fa;
+}
+
+.const,
+.bracket-3 {
+  color: #0078d4;
 }
 
 .key {
-  color: #4ac7f7;
+  color: #89fefe;
 }
 
 .string {
-  color: #eeb371;
+  color: #f3b371;
 }

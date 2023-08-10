@@ -1,3 +1,5 @@
+import styles from './memberInfo.module.css';
+
 type value = string | number | boolean | null | undefined | value[] | { [key: string]: value };
 
 type Props = {
@@ -6,7 +8,7 @@ type Props = {
 };
 
 // eslint-disable-next-line complexity
-const valueComponent = (value: value) => {
+const valueComponent = (value: value, level: number) => {
   if (typeof value === 'string') {
     return stringComponent(value);
   } else if (typeof value === 'number') {
@@ -18,15 +20,15 @@ const valueComponent = (value: value) => {
   } else if (value === undefined) {
     return undefinedComponent();
   } else if (Array.isArray(value)) {
-    return arrayComponent(value);
+    return arrayComponent(value, level + 1);
   } else {
-    return objectComponent(value);
+    return objectComponent(value, level + 1);
   }
 };
 
 const stringComponent = (value: string) => {
   return (
-    <span>
+    <span className={styles.string}>
       {`"`}
       {value}
       {`"`}
@@ -50,40 +52,43 @@ const undefinedComponent = () => {
   return <span>undefined</span>;
 };
 
-const arrayComponent = (value: value[]) => {
+const arrayComponent = (value: value[], level: number) => {
+  const bracketLevel = ((level % 3) + 1) as 1 | 2 | 3;
   return (
     <span>
-      {'['}
+      <span className={styles[`bracket-${bracketLevel}`]}>{'['}</span>
       {value.map((v, i) => (
         <span key={i}>
-          {valueComponent(v)}
+          {valueComponent(v, level + 1)}
           {i !== value.length - 1 && ', '}
         </span>
       ))}
-      {']'}
+      <span className={styles[`bracket-${bracketLevel}`]}>{']'}</span>
     </span>
   );
 };
 
-const objectComponent = (value: { [key: string]: value }) => {
+const objectComponent = (value: { [key: string]: value }, level: number) => {
+  const bracketLevel = ((level % 3) + 1) as 1 | 2 | 3;
   return (
     <span>
-      {'{'}
+      <span className={styles[`bracket-${bracketLevel}`]}>{'{'}</span>
       {Object.entries(value).map(([k, v], i) => (
         <span key={i}>
-          <span>{k}</span>: {valueComponent(v)}
+          <span className={styles.key}>{k}:</span> {valueComponent(v, level + 1)}
           {i !== Object.entries(value).length - 1 && ', '}
         </span>
       ))}
-      {'}'}
+      <span className={styles[`bracket-${bracketLevel}`]}>{'}'}</span>
     </span>
   );
 };
 
 const MemberInfo = ({ value, name }: Props) => {
   return (
-    <div>
-      <span>const</span> <span>{name}</span> = {valueComponent(value)};
+    <div className={styles.info}>
+      <span className={styles.const}>const</span> <span className={styles.name}>{name}</span> ={' '}
+      {valueComponent(value, 1)};
     </div>
   );
 };
