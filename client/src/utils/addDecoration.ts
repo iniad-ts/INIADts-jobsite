@@ -13,7 +13,9 @@ export const addDecoration = (object: MiniDirectoryModel): DirectoryModel => {
   const sideBarModel = JSON.parse(JSON.stringify(object));
   const addIdDisplayRecursive = (obj: MiniDirectoryModel, depth?: number) => {
     obj.id = String(Math.random());
-    obj.isDisplay === null && obj.isDisplay === false;
+    if (obj.isDisplay === null) {
+      obj.isDisplay = false;
+    }
     obj.depth = depth === undefined ? 0 : depth + 1;
     obj.body.forEach((o) => {
       o.type === 'dir' && addIdDisplayRecursive(o, obj.depth);
