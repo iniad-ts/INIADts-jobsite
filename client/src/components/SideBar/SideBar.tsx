@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import styles from './SideBar.module.css';
 export type DirectoryModel = {
+  type: 'dir';
   directoryName: string;
   body: (FileModel | DirectoryModel)[];
   isDisplay: boolean;
@@ -10,6 +11,7 @@ export type DirectoryModel = {
 };
 
 export type FileModel = {
+  type: 'file';
   fileName: string;
   url?: string;
 };
@@ -27,7 +29,7 @@ export const SideBar = (props: { inSide: DirectoryModel }) => {
         setSide(searchSide);
       } else {
         obj.body
-          .filter((s): s is DirectoryModel => 'directoryName' in s)
+          .filter((s): s is DirectoryModel => s.type === 'dir')
           .forEach((dir) => deleteTabRecursive(dir));
       }
     };
@@ -51,7 +53,7 @@ export const SideBar = (props: { inSide: DirectoryModel }) => {
       {props.obj.isDisplay && (
         <div>
           {props.obj.body.map((o, i) => {
-            return 'directoryName' in o ? (
+            return o.type === 'dir' ? (
               <Mapper obj={o} key={o.id} />
             ) : (
               <div key={`${o}-${i}`}>
