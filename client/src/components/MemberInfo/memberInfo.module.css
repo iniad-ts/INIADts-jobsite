@@ -14,6 +14,9 @@
 }
 
 .const,
+.null,
+.undefined,
+.boolean,
 .bracket-3 {
   color: #0078d4;
 }
