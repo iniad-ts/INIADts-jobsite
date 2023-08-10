@@ -13,3 +13,12 @@ export type TaskModel = {
   done: boolean;
   created: number;
 };
+
+export type GitHubActivityModel = {
+  total: Record<string, number>;
+  contributions: {
+    date: string;
+    count: number;
+    level: 0 | 1 | 2 | 3 | 4;
+  }[];
+};

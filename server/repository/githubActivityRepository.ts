@@ -1,6 +1,6 @@
+import type { GitHubActivityModel } from '$/commonTypesWithClient/models';
 import { GITHUB_API_ORIGIN, S3_BUCKET } from '$/service/envValues';
 import { s3Client } from '$/service/s3Client';
-import type { GithubActivity } from '$/usecase/githubActivityUseCase';
 import { GetObjectCommand, ListObjectsCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 
 export const githubActivityRepository = {
@@ -26,7 +26,7 @@ export const githubActivityRepository = {
       console.error(err);
     }
   },
-  getLatest: async (userId: string): Promise<GithubActivity | null> => {
+  getLatest: async (userId: string): Promise<GitHubActivityModel | null> => {
     const params = {
       Bucket: S3_BUCKET,
       Prefix: `github-activity/${userId}/`,
@@ -46,7 +46,7 @@ export const githubActivityRepository = {
         const latestObjectCommand = new GetObjectCommand(latestObjectParams);
         const res = await s3Client.send(latestObjectCommand);
         const dataString = await res.Body?.transformToString();
-        const data: GithubActivity = JSON.parse(dataString ?? '{}');
+        const data: GitHubActivityModel = JSON.parse(dataString ?? '{}');
 
         return data;
       }

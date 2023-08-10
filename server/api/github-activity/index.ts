@@ -1,4 +1,4 @@
-import type { GithubActivity } from '$/usecase/githubActivityUseCase';
+import type { GitHubActivityModel } from '$/commonTypesWithClient/models';
 import type { DefineMethods } from 'aspida';
 
 export type Methods = DefineMethods<{
@@ -6,10 +6,10 @@ export type Methods = DefineMethods<{
     query: {
       userId: string;
     };
-    resBody: GithubActivity | null;
+    resBody: GitHubActivityModel | null;
   };
   post: {
     reqBody: { userId: string };
-    resBody: GithubActivity | null;
+    resBody: GitHubActivityModel | null;
   };
 }>;

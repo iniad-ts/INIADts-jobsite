@@ -1,19 +1,11 @@
+import type { GitHubActivityModel } from 'commonTypesWithClient/models';
 import { useCallback, useEffect, useState } from 'react';
 import type { ThemeInput } from 'react-activity-calendar';
 import Calendar, { Skeleton } from 'react-activity-calendar';
 import { apiClient } from 'src/utils/apiClient';
 
-type GithubActivity = {
-  total: Record<string, number>;
-  contributions: Array<{
-    date: string;
-    count: number;
-    level: 0 | 1 | 2 | 3 | 4;
-  }>;
-};
-
 export const GitHubActivity = ({ userId }: { userId: string }) => {
-  const [data, setData] = useState<GithubActivity>();
+  const [data, setData] = useState<GitHubActivityModel>();
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<boolean>(false);
 
