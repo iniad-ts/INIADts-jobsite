@@ -22,6 +22,10 @@ export const GitHubActivity = ({ userId }: { userId: string }) => {
     dark: ['#161b22', '#0e4429', '#006d32', '#26a641', '#39d353'],
   };
 
+  const label = {
+    totalCount: `{{count}} contributions in the last year`,
+  };
+
   const fetchData = useCallback(() => {
     setLoading(true);
     setError(false);
@@ -51,5 +55,5 @@ export const GitHubActivity = ({ userId }: { userId: string }) => {
     return <Skeleton loading />;
   }
 
-  return <Calendar data={data.contributions} theme={theme} />;
+  return <Calendar data={data.contributions} theme={theme} labels={label} />;
 };
