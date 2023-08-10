@@ -27,8 +27,12 @@ export const GitHubActivity = ({ userId }: { userId: string }) => {
     apiClient.github_activity
       .$get({ query: { userId } })
       .then(async (res) => {
-        res ??= await apiClient.github_activity.$post({ body: { userId } });
-        setData(res);
+        if (res !== null) {
+          setData(res);
+        } else {
+          const res = await apiClient.github_activity.$post({ body: { userId } });
+          setData(res);
+        }
       })
       .finally(() => setLoading(false));
   }, [userId, data]);
