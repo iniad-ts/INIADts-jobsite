@@ -1,7 +1,7 @@
 import { S3Client } from '@aws-sdk/client-s3';
 import { S3_ACCESS_KEY, S3_ENDPOINT, S3_REGION, S3_SECRET_KEY } from './envValues';
 
-const s3Client = new S3Client({
+export const s3Client = new S3Client({
   endpoint: S3_ENDPOINT,
   region: S3_REGION,
   forcePathStyle: true,
@@ -10,5 +10,3 @@ const s3Client = new S3Client({
     secretAccessKey: S3_SECRET_KEY,
   },
 });
-
-export { s3Client };
