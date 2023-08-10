@@ -38,7 +38,7 @@ export const SideBar = (props: { inSide: DirectoryModel }) => {
   const mapper = (obj: DirectoryModel, depth = -1) => {
     obj.depth = depth + 1;
     return (
-      <div>
+      <div key={`${obj.id}`}>
         <div className={styles.column} onClick={() => deleteTab(obj.id)}>
           <Spacer space={obj.depth} />
           <div
