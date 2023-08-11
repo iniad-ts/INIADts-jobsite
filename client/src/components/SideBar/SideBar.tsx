@@ -1,5 +1,7 @@
 import Link from 'next/link';
 import { useState } from 'react';
+import type { MiniDirectoryModel } from 'src/utils/addDecoration';
+import { addDecoration } from 'src/utils/addDecoration';
 import styles from './SideBar.module.css';
 export type DirectoryModel = {
   type: 'dir';
@@ -18,8 +20,8 @@ export type FileModel = {
 
 const Spacer = (props: { space: number }) => <div style={{ width: `${props.space * 10}px` }} />;
 
-export const SideBar = (props: { inSide: DirectoryModel }) => {
-  const [side, setSide] = useState(props.inSide);
+export const SideBar = (props: { inSide: MiniDirectoryModel }) => {
+  const [side, setSide] = useState(addDecoration(props.inSide));
   const deleteTab = (id: string) => {
     const searchSide: DirectoryModel = JSON.parse(JSON.stringify(side));
     const deleteTabRecursive = (obj: DirectoryModel) => {
