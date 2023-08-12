@@ -14,7 +14,7 @@ const MemberPage = () => {
   );
 
   const fetchMember = useCallback(async () => {
-    const res = await apiClient.member.$get({ query: { githubId: queryId } });
+    const res = await apiClient.members._memberId(queryId).$get();
 
     if (res === null) return;
 

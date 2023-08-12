@@ -1,13 +1,14 @@
+import type { MemberModel } from 'commonTypesWithClient/models';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { apiClient } from 'src/utils/apiClient';
 
 const Members = () => {
-  const [memberList, setMemberList] = useState<string[]>([]);
+  const [members, setMembers] = useState<MemberModel[]>([]);
   const fetchMemberList = async () => {
-    const memberList = await apiClient.member.list.$get();
-    setMemberList(memberList);
+    const memberList = await apiClient.members.$get();
+    setMembers(memberList);
   };
 
   useEffect(() => {
@@ -21,9 +22,9 @@ const Members = () => {
         <title>Members | INIAD.ts</title>
       </Head>
       <h1>Members</h1>
-      {memberList.map((member) => (
-        <div key={member}>
-          <Link href={`/members/${member}`}>{member}</Link>
+      {members.map((member) => (
+        <div key={member.githubId}>
+          <Link href={`/members/${member.githubId}`}>{member.displayName}</Link>
         </div>
       ))}
     </div>
