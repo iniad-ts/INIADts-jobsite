@@ -1,12 +1,12 @@
 import Link from 'next/link';
 import { useState } from 'react';
-import type { MiniDirectoryModel } from 'src/utils/addDecoration';
+import type { MiniDirectoryModel as DirectoryModel } from 'src/utils/addDecoration';
 import { addDecoration } from 'src/utils/addDecoration';
 import styles from './SideBar.module.css';
-export type DirectoryModel = {
+export type DecoratedDirectoryModel = {
   type: 'dir';
   directoryName: string;
-  body: (FileModel | DirectoryModel)[];
+  body: (FileModel | DecoratedDirectoryModel)[];
   isDisplay: boolean;
   depth: number;
   id: string;
@@ -20,24 +20,24 @@ export type FileModel = {
 
 const Spacer = (props: { space: number }) => <div style={{ width: `${props.space * 10}px` }} />;
 
-export const SideBar = (props: { inSide: MiniDirectoryModel }) => {
+export const SideBar = (props: { inSide: DirectoryModel }) => {
   const [side, setSide] = useState(addDecoration(props.inSide));
   const deleteTab = (id: string) => {
-    const searchSide: DirectoryModel = JSON.parse(JSON.stringify(side));
-    const deleteTabRecursive = (obj: DirectoryModel) => {
+    const searchSide: DecoratedDirectoryModel = JSON.parse(JSON.stringify(side));
+    const deleteTabRecursive = (obj: DecoratedDirectoryModel) => {
       if (obj.id === id) {
         obj.isDisplay = !obj.isDisplay;
         setSide(searchSide);
       } else {
         obj.body
-          .filter((s): s is DirectoryModel => s.type === 'dir')
+          .filter((s): s is DecoratedDirectoryModel => s.type === 'dir')
           .forEach((dir) => deleteTabRecursive(dir));
       }
     };
     deleteTabRecursive(searchSide);
   };
 
-  const Mapper = (props: { obj: DirectoryModel }) => (
+  const Mapper = (props: { obj: DecoratedDirectoryModel }) => (
     <div>
       <div className={styles.column} onClick={() => deleteTab(props.obj.id)}>
         <Spacer space={props.obj.depth} />

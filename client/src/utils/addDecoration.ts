@@ -1,4 +1,4 @@
-import type { DirectoryModel, FileModel } from 'src/components/SideBar/SideBar';
+import type { DecoratedDirectoryModel, FileModel } from 'src/components/SideBar/SideBar';
 
 export type MiniDirectoryModel = {
   type: 'dir';
@@ -9,7 +9,7 @@ export type MiniDirectoryModel = {
   depth?: number;
 };
 
-export const addDecoration = (object: MiniDirectoryModel): DirectoryModel => {
+export const addDecoration = (object: MiniDirectoryModel): DecoratedDirectoryModel => {
   const sideBarModel = JSON.parse(JSON.stringify(object));
   const addIdDisplayRecursive = (obj: MiniDirectoryModel, depth?: number) => {
     obj.id = String(Math.random());
