@@ -31,13 +31,11 @@ export const membersRepository = {
 
       if (Contents === undefined) return [];
 
-      const memberList = await Promise.all(
-        Contents.map(({ Key }) => {
-          assert(Key !== undefined);
-          const githubId = Key.split('/')[1].split('.')[0];
-          return githubId;
-        })
-      );
+      const memberList = Contents.map(({ Key }) => {
+        assert(Key !== undefined);
+        const githubId = Key.split('/')[1].split('.')[0];
+        return githubId;
+      });
 
       return memberList;
     } catch (err) {

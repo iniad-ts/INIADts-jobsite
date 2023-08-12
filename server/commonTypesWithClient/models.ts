@@ -29,6 +29,7 @@ export type MemberModel = {
   githubId: string;
   displayName: string;
   avatarURL?: string;
-  graduate: number;
+  graduateYear: number;
   introduction?: string;
+  links?: string[];
 };
