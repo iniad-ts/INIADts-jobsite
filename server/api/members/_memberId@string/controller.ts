@@ -2,5 +2,8 @@ import { membersRepository } from '$/repository/membersRepository';
 import { defineController } from './$relay';
 
 export default defineController(() => ({
-  get: async () => ({ status: 200, body: await membersRepository.getMemberList() }),
+  get: async ({ params }) => ({
+    status: 200,
+    body: await membersRepository.getMember(params.memberId),
+  }),
 }));
