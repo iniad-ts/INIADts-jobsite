@@ -1,4 +1,5 @@
 import type { MemberModel } from 'commonTypesWithClient/models';
+import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useCallback, useEffect, useState } from 'react';
 import MemberInfo from 'src/components/MemberInfo/MemberInfo';
@@ -28,16 +29,11 @@ const MemberPage = () => {
     return () => clearInterval(intervalId);
   }, [fetchMember]);
 
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
-
-  if (queryId === undefined) {
-    return <div>Member ID is undefined</div>;
-  }
-
   return (
     <div className={styles.container}>
+      <Head>
+        <title>{member?.displayName ?? queryId} | INIAD.ts</title>
+      </Head>
       <MemberInfo name="name" value={member?.displayName} />
       <MemberInfo name="id" value={member?.githubId} />
       <MemberInfo name="graduateYear" value={member?.graduateYear} />

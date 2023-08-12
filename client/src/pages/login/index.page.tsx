@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import { GithubIcon } from 'src/components/icons/GithubIcon';
 import { staticPath } from 'src/utils/$path';
 import { loginWithGitHub } from 'src/utils/login';
@@ -17,6 +18,9 @@ const Login = () => {
       className={styles.container}
       style={{ background: `center/cover url('${staticPath.images.odaiba_jpg}')` }}
     >
+      <Head>
+        <title>Login | INIAD.ts</title>
+      </Head>
       <div className={styles.main}>
         <div className={styles.title}>next-frourio-starter</div>
         <div style={{ marginTop: '16px' }} onClick={login}>
