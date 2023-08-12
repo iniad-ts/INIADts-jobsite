@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import { apiClient } from 'src/utils/apiClient';
@@ -16,6 +17,9 @@ const Members = () => {
 
   return (
     <div>
+      <Head>
+        <title>Members | INIAD.ts</title>
+      </Head>
       <h1>Members</h1>
       {memberList.map((member) => (
         <div key={member}>
