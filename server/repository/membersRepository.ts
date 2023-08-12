@@ -2,7 +2,6 @@ import type { MemberModel } from '$/commonTypesWithClient/models';
 import { S3_BUCKET } from '$/service/envValues';
 import { s3Client } from '$/service/s3Client';
 import { GetObjectCommand, ListObjectsCommand, PutObjectCommand } from '@aws-sdk/client-s3';
-import assert from 'assert';
 
 export const membersRepository = {
   upsert: async (memberInfo: MemberModel) => {
@@ -32,8 +31,7 @@ export const membersRepository = {
       if (Contents === undefined) return [];
 
       const memberList = Contents.map(({ Key }) => {
-        assert(Key !== undefined);
-        const githubId = Key.split('/')[1].split('.')[0];
+        const githubId = (Key ?? '').split('/')[1].split('.')[0];
         return githubId;
       });
 
