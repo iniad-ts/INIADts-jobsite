@@ -1,23 +1,26 @@
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Footer } from '../Footer/Footer';
 import { Header } from '../Header/Header';
 import { SideBar } from '../SideBar/SideBar';
-import styles from './layout.module.css';
+import styles from './Layout.module.css';
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
   const [title, setTitle] = useState<string>('');
 
+  const getPageTitle = useCallback(() => {
+    const pageTitle = document.title;
+    setTitle(pageTitle);
+  }, []);
+
   useEffect(() => {
-    const getPageTitle = () => {
-      const pageTitle = document.title;
-      setTitle(pageTitle);
-    };
-    router.events.on('routeChangeComplete', getPageTitle);
-    return () => {
-      router.events.off('routeChangeComplete', getPageTitle);
-    };
+    const titleElement = document.querySelector('title');
+    if (titleElement === null) return;
+
+    titleElement.addEventListener('DOMSubtreeModified', getPageTitle);
+
+    return () => titleElement.removeEventListener('DOMSubtreeModified', getPageTitle);
   });
 
   return (
