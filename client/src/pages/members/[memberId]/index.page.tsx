@@ -38,7 +38,7 @@ const MemberPage = () => {
       <MemberInfo name="id" value={member?.githubId} />
       <MemberInfo name="graduateYear" value={member?.graduateYear} />
       <MemberInfo name="products" value={member?.products} />
-      <MemberInfo name="links" value={member?.links} />
+      <MemberInfo name="links" value={member?.socialLinks} />
     </div>
   );
 };
