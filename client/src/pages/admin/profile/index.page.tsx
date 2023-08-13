@@ -15,7 +15,6 @@ const AdminProfile = () => {
       const res = await apiClient.members._memberId(user.githubid).$get();
       if (res !== null) {
         setmember(res);
-        console.log('取得');
         return;
       }
       alert('Member情報がありません');
