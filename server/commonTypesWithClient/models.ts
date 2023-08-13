@@ -24,18 +24,19 @@ export type GitHubActivityModel = {
   userId: string;
 };
 
-// 仮
 export type MemberModel = {
   githubId: string;
   realName: string;
   displayName: string;
-  avatarURL?: string;
+  avatarUrl: string | null;
   graduateYear: number;
-  introduction?: string;
-  products?: {
-    title: string;
-    description: string;
-    URL: string;
-  }[];
-  links?: string[];
+  introduction: string | null;
+  products:
+    | {
+        title: string;
+        description: string;
+        url: string;
+      }[]
+    | null;
+  links: string[] | null;
 };
