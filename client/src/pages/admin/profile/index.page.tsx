@@ -8,6 +8,7 @@ const AdminProfile = () => {
 
   const serchMenber = () => {
     //特定のメンバーを取得するapiをたたく
+
     console.log('取得');
   };
   return (
