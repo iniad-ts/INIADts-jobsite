@@ -32,6 +32,9 @@ export const GitHubActivity = ({ userId }: { userId: string }) => {
           setData(res);
         }
       })
+      .catch((err) => {
+        console.log(err);
+      })
       .finally(() => setLoading(false));
   }, [userId, data]);
 

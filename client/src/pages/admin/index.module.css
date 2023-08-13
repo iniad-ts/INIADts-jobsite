@@ -1,0 +1,20 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 16px 24px;
+}
+
+.button {
+  display: block;
+  width: min(360px, 92vmin);
+  background-color: #ddeeff;
+  padding: 16px 24px;
+  border-radius: 16px;
+  margin-top: 16px;
+  transition: background-color ease 0.2s;
+}
+
+.button:hover {
+  background-color: #cdf;
+}
