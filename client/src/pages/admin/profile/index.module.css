@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+}
+
+.serchTable {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 50px;
+  width: 90%;
+  background-color: rgb(209, 235, 252);
+  border-radius: 30px;
+  margin-bottom: 30px;
+}
+
+.plafileTable {
+  width: 90%;
+  background-color: rgb(209, 235, 252);
+  border-radius: 20px;
+}
