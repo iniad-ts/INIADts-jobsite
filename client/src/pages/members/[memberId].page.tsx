@@ -35,8 +35,10 @@ const MemberPage = () => {
         <title>{member?.displayName ?? queryId} | INIAD.ts</title>
       </Head>
       <MemberInfo name="name" value={member?.displayName} />
+      <MemberInfo name="realName" value={member?.realName} />
       <MemberInfo name="id" value={member?.githubId} />
       <MemberInfo name="graduateYear" value={member?.graduateYear} />
+      <MemberInfo name="products" value={member?.products} />
       <MemberInfo name="links" value={member?.links} />
     </div>
   );
