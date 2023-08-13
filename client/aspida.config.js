@@ -7,6 +7,6 @@ module.exports = [
   },
   {
     input: './src/api',
-    baseURL: `${process.env.S3_PUBLIC_ENDPOINT ?? ''}/${process.env.S3_BUCKET ?? ''}/`,
+    baseURL: `${process.env.S3_PUBLIC_ENDPOINT ?? ''}/${process.env.S3_BUCKET ?? ''}`,
   },
 ];
