@@ -34,7 +34,7 @@ const AdminProfile = () => {
             </tr>
             <tr>
               <th>avatarURL:</th>
-              <td>{member?.avatarURL}</td>
+              <td>{member?.avatarUrl}</td>
             </tr>
             <tr>
               <th>graduateYear:</th>
