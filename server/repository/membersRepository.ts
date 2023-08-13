@@ -1,5 +1,8 @@
 import type { MemberModel } from '$/commonTypesWithClient/models';
+import { S3_BUCKET } from '$/service/envValues';
 import { prismaClient } from '$/service/prismaClient';
+import { s3Client } from '$/service/s3Client';
+import { PutObjectCommand } from '@aws-sdk/client-s3';
 import type { Member } from '@prisma/client';
 import { z } from 'zod';
 
@@ -23,8 +26,8 @@ const toMemberModel = (prismaMember: Member): MemberModel => ({
 });
 
 export const membersRepository = {
-  save: async (member: MemberModel) => {
-    const updatedMember = await prismaClient.member.upsert({
+  saveToDB: async (member: MemberModel): Promise<MemberModel | null> => {
+    const updatedPrismaMember: Member = await prismaClient.member.upsert({
       where: { githubId: member.githubId },
       update: {
         githubId: member.githubId,
@@ -48,6 +51,24 @@ export const membersRepository = {
         createdAt: new Date(),
       },
     });
+
+    const updatedMember = toMemberModel(updatedPrismaMember);
+
+    return updatedMember;
+  },
+  saveToS3: async (member: MemberModel) => {
+    const s3Params = {
+      Bucket: S3_BUCKET,
+      Key: `members/${member.githubId}/info.json`,
+      Body: JSON.stringify(member),
+    };
+
+    try {
+      const command = new PutObjectCommand(s3Params);
+      await s3Client.send(command);
+    } catch (err) {
+      console.error(err);
+    }
   },
   getUnique: async (githubId: string) => {
     const member = await prismaClient.member.findUnique({
