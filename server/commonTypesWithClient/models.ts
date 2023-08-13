@@ -5,6 +5,7 @@ export type UserModel = {
   email: string;
   displayName: string | undefined;
   photoURL: string | undefined;
+  githubid: string;
 };
 
 export type TaskModel = {
