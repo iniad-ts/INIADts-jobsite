@@ -117,7 +117,7 @@ export const SideBar = () => {
               <Mapper obj={o} key={o.id} />
             ) : (
               <div key={i}>
-                <div className={styles.column} style={{ color: '#f00' }}>
+                <div className={styles.column} style={{ color: 'rgb(247, 140, 123)' }}>
                   <Spacer space={props.obj.depth + 1} />
                   <Link href={o.url ?? `./${Math.random()}`}>{o.fileName}</Link>
                 </div>
@@ -131,6 +131,10 @@ export const SideBar = () => {
 
   return (
     <div className={styles.container}>
+      <div className={styles.column2}>
+        <Spacer space={1}/>
+        エクスプローラー
+      </div>
       <Mapper obj={side} />
     </div>
   );
