@@ -1,5 +1,5 @@
 .info {
-  color: white;
+  color: var(--color-fg-main);
   font-weight: bold;
   white-space: pre-wrap;
 }
