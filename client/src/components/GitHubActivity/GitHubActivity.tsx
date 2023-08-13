@@ -1,9 +1,8 @@
-import aspida from '@aspida/axios';
 import type { GitHubActivityModel } from 'commonTypesWithClient/models';
 import { useCallback, useEffect, useState } from 'react';
 import type { ThemeInput } from 'react-activity-calendar';
 import Calendar, { Skeleton } from 'react-activity-calendar';
-import api from '../../api/$api';
+import { apiClientS3 } from 'src/utils/apiClient';
 
 export const GitHubActivity = ({ userId }: { userId: string }) => {
   const [data, setData] = useState<GitHubActivityModel>();
@@ -25,9 +24,7 @@ export const GitHubActivity = ({ userId }: { userId: string }) => {
     setLoading(true);
     setError(false);
 
-    const apiClient = api(aspida());
-
-    apiClient.members
+    apiClientS3.members
       ._memberId(userId)
       .githubActivity_json.$get()
       .then(async (res) => {

@@ -29,7 +29,7 @@ const AdminMembers = () => {
           {members.map((member) => (
             <div key={member.githubId}>
               <Link href={`/members/${member.githubId}`}>
-                {member.githubId},{member.displayName},{member.avatarURL}
+                {member.githubId},{member.displayName},{member.avatarUrl}
               </Link>
             </div>
           ))}
