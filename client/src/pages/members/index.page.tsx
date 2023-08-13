@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import styles from './index.module.css';
 
 const Members = () => {
   // const [members, setMembers] = useState<MemberModel[]>([]);
@@ -13,7 +14,7 @@ const Members = () => {
   // }, []);
 
   return (
-    <div>
+    <div className={styles.container}>
       <Head>
         <title>Members | INIAD.ts</title>
       </Head>

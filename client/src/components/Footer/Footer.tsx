@@ -14,12 +14,12 @@ export const Footer = () => {
         <div className={styles.tabItem}>PORTS</div>
       </div>
       <div className={styles.body}>
-        <p className={styles.p}>
+        <p>
           <Circle />
           PS C:\Toyo\INIAD\INIAD.ts{'>'} <span className={styles.git}>git</span> contact -v
         </p>
         <p className={styles.p}>INIAD.ts メールアドレスなどを張る</p>
-        <p className={styles.p}>
+        <p>
           <Circle />
           PS C:\Toyo\INIAD\INIAD.ts{'>'} <span className={styles.git}>git</span> copyright -v
         </p>

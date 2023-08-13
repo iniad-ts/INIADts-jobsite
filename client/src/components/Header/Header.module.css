@@ -1,28 +1,41 @@
 .body {
-  background-color: rgb(31, 31, 31);
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-bg-dark);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  height: 35px;
   width: fit-content;
-  border-top: 2px solid #247ccc;
-  border-right: 1px solid rgba(255, 255, 255, 0.5);
-  color: aliceblue;
-  display: flex;
+  background-color: var(--color-bg-main);
+  border-top: 3px solid var(--color-accent);
+  border-right: 1px solid var(--color-border);
+  position: relative;
+  padding: 0 35px 0 10px;
+}
+
+.title {
   font-size: 14px;
-}
-
-.text {
-  margin-left: 10px;
-}
-
-.path {
-  height: fit-content;
-  background-color: rgb(31, 31, 31);
-  color: aliceblue;
-  font-size: 12px;
+  letter-spacing: 0;
+  font-weight: 500;
+  color: var(--color-fg-main);
 }
 
 .cross {
-  display: block;
-  position: relative;
-  width: 30px;
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 4px;
+}
+
+.cross:hover {
+  cursor: pointer;
+  background-color: var(--color-bg-hover);
 }
 
 .cross::before,
@@ -31,10 +44,11 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 3px; /* 棒の幅（太さ） */
-  height: 16px; /* 棒の高さ */
-  background: #ffffff; /* バツ印の色 */
+  width: 2px;
+  height: 12px;
+  background: var(--color-fg-main);
 }
+
 .cross::before {
   transform: translate(-50%, -50%) rotate(45deg);
 }
