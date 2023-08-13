@@ -1,9 +1,8 @@
 import type { MemberModel } from 'commonTypesWithClient/models';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import MemberInfo from 'src/components/MemberInfo/MemberInfo';
-import { apiClient } from 'src/utils/apiClient';
 import styles from './index.module.css';
 
 const MemberPage = () => {
@@ -13,21 +12,21 @@ const MemberPage = () => {
     Array.isArray(router.query.memberId) ? router.query.memberId[0] : router.query.memberId ?? ''
   );
 
-  const fetchMember = useCallback(async () => {
-    const res = await apiClient.members._memberId(queryId).$get();
+  // const fetchMember = useCallback(async () => {
+  //   const res = await apiClient.members._memberId(queryId).$get();
 
-    if (res === null) return;
+  //   if (res === null) return;
 
-    setMember(res);
-  }, [queryId]);
+  //   setMember(res);
+  // }, [queryId]);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      fetchMember();
-    }, 1000);
+  // useEffect(() => {
+  //   const intervalId = setInterval(() => {
+  //     fetchMember();
+  //   }, 1000);
 
-    return () => clearInterval(intervalId);
-  }, [fetchMember]);
+  //   return () => clearInterval(intervalId);
+  // }, [fetchMember]);
 
   return (
     <div className={styles.container}>
