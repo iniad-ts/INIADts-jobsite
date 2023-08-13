@@ -27,9 +27,15 @@ export type GitHubActivityModel = {
 // 仮
 export type MemberModel = {
   githubId: string;
+  realName: string;
   displayName: string;
   avatarURL?: string;
   graduateYear: number;
   introduction?: string;
+  products?: {
+    title: string;
+    description: string;
+    URL: string;
+  }[];
   links?: string[];
 };
