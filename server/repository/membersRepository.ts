@@ -2,7 +2,7 @@ import type { MemberModel } from '$/commonTypesWithClient/models';
 import { S3_BUCKET } from '$/service/envValues';
 import { prismaClient } from '$/service/prismaClient';
 import { s3Client } from '$/service/s3Client';
-import { PutObjectCommand } from '@aws-sdk/client-s3';
+import { GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 import type { Member } from '@prisma/client';
 import { z } from 'zod';
 
@@ -24,6 +24,13 @@ const toMemberModel = (prismaMember: Member): MemberModel => ({
     )
     .parse(prismaMember.products),
 });
+
+export type MemberList = {
+  members: {
+    githubId: string;
+    graduateYear: number;
+  }[];
+};
 
 export const membersRepository = {
   saveToDB: async (member: MemberModel): Promise<MemberModel | null> => {
@@ -70,15 +77,73 @@ export const membersRepository = {
       console.error(err);
     }
   },
-  getUnique: async (githubId: string) => {
+  saveListToS3: async (memberList: MemberList) => {
+    const s3Params = {
+      Bucket: S3_BUCKET,
+      Key: `members/memberList.json`,
+      Body: JSON.stringify(memberList),
+    };
+
+    try {
+      const command = new PutObjectCommand(s3Params);
+      await s3Client.send(command);
+    } catch (err) {
+      console.error(err);
+    }
+  },
+  getFromDB: async (githubId: string) => {
     const member = await prismaClient.member.findUnique({
       where: { githubId },
     });
 
     return member !== null ? toMemberModel(member) : null;
   },
-  getAll: async () => {
+  getFromS3: async (githubId: string) => {
+    const s3Params = {
+      Bucket: S3_BUCKET,
+      Key: `members/${githubId}/info.json`,
+    };
+
+    try {
+      const command = new GetObjectCommand(s3Params);
+      const res = await s3Client.send(command);
+      const resString = await res.Body?.transformToString();
+
+      if (resString === undefined) return null;
+
+      const member: MemberModel = JSON.parse(resString);
+
+      return member;
+    } catch (err) {
+      console.error(err);
+
+      return null;
+    }
+  },
+  getAllFromDB: async () => {
     const members = await prismaClient.member.findMany();
     return members.map(toMemberModel);
+  },
+  getListFromS3: async () => {
+    const s3Params = {
+      Bucket: S3_BUCKET,
+      Key: `members/memberList.json`,
+    };
+
+    try {
+      const command = new GetObjectCommand(s3Params);
+      const res = await s3Client.send(command);
+      const resString = await res.Body?.transformToString();
+
+      if (resString === undefined) return null;
+
+      const memberList: MemberList = JSON.parse(resString);
+
+      return memberList;
+    } catch (err) {
+      console.error(err);
+
+      return null;
+    }
   },
 };
