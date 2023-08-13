@@ -1,8 +1,9 @@
+import aspida from '@aspida/axios';
 import type { GitHubActivityModel } from 'commonTypesWithClient/models';
 import { useCallback, useEffect, useState } from 'react';
 import type { ThemeInput } from 'react-activity-calendar';
 import Calendar, { Skeleton } from 'react-activity-calendar';
-import { apiClient } from 'src/utils/apiClient';
+import api from '../../api/$api';
 
 export const GitHubActivity = ({ userId }: { userId: string }) => {
   const [data, setData] = useState<GitHubActivityModel>();
@@ -24,15 +25,18 @@ export const GitHubActivity = ({ userId }: { userId: string }) => {
     setLoading(true);
     setError(false);
 
-    apiClient.github_activity
-      .$get({ query: { userId } })
+    const apiClient = api(aspida());
+
+    apiClient.members
+      ._memberId(userId)
+      .githubActivity_json.$get()
       .then(async (res) => {
         if (res !== null) {
           setData(res);
-        } else {
-          const res = await apiClient.github_activity.$post({ body: { userId } });
-          setData(res);
         }
+      })
+      .catch((err) => {
+        console.log(err);
       })
       .finally(() => setLoading(false));
   }, [userId, data]);

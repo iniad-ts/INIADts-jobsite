@@ -30,6 +30,7 @@ export const SideBar = () => {
           type: 'dir',
           directoryName: 'members',
           body: [
+            { type: 'file', fileName: 'members', url: './members' },
             {
               type: 'dir',
               directoryName: '24graduates',
@@ -64,7 +65,7 @@ export const SideBar = () => {
                   directoryName: 'job-hunting',
                   body: [
                     { type: 'file', fileName: 'ttt' },
-                    { type: 'file', fileName: 'nnn' },
+                    { type: 'file', fileName: 'nnn', url: './members/nnn' },
                   ],
                 },
               ],
@@ -74,7 +75,7 @@ export const SideBar = () => {
         {
           type: 'dir',
           directoryName: 'contact',
-          body: [{ type: 'file', fileName: 'yossuli', url: 'https://github.com/yossuli' }],
+          body: [{ type: 'file', fileName: 'contact', url: './contact' }],
         },
       ],
       isDisplay: true,
