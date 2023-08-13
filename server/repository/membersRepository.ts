@@ -2,6 +2,27 @@ import type { MemberModel } from '$/commonTypesWithClient/models';
 import { S3_BUCKET } from '$/service/envValues';
 import { s3Client } from '$/service/s3Client';
 import { GetObjectCommand, ListObjectsCommand, PutObjectCommand } from '@aws-sdk/client-s3';
+import type { Member } from '@prisma/client';
+import { z } from 'zod';
+
+const toMemberModel = (prismaMember: Member): MemberModel => ({
+  githubId: prismaMember.githubId,
+  displayName: prismaMember.userName,
+  realName: prismaMember.realName,
+  graduateYear: z.number().min(2000).max(3000).parse(prismaMember.graduateYear),
+  introduction: prismaMember.introduction,
+  avatarUrl: prismaMember.avatarUrl,
+  links: z.array(z.string()).parse(prismaMember.links),
+  products: z
+    .array(
+      z.object({
+        title: z.string(),
+        description: z.string(),
+        url: z.string(),
+      })
+    )
+    .parse(prismaMember.products),
+});
 
 export const membersRepository = {
   upsert: async (memberInfo: MemberModel) => {
