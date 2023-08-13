@@ -1,13 +1,16 @@
 import Head from 'next/head';
 import { Contact } from 'src/components/Contact/Contact';
+import styles from './index.module.css';
 
 const Contacts = () => {
   return (
-    <div>
+    <div className={styles.container}>
       <Head>
         <title>Contact | INIAD.ts</title>
       </Head>
-      <Contact />
+      <div>
+        <Contact />
+      </div>
     </div>
   );
 };
