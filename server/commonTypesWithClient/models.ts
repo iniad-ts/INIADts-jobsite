@@ -23,3 +23,13 @@ export type GitHubActivityModel = {
   }[];
   userId: string;
 };
+
+// 仮
+export type MemberModel = {
+  githubId: string;
+  displayName: string;
+  avatarURL?: string;
+  graduateYear: number;
+  introduction?: string;
+  links?: string[];
+};
