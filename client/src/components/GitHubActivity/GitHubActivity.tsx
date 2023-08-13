@@ -2,11 +2,7 @@ import type { GitHubActivityModel } from 'commonTypesWithClient/models';
 import { useCallback, useEffect, useState } from 'react';
 import type { ThemeInput } from 'react-activity-calendar';
 import Calendar, { Skeleton } from 'react-activity-calendar';
-<<<<<<< Updated upstream
-import { apiClient } from 'src/utils/apiClient';
-=======
 import { apiClientS3 } from 'src/utils/apiClient';
->>>>>>> Stashed changes
 
 export const GitHubActivity = ({ userId }: { userId: string }) => {
   const [data, setData] = useState<GitHubActivityModel>();
@@ -28,19 +24,11 @@ export const GitHubActivity = ({ userId }: { userId: string }) => {
     setLoading(true);
     setError(false);
 
-<<<<<<< Updated upstream
-    apiClient.github_activity
-      .$get({ query: { userId } })
-=======
     apiClientS3.members
       ._memberId(userId)
       .githubActivity_json.$get()
->>>>>>> Stashed changes
       .then(async (res) => {
         if (res !== null) {
-          setData(res);
-        } else {
-          const res = await apiClient.github_activity.$post({ body: { userId } });
           setData(res);
         }
       })
