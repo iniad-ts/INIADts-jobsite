@@ -1,13 +1,19 @@
 import type { MemberModel } from 'commonTypesWithClient/models';
+import { useAtom } from 'jotai';
 import Head from 'next/head';
 import { useState } from 'react';
+import { userAtom } from 'src/atoms/user';
 import styles from './index.module.css';
 
 const AdminProfile = () => {
+  const [user] = useAtom(userAtom);
   const [member, setmember] = useState<MemberModel>();
 
   const serchMenber = () => {
-    //特定のメンバーを取得するapiをたたく
+    if (user !== null) {
+      //なぜかプロパティが足りない
+      // member = apiClient.members._memberId(user.githubid).$get();
+    }
 
     console.log('取得');
   };
@@ -34,7 +40,7 @@ const AdminProfile = () => {
             </tr>
             <tr>
               <th>avatarURL:</th>
-              <td>{member?.avatarURL}</td>
+              <td>{member?.avatarUrl}</td>
             </tr>
             <tr>
               <th>graduateYear:</th>
