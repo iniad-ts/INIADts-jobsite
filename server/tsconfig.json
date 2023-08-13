@@ -17,6 +17,6 @@
     "target": "es6",
     "incremental": true
   },
-  "include": ["**/*.ts", "scripts/*.js", ".eslintrc.js"],
+  "include": ["**/*.ts", "scripts/*.js", ".eslintrc.js", "api/members/_memberId@string"],
   "exclude": ["node_modules"]
 }
