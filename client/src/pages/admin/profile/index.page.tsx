@@ -12,7 +12,7 @@ const AdminProfile = () => {
 
   const fetchMenber = useCallback(async () => {
     if (user !== null) {
-      const res = await apiClient.members._memberId(user.githubid).$get();
+      const res = await apiClient.members._memberId(user.githubId).$get();
       if (res !== null) {
         setmember(res);
         return;
