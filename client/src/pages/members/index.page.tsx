@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import { MemberList } from 'src/components/MemberList/MemberList';
 import styles from './index.module.css';
 
 const Members = () => {
@@ -18,12 +19,7 @@ const Members = () => {
       <Head>
         <title>Members | INIAD.ts</title>
       </Head>
-      <h1>Members</h1>
-      {/* {members.map((member) => (
-        <div key={member.githubId}>
-          <Link href={`/members/${member.githubId}`}>{member.displayName}</Link>
-        </div>
-      ))} */}
+      <MemberList />
     </div>
   );
 };
