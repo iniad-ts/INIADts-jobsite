@@ -19,7 +19,7 @@ export const GitHubActivity = ({ userId }: { userId: string }) => {
   };
 
   const fetchData = useCallback(() => {
-    if (data?.userId === userId) return;
+    if (data?.githubId === userId) return;
 
     setLoading(true);
     setError(false);
