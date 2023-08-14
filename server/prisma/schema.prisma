@@ -16,12 +16,14 @@ model Task {
 
 model Member {
   githubId     String   @id
+  userName     String
   displayName  String
   realName     String
   avatarUrl    String?
   graduateYear Int?
   introduction String?
-  links        Json?
+  socialLinks  Json?
   products     Json?
   createdAt    DateTime
+  updatedAt    DateTime
 }

@@ -46,7 +46,7 @@ const AdminProfile = () => {
             </tr>
             <tr>
               <th>links:</th>
-              <td>{member?.links}</td>
+              <td>{member?.socialLinks}</td>
             </tr>
           </tbody>
         </table>

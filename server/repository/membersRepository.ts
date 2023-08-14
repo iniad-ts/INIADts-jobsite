@@ -8,12 +8,13 @@ import { z } from 'zod';
 
 const toMemberModel = (prismaMember: Member): MemberModel => ({
   githubId: prismaMember.githubId,
+  userName: prismaMember.userName,
   displayName: prismaMember.displayName,
   realName: prismaMember.realName,
   graduateYear: z.number().min(2000).max(3000).parse(prismaMember.graduateYear),
-  introduction: prismaMember.introduction,
-  avatarUrl: prismaMember.avatarUrl,
-  links: z.array(z.string()).parse(prismaMember.links),
+  introduction: prismaMember.introduction ?? undefined,
+  avatarUrl: prismaMember.avatarUrl ?? undefined,
+  socialLinks: z.array(z.string()).parse(prismaMember.socialLinks),
   products: z
     .array(
       z.object({
@@ -23,6 +24,7 @@ const toMemberModel = (prismaMember: Member): MemberModel => ({
       })
     )
     .parse(prismaMember.products),
+  updateAt: prismaMember.updatedAt.getTime(),
 });
 
 export type MemberList = {
@@ -43,19 +45,22 @@ export const membersRepository = {
         graduateYear: member.graduateYear,
         introduction: member.introduction,
         avatarUrl: member.avatarUrl,
-        links: member.links ?? undefined,
-        products: member.products ?? undefined,
+        socialLinks: member.socialLinks,
+        products: member.products,
+        updatedAt: new Date(),
       },
       create: {
         githubId: member.githubId,
+        userName: member.userName,
         displayName: member.displayName,
         realName: member.realName,
         graduateYear: member.graduateYear,
         introduction: member.introduction,
         avatarUrl: member.avatarUrl,
-        links: member.links ?? undefined,
-        products: member.products ?? undefined,
+        socialLinks: member.socialLinks,
+        products: member.products,
         createdAt: new Date(),
+        updatedAt: new Date(),
       },
     });
 
