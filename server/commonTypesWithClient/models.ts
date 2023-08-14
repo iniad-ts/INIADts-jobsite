@@ -5,7 +5,7 @@ export type UserModel = {
   email: string;
   displayName: string | undefined;
   photoURL: string | undefined;
-  githubid: string;
+  githubId: string;
 };
 
 export type TaskModel = {
