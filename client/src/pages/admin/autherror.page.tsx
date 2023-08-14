@@ -22,7 +22,7 @@ const AuthError = () => {
       <div className={styles.card}>
         <h1>Login Error</h1>
         <p>このアカウントには管理ページのアクセス権限がありません。</p>
-        <button onClick={onLogout} className={styles.button}>
+        <button onClick={onLogout} className={styles.logoutButton}>
           Logout
         </button>
       </div>

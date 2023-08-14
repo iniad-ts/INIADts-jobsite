@@ -34,3 +34,13 @@
 .button:hover {
   background-color: #cdf;
 }
+
+.logoutButton {
+  display: block;
+  width: min(150px, 92vmin);
+  background-color: var(--color-fg-main);
+  padding: 16px 24px;
+  border-radius: 16px;
+  margin-top: 16px;
+  transition: background-color ease 0.2s;
+}
