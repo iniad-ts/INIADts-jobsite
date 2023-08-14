@@ -1,3 +1,4 @@
+.textarea,
 .input {
   display: block;
   background-color: #333;
@@ -6,6 +7,18 @@
   height: 100%;
   width: auto;
   color: #fff;
+  outline: 0;
+  font-size: 15px;
+}
+
+.textarea {
+  position: absolute;
+  top: 4px;
+  left: 60px;
+  font-size: 14.5px;
+}
+.textarea::-webkit-scrollbar {
+  display: none;
 }
 
 .column {
@@ -53,4 +66,8 @@
 
 .number {
   color: #94cea8;
+}
+
+.wrap {
+  position: relative;
 }
