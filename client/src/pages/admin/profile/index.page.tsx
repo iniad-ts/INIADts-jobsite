@@ -1,26 +1,36 @@
 import type { MemberModel } from 'commonTypesWithClient/models';
+import { useAtom } from 'jotai';
 import Head from 'next/head';
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
+import { userAtom } from 'src/atoms/user';
+import { apiClient } from 'src/utils/apiClient';
 import styles from './index.module.css';
 
 const AdminProfile = () => {
+  const [user] = useAtom(userAtom);
   const [member, setmember] = useState<MemberModel>();
 
-  const serchMenber = () => {
-    //特定のメンバーを取得するapiをたたく
+  const fetchMenber = useCallback(async () => {
+    if (user !== null) {
+      const res = await apiClient.members._memberId(user.githubid).$get();
+      if (res !== null) {
+        setmember(res);
+        return;
+      }
+      alert('Member情報がありません');
+    }
+  }, [user]);
 
-    console.log('取得');
-  };
+  useEffect(() => {
+    fetchMenber();
+  }, [fetchMenber, user]);
   return (
     <div className={styles.container}>
       <Head>
         <title>EditMemberInfo | INIAD.ts</title>
       </Head>
-      <div className={styles.serchTable}>
-        <button onClick={() => serchMenber()}>検索</button>
-        <input id="idForm" type="text" name="idForm" placeholder="githubIdを入力してください" />
-      </div>
-      <h2>Profile</h2>
+
+      <h2>YourProfile</h2>
       <div className={styles.plafileTable}>
         <table>
           <tbody>
