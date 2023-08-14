@@ -26,7 +26,6 @@
   margin-top: 16px;
   color: white;
   transition: background-color ease 0.2s;
-  box-shadow: 0 0 8px rgba(43, 48, , 0.2);
 }
 .card > h1 {
   color: var(--color-accent);
