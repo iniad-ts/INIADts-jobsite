@@ -27,6 +27,26 @@ type value =
   | Image
   | { [key: string]: value };
 
+const isLink = (value: Link | Image | { [key: string]: value }): value is Link => {
+  return (
+    typeof value === 'object' &&
+    'isLink' in value &&
+    'href' in value &&
+    'text' in value &&
+    value.isLink === true
+  );
+};
+
+const isImage = (value: Image | { [key: string]: value }): value is Image => {
+  return (
+    typeof value === 'object' &&
+    'isImage' in value &&
+    'src' in value &&
+    'alt' in value &&
+    value.isImage === true
+  );
+};
+
 type ValueProps = {
   value: value;
   level: number;
@@ -47,9 +67,9 @@ const ValueComponent = ({ value, level, indent }: ValueProps) => {
     return <UndefinedComponent />;
   } else if (Array.isArray(value)) {
     return <ArrayComponent value={value} level={level + 1} indent={indent} />;
-  } else if ('isLink' in value && value.isLink === true) {
+  } else if (isLink(value)) {
     return <LinkComponent value={value as Link} />;
-  } else if ('isImage' in value && value.isImage === true) {
+  } else if (isImage(value)) {
     return <ImageComponent value={value as Image} />;
   } else {
     return (
@@ -157,7 +177,7 @@ const MemberInfo = (props: InfoProps) => {
   return (
     <div className={styles.info}>
       <span className={styles.const}>const</span> <span className={styles.name}>{props.name}</span>{' '}
-      = <ValueComponent value={props.value} level={0} indent={0} />
+      = <ValueComponent value={props.value} level={1} indent={0} />
     </div>
   );
 };
