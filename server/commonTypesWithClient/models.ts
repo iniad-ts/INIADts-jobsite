@@ -22,7 +22,7 @@ export type GitHubActivityModel = {
     count: number;
     level: 0 | 1 | 2 | 3 | 4;
   }[];
-  userId: string;
+  githubId: string;
 };
 
 export type MemberModel = {
@@ -40,4 +40,12 @@ export type MemberModel = {
   }[];
   socialLinks?: string[];
   updateAt: number;
+};
+
+export type MemberList = {
+  members: {
+    githubId: string;
+    userName: string;
+    graduateYear: number;
+  }[];
 };

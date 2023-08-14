@@ -1,4 +1,4 @@
-import type { MemberModel } from '$/commonTypesWithClient/models';
+import type { MemberList, MemberModel } from '$/commonTypesWithClient/models';
 import { S3_BUCKET } from '$/service/envValues';
 import { prismaClient } from '$/service/prismaClient';
 import { s3Client } from '$/service/s3Client';
@@ -26,13 +26,6 @@ const toMemberModel = (prismaMember: Member): MemberModel => ({
     .parse(prismaMember.products),
   updateAt: prismaMember.updatedAt.getTime(),
 });
-
-export type MemberList = {
-  members: {
-    githubId: string;
-    graduateYear: number;
-  }[];
-};
 
 export const membersRepository = {
   saveToDB: async (member: MemberModel): Promise<MemberModel | null> => {
