@@ -3,11 +3,11 @@ import { useAtom } from 'jotai';
 import { useRouter } from 'next/router';
 import { useEffect, useReducer } from 'react';
 import { userAtom } from 'src/atoms/user';
+import { Loading } from 'src/components/Loading/Loading';
 import { pagesPath } from 'src/utils/$path';
 import { apiClient } from 'src/utils/apiClient';
 import { createAuth } from 'src/utils/firebase';
 import { returnNull } from 'src/utils/returnNull';
-import { Loading } from '../../components/Loading/Loading';
 
 export const AuthLoader = () => {
   const router = useRouter();
@@ -38,9 +38,13 @@ export const AuthLoader = () => {
 
     const redirectToHome = async () => {
       router.pathname === pagesPath.login.$url().pathname && (await router.push(pagesPath.$url()));
+      router.pathname === pagesPath.admin.login.$url().pathname &&
+        (await router.push(pagesPath.admin.$url()));
     };
     const redirectToLogin = async () => {
       router.pathname === pagesPath.$url().pathname && (await router.push(pagesPath.login.$url()));
+      router.pathname === pagesPath.admin.$url().pathname &&
+        (await router.push(pagesPath.admin.login.$url()));
     };
 
     user ? redirectToHome() : redirectToLogin();

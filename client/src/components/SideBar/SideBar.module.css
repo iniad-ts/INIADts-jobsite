@@ -1,23 +1,26 @@
 .container {
   grid-area: sidebar;
+  color: var(--color-fg-main);
+  background-color: var(--color-bg-dark);
 }
 
 .arrow {
   position: relative;
   width: 7px;
   height: 7px;
-  border-top: solid 1px #000;
-  border-right: solid 1px #000;
+  border-top: solid 1px var(--color-fg-main);
+  border-right: solid 1px var(--color-fg-main);
   transform-origin: 75% 25%;
   top: 10px;
 }
 
-.column {
+.column,
+.column2 {
   width: 100%;
   height: 25px;
   display: flex;
 }
 
 .column:hover {
-  background-color: #0008;
+  background-color: var(--color-bg-hover);
 }

@@ -1,39 +1,34 @@
 .container {
-  background-color: rgb(78, 77, 77);
+  background-color: var(--color-bg-main);
   grid-area: main;
   height: 100%;
 }
 
 .body {
-  background-color: rgb(78, 77, 77);
-  margin-left: 30px;
+  padding: 20px 40px;
+  color: var(--color-fg-main);
 }
 
 .one_slash_row {
-  color: aqua;
+  color: var(--color-accent);
   font-size: 60px;
 }
 
 .sub_title {
-  color: white;
   font-size: 30px;
-  margin-left: 40px;
   padding-top: 30px;
   padding-bottom: 30px;
 }
 
 .two_slash_row {
-  color: aqua;
   font-size: 25px;
 }
 
 .three_slash_row {
-  color: aqua;
   font-size: 20px;
 }
 
 .normal_row {
-  color: white;
   font-size: 20px;
   margin-bottom: 20px;
 }
