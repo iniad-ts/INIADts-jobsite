@@ -7,8 +7,10 @@
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.container > label {
-  margin-bottom: 10px;
+.productInfo {
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  padding: 1rem;
 }
 
 .input {
@@ -21,21 +23,15 @@
   resize: vertical;
 }
 
-.container > label > textarea {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
 .button {
   margin-top: 10px;
   padding: 8px 15px;
   border: none;
   border-radius: 4px;
-  background-color: #007bff;
+  background-color: rgb(0, 123, 255);
   color: white;
   cursor: pointer;
+}
+.buttonSubmit {
+  background-color: rgb(45, 167, 78);
 }

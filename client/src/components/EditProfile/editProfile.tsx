@@ -1,6 +1,7 @@
 import type { MemberModel } from 'commonTypesWithClient/models';
 import React, { useState } from 'react';
 import styles from './EditProfile.module.css';
+import InputField from './InputField';
 
 type Product = {
   title: string;
@@ -74,99 +75,67 @@ const MemberForm = () => {
   return (
     <div className={styles.container}>
       <h2>Edit Profile</h2>
-      <label>
-        Github ID:
-        <input
-          className={styles.input}
-          type="text"
-          name="githubId"
-          value={member.githubId}
-          onChange={handleInputChange}
-        />
-      </label>
-      <label>
-        User Name:
-        <input
-          className={styles.input}
-          type="text"
-          name="userName"
-          value={member.userName}
-          onChange={handleInputChange}
-        />
-      </label>
-      <label>
-        Real Name:
-        <input
-          className={styles.input}
-          type="text"
-          name="realName"
-          value={member.realName}
-          onChange={handleInputChange}
-        />
-      </label>
-      <label>
-        Display Name:
-        <input
-          className={styles.input}
-          type="text"
-          name="displayName"
-          value={member.displayName}
-          onChange={handleInputChange}
-        />
-      </label>
-      <label>
-        Graduate Year:
-        <input
-          className={styles.input}
-          type="number"
-          name="graduateYear"
-          value={member.graduateYear}
-          onChange={handleInputChange}
-        />
-      </label>
-      <label>
-        Introduction:
-        <textarea
-          name="introduction"
-          value={member.introduction}
-          onChange={handleInputChange}
-          className={styles.input}
-        />
-      </label>
+
+      <InputField
+        label="Github ID"
+        name="githubId"
+        onChange={handleInputChange}
+        className={styles.input}
+      />
+      <InputField
+        label="User Name"
+        name="userName"
+        onChange={handleInputChange}
+        className={styles.input}
+      />
+      <InputField
+        label="Real Name"
+        name="realName"
+        onChange={handleInputChange}
+        className={styles.input}
+      />
+      <InputField
+        label="Display Name"
+        name="displayName"
+        onChange={handleInputChange}
+        className={styles.input}
+      />
+      <InputField
+        label="Graduate Year"
+        name="graduateYear"
+        type="number"
+        onChange={handleInputChange}
+        className={styles.input}
+      />
+      <InputField
+        label="Introduction"
+        name="introduction"
+        type="textarea"
+        onChange={handleInputChange}
+        className={styles.input}
+      />
+
       <h3>Products</h3>
       <button className={styles.button} onClick={addProduct}>
         追加
       </button>
       {member.products?.map((product, index) => (
-        <div key={index}>
-          <label>
-            Title:
-            <input
-              className={styles.input}
-              type="text"
-              value={product.title}
-              onChange={(e) => handleProductChange(index, 'title', e.target.value)}
-            />
-          </label>
-          <label>
-            Description:
-            <textarea
-              className={styles.input}
-              value={product.description}
-              onChange={(e) => handleProductChange(index, 'description', e.target.value)}
-            />
-          </label>
-          <label>
-            URL:
-            <input
-              className={styles.input}
-              type="text"
-              value={product.url}
-              onChange={(e) => handleProductChange(index, 'url', e.target.value)}
-            />
-          </label>
+        <div key={index} className={styles.productInfo}>
+          <InputField
+            label="Title"
+            name="title"
+            className={styles.input}
+            onChange={(e) => handleProductChange(index, 'title', e.target.value)}
+          />
+          <InputField
+            label="Description"
+            type="textarea"
+            className={styles.input}
+            onChange={(e) => handleProductChange(index, 'description', e.target.value)}
+          />
+          <InputField label="URL" className={styles.input} onChange={handleInputChange} />
           <button onClick={() => removeProduct(index)} className={styles.button}>
-            Remove
+            削除
           </button>
         </div>
       ))}
@@ -176,22 +145,27 @@ const MemberForm = () => {
       </button>
       {(member.socialLinks || []).map((link, index) => (
         <div key={index}>
-          <label>
-            Link:
-            <input
-              className={styles.input}
-              type="text"
-              value={link}
-              onChange={(e) => handleSocialLinkChange(index, e.target.value)}
-            />
-          </label>
+          <InputField
+            label="Link"
+            className={styles.input}
+            onChange={(e) => handleSocialLinkChange(index, e.target.value)}
+          />
           <button onClick={() => removeSocialLink(index)} className={styles.button}>
-            Remove
+            削除
           </button>
         </div>
       ))}
       <div>
-        <button className={styles.button}>Submit</button>
+        <button
+          className={`
+          ${styles.button}
+          ${styles.buttonSubmit}
+        `}
+          //TODO 送信処理に変更
+          onClick={() => console.log(member)}
+        >
+          決定
+        </button>
       </div>
     </div>
   );
