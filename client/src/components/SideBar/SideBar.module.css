@@ -8,11 +8,6 @@
   height: 100dvh;
   overflow-y: scroll;
 }
-
-.column-inner {
-  position: relative;
-}
-
 .arrow {
   position: absolute;
   width: 3.5px;
@@ -42,6 +37,9 @@
   position: relative;
   line-height: 25px;
   display: flex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .column-top {
@@ -51,6 +49,9 @@
   padding-inline: 24px 40px;
   position: relative;
   font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .column-top::after {
@@ -74,6 +75,12 @@
 .container > .mapper-container > .column {
   font-weight: bold;
   background-color: transparent;
+}
+
+.column-inner {
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .link {
