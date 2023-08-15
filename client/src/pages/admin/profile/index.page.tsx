@@ -3,7 +3,6 @@ import { useAtom } from 'jotai';
 import Head from 'next/head';
 import { useCallback, useEffect, useState } from 'react';
 import { userAtom } from 'src/atoms/user';
-import MemberForm from 'src/components/EditProfile/EditProfile';
 import { apiClient } from 'src/utils/apiClient';
 import styles from './index.module.css';
 
@@ -30,6 +29,7 @@ const AdminProfile = () => {
       <Head>
         <title>EditMemberInfo | INIAD.ts</title>
       </Head>
+
       <h2>YourProfile</h2>
       <div className={styles.plafileTable}>
         <table>
@@ -61,7 +61,6 @@ const AdminProfile = () => {
           </tbody>
         </table>
       </div>
-      <MemberForm />
     </div>
   );
 };
