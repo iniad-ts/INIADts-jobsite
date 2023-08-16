@@ -2,7 +2,6 @@
   width: 100%;
   height: 100%;
   background-color: var(--color-bg-dark);
-  border-bottom: 1px solid var(--color-border);
 }
 
 .tab {
