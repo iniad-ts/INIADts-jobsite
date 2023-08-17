@@ -42,7 +42,7 @@ export type MemberModel = {
   updateAt: number;
 };
 
-export type MemberList = {
+export type MemberListModel = {
   members: {
     githubId: string;
     userName: string;
