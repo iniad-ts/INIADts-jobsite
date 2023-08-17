@@ -49,4 +49,10 @@ a {
   --color-border: #313131;
   --color-accent: #1d76d0;
   --color-error: #f88070;
+  --syntax-highlight-yellow: #feff8d;
+  --syntax-highlight-orange: #f3b371;
+  --syntax-highlight-blue: #0078d4;
+  --syntax-highlight-green: #94cea8;
+  --syntax-highlight-purple: #fb00fa;
+  --syntax-highlight-sky: #89fefe;
 }
