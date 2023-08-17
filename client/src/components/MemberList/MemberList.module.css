@@ -1,0 +1,26 @@
+.h1 {
+  color: var(--color-fg-main);
+}
+
+.blue {
+  color: #0078d4;
+}
+
+.name {
+  color: #feff8d;
+}
+
+.bracket-1 {
+  color: #ffc914;
+}
+
+.body {
+  display: flex;
+  margin-top: 30px;
+}
+
+.box {
+  height: 50%;
+  margin-left: 10px;
+  font-size: x-large;
+}
