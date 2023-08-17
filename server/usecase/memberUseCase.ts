@@ -1,4 +1,4 @@
-import type { MemberList, MemberModel } from '$/commonTypesWithClient/models';
+import type { MemberListModel, MemberModel } from '$/commonTypesWithClient/models';
 import { membersRepository } from '$/repository/membersRepository';
 
 const createMember = async (member: MemberModel): Promise<MemberModel | null> => {
@@ -7,7 +7,7 @@ const createMember = async (member: MemberModel): Promise<MemberModel | null> =>
     await membersRepository.saveToS3(member),
   ]);
 
-  const memberList: MemberList = (await membersRepository.getListFromS3()) ?? { members: [] };
+  const memberList: MemberListModel = (await membersRepository.getListFromS3()) ?? { members: [] };
   memberList.members.push({
     githubId: member.githubId,
     userName: member.userName,
@@ -26,10 +26,10 @@ const updateMember = async (member: MemberModel): Promise<MemberModel | null> =>
   ]);
   if (updatedMember === null) return null;
 
-  const memberList: MemberList | null = await membersRepository.getListFromS3();
+  const memberList: MemberListModel | null = await membersRepository.getListFromS3();
   if (memberList === null) return null;
 
-  const newMemberList: MemberList = {
+  const newMemberList: MemberListModel = {
     members: memberList.members.map((member) => {
       if (member.githubId === updatedMember.githubId) {
         return {

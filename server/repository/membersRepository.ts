@@ -1,4 +1,4 @@
-import type { MemberList, MemberModel } from '$/commonTypesWithClient/models';
+import type { MemberListModel, MemberModel } from '$/commonTypesWithClient/models';
 import { S3_BUCKET } from '$/service/envValues';
 import { prismaClient } from '$/service/prismaClient';
 import { s3Client } from '$/service/s3Client';
@@ -75,7 +75,7 @@ export const membersRepository = {
       console.error(err);
     }
   },
-  saveListToS3: async (memberList: MemberList) => {
+  saveListToS3: async (memberList: MemberListModel) => {
     const s3Params = {
       Bucket: S3_BUCKET,
       Key: `members/memberList.json`,
@@ -135,7 +135,7 @@ export const membersRepository = {
 
       if (resString === undefined) return null;
 
-      const memberList: MemberList = JSON.parse(resString);
+      const memberList: MemberListModel = JSON.parse(resString);
 
       return memberList;
     } catch (err) {

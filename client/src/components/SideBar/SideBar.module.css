@@ -2,25 +2,114 @@
   grid-area: sidebar;
   color: var(--color-fg-main);
   background-color: var(--color-bg-dark);
+  position: sticky;
+  top: 0;
+  left: 0;
+  height: 100dvh;
+  overflow-y: scroll;
+}
+.arrow {
+  position: absolute;
+  width: 3.5px;
+  height: 7px;
+  top: 9px;
+  left: -12px;
+  transform-origin: 50% 50%;
 }
 
-.arrow {
-  position: relative;
-  width: 7px;
-  height: 7px;
+.arrow::before {
+  content: '';
+  position: absolute;
+  top: 1.5px;
+  left: -3px;
+  display: block;
+  width: 5px;
+  height: 5px;
   border-top: solid 1px var(--color-fg-main);
   border-right: solid 1px var(--color-fg-main);
-  transform-origin: 75% 25%;
-  top: 10px;
+  transform: rotate(45deg);
 }
 
-.column,
-.column2 {
+.column {
   width: 100%;
   height: 25px;
+  padding-inline: 24px;
+  position: relative;
+  line-height: 25px;
   display: flex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.column-top {
+  width: 100%;
+  height: 35px;
+  line-height: 35px;
+  padding-inline: 24px 40px;
+  position: relative;
+  font-size: 14px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.column-top::after {
+  content: '･･･';
+  display: block;
+  width: 23px;
+  height: 23px;
+  line-height: 23px;
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  text-align: center;
+  letter-spacing: -2px;
+  border-radius: 4px;
 }
 
 .column:hover {
   background-color: var(--color-bg-hover);
+}
+
+.container > .mapper-container > .column {
+  font-weight: bold;
+  background-color: transparent;
+}
+
+.column-inner {
+  position: relative;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.link {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.link-column {
+  color: var(--color-accent);
+  text-decoration: underline;
+}
+
+.spacer {
+  display: flex;
+  position: relative;
+  left: -11px;
+}
+
+.spacer > div {
+  width: 10px;
+  height: 100%;
+  border-right: 1px solid transparent;
+}
+
+.mapper-container:hover .spacer > div {
+  border-right-color: var(--color-border);
+}
+
+.spacer:has(+ div) > div:last-child {
+  border-right: 0;
 }

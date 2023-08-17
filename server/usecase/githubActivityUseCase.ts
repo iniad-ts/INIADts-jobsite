@@ -1,4 +1,4 @@
-import type { GitHubActivityModel, MemberList } from 'commonTypesWithClient/models';
+import type { GitHubActivityModel, MemberListModel } from 'commonTypesWithClient/models';
 import { githubActivityRepository } from '../repository/githubActivityRepository';
 import { membersRepository } from './../repository/membersRepository';
 
@@ -12,7 +12,7 @@ const fetchActivity = async (userName: string, githubId: string): Promise<GitHub
 };
 
 const fetchAllActivities = async () => {
-  const MemberList: MemberList | null = await membersRepository.getListFromS3();
+  const MemberList: MemberListModel | null = await membersRepository.getListFromS3();
   if (MemberList === null) return;
 
   const activities = await Promise.all(

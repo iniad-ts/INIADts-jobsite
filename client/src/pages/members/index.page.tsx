@@ -1,20 +1,37 @@
-import type { MemberList } from 'commonTypesWithClient/models';
+import type { MemberListModel } from 'commonTypesWithClient/models';
 import Head from 'next/head';
-import Link from 'next/link';
 import { useEffect, useState } from 'react';
-import { apiClientS3 } from 'src/utils/apiClient';
+import { MemberList } from 'src/components/MemberList/MemberList';
 import styles from './index.module.css';
 
 const Members = () => {
-  const [members, setMembers] = useState<MemberList>();
-  const fetchMemberList = async () => {
-    const memberList = await apiClientS3.members.membersList_json.$get();
-    setMembers(memberList);
-  };
+  const [members, setMembers] = useState<MemberListModel>();
+  // const fetchMemberList = async () => {
+  //   const memberList = await apiClientS3.members.membersList_json.$get();
+  //   setMembers(memberList);
+  // };
 
+  // useEffect(() => {
+  //   const IntervalId = setInterval(() => fetchMemberList(), 5000);
+  //   return () => clearInterval(IntervalId);
+  // }, []);
+
+  //デモ用の仮データ
   useEffect(() => {
-    const IntervalId = setInterval(() => fetchMemberList(), 1000);
-    return () => clearInterval(IntervalId);
+    setMembers({
+      members: [
+        {
+          githubId: 'user123',
+          userName: 'User OneTwoThree',
+          graduateYear: 2022,
+        },
+        {
+          githubId: 'example456',
+          userName: 'Example User',
+          graduateYear: 2021,
+        },
+      ],
+    });
   }, []);
 
   return (
@@ -22,12 +39,7 @@ const Members = () => {
       <Head>
         <title>Members | INIAD.ts</title>
       </Head>
-      <h1>Members</h1>
-      {members?.members.map((member) => (
-        <div key={member.githubId}>
-          <Link href={`/members/${member.githubId}`}>{member.githubId}</Link>
-        </div>
-      ))}
+      {members ? <MemberList members={members} /> : 'Loading...'}
     </div>
   );
 };

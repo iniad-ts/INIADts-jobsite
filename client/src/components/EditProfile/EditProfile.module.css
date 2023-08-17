@@ -1,0 +1,37 @@
+.container {
+  max-width: 800px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  margin-top: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.productInfo {
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  padding: 1rem;
+}
+
+.input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  box-sizing: border-box;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.button {
+  margin-top: 10px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: rgb(0, 123, 255);
+  color: white;
+  cursor: pointer;
+}
+.buttonSubmit {
+  background-color: rgb(45, 167, 78);
+}
