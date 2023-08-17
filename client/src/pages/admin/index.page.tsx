@@ -49,7 +49,7 @@ const Admin = () => {
 
   if (!user) {
     router.push('/admin/login');
-    return <div>redirecting...</div>;
+    return;
   }
 
   const onLogout = async () => {
@@ -75,7 +75,7 @@ const Admin = () => {
         <p>ユーザー名: {user?.displayName}</p>
         <p>写真URL{user?.photoURL}</p>
         <p>ユーザーID: {user?.id}</p>
-        <p>githubID:{user.githubid}</p>
+        <p>githubID:{user.githubId}</p>
         <button onClick={onLogout}>ログアウト</button>
       </div>
     </div>

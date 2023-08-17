@@ -3,10 +3,10 @@ import { s3Client } from '$/service/s3Client';
 import { PutObjectCommand } from '@aws-sdk/client-s3';
 
 export const githubActivityRepository = {
-  upload: async (userId: string, data: string): Promise<void> => {
+  upload: async (githubId: string, data: string): Promise<void> => {
     const params = {
       Bucket: S3_BUCKET,
-      Key: `members/${userId}/githubActivity.json`,
+      Key: `members/${githubId}/githubActivity.json`,
       Body: data,
     };
 
@@ -17,9 +17,9 @@ export const githubActivityRepository = {
       console.error(err);
     }
   },
-  fetchData: async (userId: string): Promise<string | undefined> => {
+  fetchData: async (userName: string): Promise<string | undefined> => {
     try {
-      const res = await fetch(`${GITHUB_API_ORIGIN}/v4/${userId}?y=last`);
+      const res = await fetch(`${GITHUB_API_ORIGIN}/v4/${userName}?y=last`);
       return await res.text();
     } catch (err) {
       console.error(err);

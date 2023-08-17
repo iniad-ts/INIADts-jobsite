@@ -1,6 +1,51 @@
+import Link from 'next/link';
+import type { CSSProperties } from 'react';
 import styles from './MemberInfo.module.css';
 
-type value = string | number | boolean | null | undefined | value[] | { [key: string]: value };
+export type Link = {
+  isLink: boolean;
+  href: string;
+  text: string;
+  style?: CSSProperties;
+};
+
+export type Image = {
+  isImage: boolean;
+  src: string;
+  alt: string;
+  style?: CSSProperties;
+};
+
+type value =
+  | string
+  | number
+  | boolean
+  | null
+  | undefined
+  | value[]
+  | Link
+  | Image
+  | { [key: string]: value };
+
+const isLink = (value: Link | Image | { [key: string]: value }): value is Link => {
+  return (
+    typeof value === 'object' &&
+    'isLink' in value &&
+    'href' in value &&
+    'text' in value &&
+    value.isLink === true
+  );
+};
+
+const isImage = (value: Image | { [key: string]: value }): value is Image => {
+  return (
+    typeof value === 'object' &&
+    'isImage' in value &&
+    'src' in value &&
+    'alt' in value &&
+    value.isImage === true
+  );
+};
 
 type ValueProps = {
   value: value;
@@ -22,8 +67,18 @@ const ValueComponent = ({ value, level, indent }: ValueProps) => {
     return <UndefinedComponent />;
   } else if (Array.isArray(value)) {
     return <ArrayComponent value={value} level={level + 1} indent={indent} />;
+  } else if (isLink(value)) {
+    return <LinkComponent value={value as Link} />;
+  } else if (isImage(value)) {
+    return <ImageComponent value={value as Image} />;
   } else {
-    return <ObjectComponent value={value} level={level + 1} indent={indent} />;
+    return (
+      <ObjectComponent
+        value={value as { [key: string]: value }}
+        level={level + 1}
+        indent={indent}
+      />
+    );
   }
 };
 
@@ -103,16 +158,26 @@ const ObjectComponent = ({ value, level, indent }: ObjectProps) => {
   );
 };
 
+const LinkComponent = ({ value }: { value: Link }) => (
+  <Link href={value.href} style={value.style}>
+    <StringComponent value={value.text} />
+  </Link>
+);
+
+const ImageComponent = ({ value }: { value: Image }) => (
+  <img src={value.src} alt={value.alt} style={value.style} />
+);
+
 type InfoProps = {
-  value: value;
   name: string;
+  value: value;
 };
 
-const MemberInfo = ({ value, name }: InfoProps) => {
+const MemberInfo = (props: InfoProps) => {
   return (
     <div className={styles.info}>
-      <span className={styles.const}>const</span> <span className={styles.name}>{name}</span> ={' '}
-      <ValueComponent value={value} level={1} indent={0} />;
+      <span className={styles.const}>const</span> <span className={styles.name}>{props.name}</span>{' '}
+      = <ValueComponent value={props.value} level={1} indent={0} />
     </div>
   );
 };
