@@ -47,11 +47,6 @@ const Admin = () => {
     // }
   }, [fetchData, data, user]);
 
-  if (!user) {
-    router.push('/admin/login');
-    return;
-  }
-
   const onLogout = async () => {
     if (confirm('Logout?')) await logout();
   };
@@ -75,7 +70,7 @@ const Admin = () => {
         <p>ユーザー名: {user?.displayName}</p>
         <p>写真URL{user?.photoURL}</p>
         <p>ユーザーID: {user?.id}</p>
-        <p>githubID:{user.githubId}</p>
+        <p>githubID:{user?.githubId}</p>
         <button onClick={onLogout}>ログアウト</button>
       </div>
     </div>

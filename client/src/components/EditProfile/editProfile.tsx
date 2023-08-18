@@ -1,5 +1,8 @@
 import type { MemberModel } from 'commonTypesWithClient/models';
-import React, { useState } from 'react';
+import { useAtom } from 'jotai';
+import React, { useEffect, useState } from 'react';
+import { userAtom } from 'src/atoms/user';
+import { apiClient } from 'src/utils/apiClient';
 import styles from './EditProfile.module.css';
 import InputField from './InputField';
 
@@ -10,12 +13,13 @@ type Product = {
 };
 
 const MemberForm = () => {
+  const [user] = useAtom(userAtom);
   const [member, setMember] = useState<MemberModel>({
     githubId: '',
     userName: '',
     realName: '',
     displayName: '',
-    graduateYear: new Date().getFullYear(),
+    graduateYear: 0,
     updateAt: Date.now(),
     introduction: '',
     products: [],
@@ -23,15 +27,10 @@ const MemberForm = () => {
   });
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { name, value } = e.target;
-    // textareaの高さをリセット
-    e.target.style.height = 'inherit';
-
-    // 新しい高さを計算して設定
+    const { name, value, type } = e.target;
     const newHeight = e.target.scrollHeight;
     e.target.style.height = `${newHeight}px`;
-
-    setMember((prev) => ({ ...prev, [name]: value }));
+    setMember((prev) => ({ ...prev, [name]: type === 'number' ? Number(value) : value }));
   };
 
   const handleProductChange = (index: number, key: keyof Product, value: string) => {
@@ -72,31 +71,51 @@ const MemberForm = () => {
     setMember((prev) => ({ ...prev, socialLinks: newLinks }));
   };
 
+  const fetchProfile = async () => {
+    const res = await apiClient.members._memberId(member.githubId).$get();
+    if (res === null) {
+      alert('プロフィールの取得に失敗しました');
+      return;
+    }
+    setMember(res);
+  };
+
+  const saveProfile = async () => {
+    console.log(member);
+    const res = await apiClient.members.$post({ body: member });
+    if (res === null) {
+      alert('保存に失敗しました');
+    }
+    alert('保存しました');
+  };
+
+  useEffect(() => {
+    if (user?.githubId !== undefined) {
+      setMember((prev) => ({ ...prev, githubId: user.githubId }));
+    }
+  }, [user]);
+
   return (
     <div className={styles.container}>
       <h2>Edit Profile</h2>
-
-      <InputField
-        label="Github ID"
-        name="githubId"
-        onChange={handleInputChange}
-        className={styles.input}
-      />
       <InputField
         label="User Name"
         name="userName"
+        value={member.userName}
         onChange={handleInputChange}
         className={styles.input}
       />
       <InputField
         label="Real Name"
         name="realName"
+        value={member.realName}
         onChange={handleInputChange}
         className={styles.input}
       />
       <InputField
         label="Display Name"
         name="displayName"
+        value={member.displayName}
         onChange={handleInputChange}
         className={styles.input}
       />
@@ -104,6 +123,7 @@ const MemberForm = () => {
         label="Graduate Year"
         name="graduateYear"
         type="number"
+        value={member.graduateYear}
         onChange={handleInputChange}
         className={styles.input}
       />
@@ -111,10 +131,10 @@ const MemberForm = () => {
         label="Introduction"
         name="introduction"
         type="textarea"
+        value={member.introduction}
         onChange={handleInputChange}
         className={styles.input}
       />
-
       <h3>Products</h3>
       <button className={styles.button} onClick={addProduct}>
         追加
@@ -124,6 +144,7 @@ const MemberForm = () => {
           <InputField
             label="Title"
             name="title"
+            value={product.title}
             className={styles.input}
             onChange={(e) => handleProductChange(index, 'title', e.target.value)}
           />
@@ -131,9 +152,15 @@ const MemberForm = () => {
             label="Description"
             type="textarea"
             className={styles.input}
+            value={product.description}
             onChange={(e) => handleProductChange(index, 'description', e.target.value)}
           />
-          <InputField label="URL" className={styles.input} onChange={handleInputChange} />
+          <InputField
+            label="URL"
+            className={styles.input}
+            onChange={handleInputChange}
+            value={product.url}
+          />
           <button onClick={() => removeProduct(index)} className={styles.button}>
             削除
           </button>
@@ -148,6 +175,7 @@ const MemberForm = () => {
           <InputField
             label="Link"
             className={styles.input}
+            value={link}
             onChange={(e) => handleSocialLinkChange(index, e.target.value)}
           />
           <button onClick={() => removeSocialLink(index)} className={styles.button}>
@@ -161,8 +189,7 @@ const MemberForm = () => {
           ${styles.button}
           ${styles.buttonSubmit}
         `}
-          //TODO 送信処理に変更
-          onClick={() => console.log(member)}
+          onClick={saveProfile}
         >
           決定
         </button>
@@ -170,5 +197,4 @@ const MemberForm = () => {
     </div>
   );
 };
-
 export default MemberForm;

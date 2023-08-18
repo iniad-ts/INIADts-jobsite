@@ -1,19 +1,25 @@
-import styles from './EditProfile.module.css';
-
 type InputFieldProps = {
   label: string;
   type?: 'text' | 'number' | 'textarea';
   name?: string;
+  value?: string | number;
   onChange: (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => void;
   className?: string;
 };
 
-const InputField: React.FC<InputFieldProps> = ({ label, type = 'text', name, onChange }) => {
+const InputField: React.FC<InputFieldProps> = ({
+  label,
+  type = 'text',
+  name,
+  value,
+  onChange,
+  className,
+}) => {
   if (type === 'textarea') {
     return (
       <label>
         {label}:
-        <textarea name={name} onChange={onChange} className={styles.input} />
+        <textarea name={name} onChange={onChange} value={value} className={className} />
       </label>
     );
   }
@@ -21,7 +27,7 @@ const InputField: React.FC<InputFieldProps> = ({ label, type = 'text', name, onC
   return (
     <label>
       {label}:
-      <input type={type} name={name} onChange={onChange} className={styles.input} />
+      <input type={type} name={name} onChange={onChange} value={value} className={className} />
     </label>
   );
 };
