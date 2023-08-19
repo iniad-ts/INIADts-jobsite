@@ -11,3 +11,7 @@
   background-color: rgb(209, 235, 252);
   border-radius: 20px;
 }
+
+.title {
+  color: var(--color-accent);
+}
