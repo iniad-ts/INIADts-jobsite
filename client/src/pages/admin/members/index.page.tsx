@@ -13,7 +13,7 @@ const AdminMembers = () => {
     userName: '',
     realName: '',
     displayName: '',
-    graduateYear: 0,
+    graduateYear: 2025,
   });
 
   const fetchMemberList = async () => {
@@ -68,8 +68,8 @@ const AdminMembers = () => {
       <Head>
         <title>Addition・MemberList | INIAD.ts</title>
       </Head>
-      <div className={styles.addTable}>
-        <h1>#Member追加</h1>
+      <div className={styles.section}>
+        <h1 className={styles.title}>#Member追加</h1>
         <Input
           label="GitHubID"
           name="githubId"
@@ -93,9 +93,9 @@ const AdminMembers = () => {
         />
         <button onClick={addMember}>追加</button>
       </div>
-      <div className={styles.memberListContainer}>
-        <h1>#Member一覧</h1>
-        <div className={styles.memberTable}>
+      <div className={styles.section}>
+        <h1 className={styles.title}>#Member一覧</h1>
+        <div>
           {members.map((member) => (
             <div key={member.githubId}>
               <Link href={`/members/${member.githubId}`}>{member.displayName}</Link>
