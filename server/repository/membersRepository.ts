@@ -7,23 +7,25 @@ import type { Member } from '@prisma/client';
 import { z } from 'zod';
 
 const toMemberModel = (prismaMember: Member): MemberModel => ({
-  githubId: prismaMember.githubId,
-  userName: prismaMember.userName,
-  displayName: prismaMember.displayName,
-  realName: prismaMember.realName,
+  githubId: z.string().parse(prismaMember.githubId),
+  userName: z.string().parse(prismaMember.userName),
+  displayName: z.string().parse(prismaMember.displayName),
+  realName: z.string().parse(prismaMember.realName),
   graduateYear: z.number().min(2000).max(3000).parse(prismaMember.graduateYear),
-  introduction: prismaMember.introduction ?? undefined,
-  avatarUrl: prismaMember.avatarUrl ?? undefined,
-  socialLinks: z.array(z.string()).parse(prismaMember.socialLinks),
-  products: z
-    .array(
-      z.object({
-        title: z.string(),
-        description: z.string(),
-        url: z.string(),
-      })
-    )
-    .parse(prismaMember.products),
+  introduction: z.string().nullable().parse(prismaMember.introduction) ?? undefined,
+  avatarUrl: z.string().url().nullable().parse(prismaMember.avatarUrl) ?? undefined,
+  socialLinks: z.array(z.string().url()).nullable().parse(prismaMember.socialLinks) ?? undefined,
+  products:
+    z
+      .array(
+        z.object({
+          title: z.string(),
+          description: z.string(),
+          url: z.string(),
+        })
+      )
+      .nullable()
+      .parse(prismaMember.products) ?? undefined,
   updateAt: prismaMember.updatedAt.getTime(),
 });
 
@@ -32,7 +34,7 @@ export const membersRepository = {
     const updatedPrismaMember: Member = await prismaClient.member.upsert({
       where: { githubId: member.githubId },
       update: {
-        githubId: member.githubId,
+        userName: member.userName,
         displayName: member.displayName,
         realName: member.realName,
         graduateYear: member.graduateYear,
@@ -78,7 +80,7 @@ export const membersRepository = {
   saveListToS3: async (memberList: MemberListModel) => {
     const s3Params = {
       Bucket: S3_BUCKET,
-      Key: `members/memberList.json`,
+      Key: `members/membersList.json`,
       Body: JSON.stringify(memberList),
     };
 
@@ -125,7 +127,7 @@ export const membersRepository = {
   getListFromS3: async () => {
     const s3Params = {
       Bucket: S3_BUCKET,
-      Key: `members/memberList.json`,
+      Key: `members/membersList.json`,
     };
 
     try {

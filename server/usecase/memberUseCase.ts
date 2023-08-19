@@ -2,10 +2,8 @@ import type { MemberListModel, MemberModel } from '$/commonTypesWithClient/model
 import { membersRepository } from '$/repository/membersRepository';
 
 const createMember = async (member: MemberModel): Promise<MemberModel | null> => {
-  const [createdMember] = await Promise.all([
-    await membersRepository.saveToDB(member),
-    await membersRepository.saveToS3(member),
-  ]);
+  const createdMember = membersRepository.saveToDB(member);
+  await membersRepository.saveToS3(member);
 
   const memberList: MemberListModel = (await membersRepository.getListFromS3()) ?? { members: [] };
   memberList.members.push({
@@ -20,10 +18,8 @@ const createMember = async (member: MemberModel): Promise<MemberModel | null> =>
 };
 
 const updateMember = async (member: MemberModel): Promise<MemberModel | null> => {
-  const [updatedMember] = await Promise.all([
-    await membersRepository.saveToDB(member),
-    await membersRepository.saveToS3(member),
-  ]);
+  const updatedMember = await membersRepository.saveToDB(member);
+  await membersRepository.saveToS3(member);
   if (updatedMember === null) return null;
 
   const memberList: MemberListModel | null = await membersRepository.getListFromS3();
@@ -33,15 +29,15 @@ const updateMember = async (member: MemberModel): Promise<MemberModel | null> =>
     members: memberList.members.map((member) => {
       if (member.githubId === updatedMember.githubId) {
         return {
-          githubId: member.githubId,
-          userName: member.userName,
+          githubId: updatedMember.githubId,
+          userName: updatedMember.userName,
           graduateYear: updatedMember.graduateYear,
         };
       }
       return member;
     }),
   };
-  membersRepository.saveListToS3(newMemberList);
+  await membersRepository.saveListToS3(newMemberList);
 
   return updatedMember;
 };

@@ -5,4 +5,8 @@ export type Methods = DefineMethods<{
   get: {
     resBody: MemberModel[];
   };
+  post: {
+    reqBody: MemberModel;
+    resBody: MemberModel | null;
+  };
 }>;
