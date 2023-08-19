@@ -30,7 +30,7 @@ const AdminMembers = () => {
   };
 
   const addMember = async () => {
-    const newMwmber = await apiClient.members.$post({
+    const newMember = await apiClient.members.$post({
       body: {
         githubId: memberInfo.githubId,
         userName: memberInfo.userName,
@@ -42,7 +42,7 @@ const AdminMembers = () => {
       },
     });
 
-    if (newMwmber === null) {
+    if (newMember === null) {
       alert('Memberの追加に失敗しました');
       return;
     }
@@ -53,7 +53,7 @@ const AdminMembers = () => {
       userName: '',
       realName: '',
       displayName: '',
-      graduateYear: 0,
+      graduateYear: 2025,
     });
   };
 

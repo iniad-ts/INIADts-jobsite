@@ -15,7 +15,7 @@ const AdminProfile = () => {
     userName: '',
     realName: '',
     displayName: '',
-    graduateYear: 0,
+    graduateYear: 2025,
     updateAt: Date.now(),
   });
 
