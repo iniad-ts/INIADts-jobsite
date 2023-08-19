@@ -9,13 +9,13 @@ import styles from './index.module.css';
 
 const AdminProfile = () => {
   const [user] = useAtom(userAtom);
-  const [member, setmember] = useState<MemberModel>();
+  const [member, setMember] = useState<MemberModel>();
 
-  const fetchMenber = useCallback(async () => {
+  const fetchMember = useCallback(async () => {
     if (user !== null) {
       const res = await apiClient.members._memberId(user.githubId).$get();
       if (res !== null) {
-        setmember(res);
+        setMember(res);
         return;
       }
       alert('Member情報がありません');
@@ -23,8 +23,8 @@ const AdminProfile = () => {
   }, [user]);
 
   useEffect(() => {
-    fetchMenber();
-  }, [fetchMenber, user]);
+    fetchMember();
+  }, [fetchMember, user]);
   return (
     <div className={styles.container}>
       <Head>
