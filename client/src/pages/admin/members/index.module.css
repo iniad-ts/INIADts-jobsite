@@ -1,27 +1,15 @@
 .container {
   display: flex;
   flex-direction: column;
+  padding: 3vmin 4vmin;
+  background-color: var(--color-bg-main);
+  min-height: 100%;
 }
 
-.addTable {
-  height: 300px;
-  width: 90%;
-  background-color: rgb(209, 235, 252);
-  border-radius: 20px;
-  margin: 40px;
-  padding-left: 30px;
+.title {
+  color: var(--color-accent);
 }
 
-.memberListContainer {
-  height: 300px;
-  width: 90%;
-  background-color: rgb(209, 235, 252);
-  border-radius: 20px;
-  margin: 40px;
-  padding-left: 30px;
-}
-
-.memberTable {
-  width: 90%;
-  background-color: rgb(142, 158, 241);
+.section {
+  margin-bottom: 4vmin;
 }

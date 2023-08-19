@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import styles from './Textarea.module.css';
 
 type Props = {
   label: string;
@@ -13,11 +14,11 @@ const TextArea = ({ label, name, onChange, placeholder, isFitContent = true }: P
 
   const changeHeight = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { scrollHeight } = e.target;
-    setHeight(Math.max(100, scrollHeight));
+    setHeight(Math.min(Math.max(100, scrollHeight), 500));
   };
 
   return (
-    <div>
+    <div className={styles.container}>
       <label htmlFor={name}>
         {label}
         <textarea
@@ -28,6 +29,7 @@ const TextArea = ({ label, name, onChange, placeholder, isFitContent = true }: P
           }}
           placeholder={placeholder}
           style={{ height: `${height}px` }}
+          className={styles.textarea}
         />
       </label>
     </div>
