@@ -12,7 +12,7 @@ const toMemberModel = (prismaMember: Member): MemberModel => ({
   displayName: z.string().parse(prismaMember.displayName),
   realName: z.string().parse(prismaMember.realName),
   graduateYear: z.number().min(2000).max(3000).parse(prismaMember.graduateYear),
-  introduction: z.string().nullable().nullable().parse(prismaMember.introduction) ?? undefined,
+  introduction: z.string().nullable().parse(prismaMember.introduction) ?? undefined,
   avatarUrl: z.string().url().nullable().parse(prismaMember.avatarUrl) ?? undefined,
   socialLinks: z.array(z.string().url()).nullable().parse(prismaMember.socialLinks) ?? undefined,
   products:
