@@ -15,3 +15,18 @@
 .title {
   color: var(--color-accent);
 }
+
+.group {
+  color: var(--color-fg-main);
+}
+
+.item {
+  padding: 4px 20px 8px;
+  margin: 4px 0 8px;
+  border-radius: 8px;
+  background-color: var(--color-bg-dark);
+}
+
+.item input {
+  background-color: var(--color-bg-main);
+}
