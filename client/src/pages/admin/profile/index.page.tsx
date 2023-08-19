@@ -43,7 +43,7 @@ const AdminProfile = () => {
   };
 
   const changeSocialLink = (e: React.ChangeEvent<HTMLInputElement>, i: number) => {
-    const { name, value } = e.target;
+    const { value } = e.target;
     setMember((prev) => ({
       ...prev,
       socialLinks: prev.socialLinks?.map((socialLink, j) => (i === j ? value : socialLink)),
@@ -145,9 +145,10 @@ const AdminProfile = () => {
           onChange={changeTextArea}
           placeholder="ex: こんにちは"
         />
-        <div>
+        <div className={styles.group}>
+          <span>Products</span>
           {member.products?.map((product, i) => (
-            <div key={`product-${i}`}>
+            <div key={`product-${i}`} className={styles.item}>
               <Input
                 label="Product Name"
                 name="title"
@@ -173,14 +174,15 @@ const AdminProfile = () => {
           ))}
           <button onClick={addProduct}>追加</button>
         </div>
-        <div>
+        <div className={styles.group}>
+          <span>Social Links</span>
           {member.socialLinks?.map((socialLink, i) => (
-            <div key={`socialLink-${i}`}>
+            <div key={`socialLink-${i}`} className={styles.item}>
               <Input
                 label="Social Link URL"
                 name="url"
                 value={socialLink}
-                onChange={(e) => changeProduct(e, i)}
+                onChange={(e) => changeSocialLink(e, i)}
                 placeholder="ex: https://twitter.com/"
               />
             </div>
