@@ -4,6 +4,8 @@ import Head from 'next/head';
 import { useCallback, useEffect, useState } from 'react';
 import { userAtom } from 'src/atoms/user';
 import Input from 'src/components/Input/Input';
+import { Products } from 'src/components/Products/Products';
+import { SocialLinks } from 'src/components/SocialLinks/SocialLinks';
 import TextArea from 'src/components/Textarea/Textarea';
 import { apiClient } from 'src/utils/apiClient';
 import styles from './index.module.css';
@@ -31,54 +33,6 @@ const AdminProfile = () => {
     updateMember();
   };
 
-  const changeProduct = (e: React.ChangeEvent<HTMLInputElement>, i: number) => {
-    const { name, value } = e.target;
-    setMember((prev) => ({
-      ...prev,
-      products: prev.products?.map((product, j) =>
-        i === j ? { ...product, [name]: value } : product
-      ),
-    }));
-    updateMember();
-  };
-
-  const changeSocialLink = (e: React.ChangeEvent<HTMLInputElement>, i: number) => {
-    const { value } = e.target;
-    setMember((prev) => ({
-      ...prev,
-      socialLinks: prev.socialLinks?.map((socialLink, j) => (i === j ? value : socialLink)),
-    }));
-    updateMember();
-  };
-
-  const addProduct = () => {
-    setMember((prev) => ({
-      ...prev,
-      products: [...(prev.products ?? []), { title: '', description: '', url: '' }],
-    }));
-  };
-
-  const removeProduct = (i: number) => {
-    setMember((prev) => ({
-      ...prev,
-      products: prev.products?.filter((_, j) => i !== j),
-    }));
-  };
-
-  const addSocialLink = () => {
-    setMember((prev) => ({
-      ...prev,
-      socialLinks: [...(prev.socialLinks ?? []), ''],
-    }));
-  };
-
-  const removeSocialLink = (i: number) => {
-    setMember((prev) => ({
-      ...prev,
-      socialLinks: prev.socialLinks?.filter((_, j) => i !== j),
-    }));
-  };
-
   const updateMember = async () => {
     if (user === null) return;
     await apiClient.members.$post({ body: member });
@@ -103,6 +57,13 @@ const AdminProfile = () => {
     return <div>ユーザー情報の取得に失敗しました</div>;
   }
 
+  const inputs = [
+    { label: 'ユーザー名', name: 'userName', placeholder: 'mst-mkt' },
+    { label: '本名', name: 'realName', placeholder: '田中太郎' },
+    { label: '表示名', name: 'displayName', placeholder: '🧶' },
+    { label: '卒業年', name: 'graduateYear', type: 'number', placeholder: '2027' },
+  ];
+
   return (
     <div className={styles.container}>
       <Head>
@@ -110,85 +71,25 @@ const AdminProfile = () => {
       </Head>
       <h2 className={styles.title}># Edit Profile</h2>
       <div>
-        <Input
-          label="User Name"
-          name="userName"
-          value={member.userName}
-          onChange={changeInput}
-          placeholder="ex: mst-mkt"
-        />
-        <Input
-          label="Real Name"
-          name="realName"
-          value={member.realName}
-          onChange={changeInput}
-          placeholder="ex: 田中太郎"
-        />
-        <Input
-          label="Display Name"
-          name="displayName"
-          value={member.displayName}
-          onChange={changeInput}
-          placeholder="ex: 🧶"
-        />
-        <Input
-          label="Graduate Year"
-          name="graduateYear"
-          type="number"
-          value={member.graduateYear}
-          onChange={changeInput}
-          placeholder="ex: 2027"
-        />
+        {inputs.map((input) => (
+          <Input
+            key={input.name}
+            label={input.label}
+            name={input.name}
+            value={member[input.name as keyof MemberModel] as string | number | undefined}
+            onChange={changeInput}
+            placeholder={input.placeholder}
+            type={input.type}
+          />
+        ))}
         <TextArea
-          label="Introduction"
+          label="自己紹介"
           name="introduction"
           onChange={changeTextArea}
           placeholder="ex: こんにちは"
         />
-        <div className={styles.group}>
-          <span>Products</span>
-          {member.products?.map((product, i) => (
-            <div key={`product-${i}`} className={styles.item}>
-              <Input
-                label="Product Name"
-                name="title"
-                value={product.title}
-                onChange={(e) => changeProduct(e, i)}
-                placeholder="ex: Gradius"
-              />
-              <Input
-                label="Product Description"
-                name="description"
-                value={product.description}
-                onChange={(e) => changeProduct(e, i)}
-                placeholder="ex: シューティングゲーム"
-              />
-              <Input
-                label="Product URL"
-                name="url"
-                value={product.url}
-                onChange={(e) => changeProduct(e, i)}
-                placeholder="ex: https://example.com"
-              />
-            </div>
-          ))}
-          <button onClick={addProduct}>追加</button>
-        </div>
-        <div className={styles.group}>
-          <span>Social Links</span>
-          {member.socialLinks?.map((socialLink, i) => (
-            <div key={`socialLink-${i}`} className={styles.item}>
-              <Input
-                label="Social Link URL"
-                name="url"
-                value={socialLink}
-                onChange={(e) => changeSocialLink(e, i)}
-                placeholder="ex: https://twitter.com/"
-              />
-            </div>
-          ))}
-          <button onClick={addSocialLink}>追加</button>
-        </div>
+        <Products member={member} setMember={setMember} />
+        <SocialLinks member={member} setMember={setMember} />
       </div>
     </div>
   );

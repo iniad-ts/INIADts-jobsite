@@ -18,7 +18,7 @@ const TextArea = ({ label, name, onChange, placeholder, isFitContent = true }: P
 
   return (
     <div className={styles.container}>
-      <label htmlFor={name}>
+      <label htmlFor={name} className={styles.label}>
         {label}
         <textarea
           name={name}

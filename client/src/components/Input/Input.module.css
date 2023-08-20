@@ -1,6 +1,6 @@
 .container {
-  margin-block: 12px;
   color: var(--color-fg-dark);
+  margin-bottom: 16px;
 }
 
 .input {
@@ -24,4 +24,8 @@
 .input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
+}
+
+.label {
+  font-size: 12px;
 }
