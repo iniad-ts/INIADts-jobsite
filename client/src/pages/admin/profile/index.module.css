@@ -1,0 +1,17 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 2vmin 4vmin;
+  min-height: 100%;
+  background-color: var(--color-bg-main);
+}
+
+.plafileTable {
+  width: 90%;
+  background-color: rgb(209, 235, 252);
+  border-radius: 20px;
+}
+
+.title {
+  color: var(--color-accent);
+}

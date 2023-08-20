@@ -1,18 +1,28 @@
-import type { GitHubActivityModel } from '$/commonTypesWithClient/models';
-import { GITHUB_USERNAMES } from '$/service/envValues';
+import type { GitHubActivityModel, MemberListModel } from 'commonTypesWithClient/models';
 import { githubActivityRepository } from '../repository/githubActivityRepository';
+import { membersRepository } from './../repository/membersRepository';
 
-const fetchActivity = async (userId: string): Promise<GitHubActivityModel> => {
-  const data = await githubActivityRepository.fetchData(userId);
+const fetchActivity = async (userName: string, githubId: string): Promise<GitHubActivityModel> => {
+  const data = await githubActivityRepository.fetchData(userName);
   if (data !== undefined) {
-    await githubActivityRepository.upload(userId, data);
+    await githubActivityRepository.upload(userName, data);
   }
 
-  return { ...JSON.parse(data ?? '{}'), userId };
+  return { ...JSON.parse(data ?? '{}'), githubId: userName };
 };
 
 const fetchAllActivities = async () => {
-  await Promise.all(GITHUB_USERNAMES.map(fetchActivity));
+  const MemberList: MemberListModel | null = await membersRepository.getListFromS3();
+  if (MemberList === null) return;
+
+  const activities = await Promise.all(
+    MemberList.members.map(async (member) => {
+      const activity = await fetchActivity(member.userName, member.githubId);
+      return activity;
+    })
+  );
+
+  return activities;
 };
 
 export const githubActivityUseCase = {

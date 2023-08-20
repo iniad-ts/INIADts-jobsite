@@ -1,4 +1,5 @@
 .container {
-  background-color: #333;
+  background-color: var(--color-bg-main);
+  color: var(--color-fg-main);
   min-height: 100%;
 }

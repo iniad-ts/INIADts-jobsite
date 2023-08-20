@@ -1,17 +1,59 @@
-import type { MemberModel } from '$/commonTypesWithClient/models';
+import type { MemberListModel, MemberModel } from '$/commonTypesWithClient/models';
 import { membersRepository } from '$/repository/membersRepository';
-import assert from 'assert';
+
+const createMember = async (member: MemberModel): Promise<MemberModel | null> => {
+  const createdMember = membersRepository.saveToDB(member);
+  await membersRepository.saveToS3(member);
+
+  const memberList: MemberListModel = (await membersRepository.getListFromS3()) ?? { members: [] };
+  memberList.members.push({
+    githubId: member.githubId,
+    userName: member.userName,
+    graduateYear: member.graduateYear,
+  });
+
+  await membersRepository.saveListToS3(memberList);
+
+  return createdMember;
+};
+
+const updateMember = async (member: MemberModel): Promise<MemberModel | null> => {
+  const updatedMember = await membersRepository.saveToDB(member);
+  await membersRepository.saveToS3(member);
+  if (updatedMember === null) return null;
+
+  const memberList: MemberListModel | null = await membersRepository.getListFromS3();
+  if (memberList === null) return null;
+
+  const newMemberList: MemberListModel = {
+    members: memberList.members.map((member) => {
+      if (member.githubId === updatedMember.githubId) {
+        return {
+          githubId: updatedMember.githubId,
+          userName: updatedMember.userName,
+          graduateYear: updatedMember.graduateYear,
+        };
+      }
+      return member;
+    }),
+  };
+  await membersRepository.saveListToS3(newMemberList);
+
+  return updatedMember;
+};
 
 export const memberUseCase = {
-  getAllMembers: async (): Promise<MemberModel[]> => {
-    const memberList = await membersRepository.getMemberList();
-    const allMembers = await Promise.all(
-      memberList.map(async (githubId) => {
-        const member = await membersRepository.getMember(githubId);
-        assert(member !== null, 'member is null');
-        return member;
-      })
-    );
-    return allMembers;
+  save: async (member: MemberModel): Promise<MemberModel | null> => {
+    const currentMember = await membersRepository.getFromS3(member.githubId);
+
+    if (currentMember === null) {
+      const newMember: MemberModel | null = await createMember(member);
+      return newMember;
+    }
+
+    if (member === currentMember) return currentMember;
+
+    const updatedMember: MemberModel | null = await updateMember(member);
+    return updatedMember;
   },
 };

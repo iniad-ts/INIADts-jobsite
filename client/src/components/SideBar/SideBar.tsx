@@ -17,7 +17,13 @@ export type FileModel = {
   url?: string;
 };
 
-const Spacer = (props: { space: number }) => <div style={{ width: `${props.space * 10}px` }} />;
+const Spacer = (props: { space: number }) => (
+  <div className={styles['spacer']}>
+    {[...Array(props.space)].map((_, i) => (
+      <div key={i} />
+    ))}
+  </div>
+);
 
 export const SideBar = () => {
   const [side, setSide] = useState(
@@ -30,6 +36,7 @@ export const SideBar = () => {
           type: 'dir',
           directoryName: 'members',
           body: [
+            { type: 'file', fileName: 'members', url: './members' },
             {
               type: 'dir',
               directoryName: '24graduates',
@@ -64,7 +71,7 @@ export const SideBar = () => {
                   directoryName: 'job-hunting',
                   body: [
                     { type: 'file', fileName: 'ttt' },
-                    { type: 'file', fileName: 'nnn' },
+                    { type: 'file', fileName: 'nnn', url: './members/nnn' },
                   ],
                 },
               ],
@@ -74,7 +81,7 @@ export const SideBar = () => {
         {
           type: 'dir',
           directoryName: 'contact',
-          body: [{ type: 'file', fileName: 'yossuli', url: 'https://github.com/yossuli' }],
+          body: [{ type: 'file', fileName: 'contact', url: './contact' }],
         },
       ],
       isDisplay: true,
@@ -96,18 +103,16 @@ export const SideBar = () => {
   };
 
   const Mapper = (props: { obj: DirectoryModel }) => (
-    <div>
+    <div className={styles['mapper-container']}>
       <div className={styles.column} onClick={() => deleteTab(props.obj.id)}>
         <Spacer space={props.obj.depth} />
-        <div style={{ width: 20 }}>
+        <div className={styles['column-inner']}>
           <div
             className={styles.arrow}
-            style={{
-              transform: `rotate(${props.obj.isDisplay ? 135 : 45}deg)`,
-            }}
+            style={props.obj.isDisplay ? { transform: 'rotate(90deg)' } : {}}
           />
+          {props.obj.directoryName}
         </div>
-        {props.obj.directoryName}
       </div>
       {props.obj.isDisplay && (
         <div>
@@ -116,9 +121,11 @@ export const SideBar = () => {
               <Mapper obj={o} key={o.id} />
             ) : (
               <div key={i}>
-                <div className={styles.column} style={{ color: 'rgb(247 140 123)' }}>
-                  <Spacer space={props.obj.depth + 1} />
-                  <Link href={o.url ?? `./${Math.random()}`}>{o.fileName}</Link>
+                <div className={`${styles.column} ${styles['link-column']}`}>
+                  <Spacer space={props.obj.depth} />
+                  <Link href={o.url ?? `./${Math.random()}`} className={styles.link}>
+                    {o.fileName}
+                  </Link>
                 </div>
               </div>
             )
@@ -130,7 +137,7 @@ export const SideBar = () => {
 
   return (
     <div className={styles.container}>
-      <div className={styles.column2}>
+      <div className={styles['column-top']}>
         <Spacer space={1} />
         エクスプローラー
       </div>

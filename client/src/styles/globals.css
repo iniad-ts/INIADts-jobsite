@@ -38,3 +38,21 @@ a {
 ::-webkit-scrollbar-thumb:hover {
   background: #35373a;
 }
+
+:root {
+  --color-bg-main: #1f1f1f;
+  --color-bg-dark: #181818;
+  --color-bg-selected: #37373d;
+  --color-bg-hover: #2a2d2e;
+  --color-fg-main: #cccccc;
+  --color-fg-dark: #8c949d;
+  --color-border: #313131;
+  --color-accent: #1d76d0;
+  --color-error: #f88070;
+  --syntax-highlight-yellow: #feff8d;
+  --syntax-highlight-orange: #f3b371;
+  --syntax-highlight-blue: #0078d4;
+  --syntax-highlight-green: #94cea8;
+  --syntax-highlight-purple: #fb00fa;
+  --syntax-highlight-sky: #89fefe;
+}

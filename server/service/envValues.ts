@@ -14,7 +14,6 @@ const S3_BUCKET = process.env.S3_BUCKET ?? '';
 const S3_ACCESS_KEY = process.env.S3_ACCESS_KEY ?? '';
 const S3_SECRET_KEY = process.env.S3_SECRET_KEY ?? '';
 const GITHUB_API_ORIGIN = process.env.GITHUB_API_ORIGIN ?? '';
-const GITHUB_USERNAMES = process.env.GITHUB_USERNAMES?.split(',') ?? [];
 
 export {
   API_BASE_PATH,
@@ -23,7 +22,6 @@ export {
   FIREBASE_AUTH_EMULATOR_HOST,
   FIREBASE_SERVER_KEY,
   GITHUB_API_ORIGIN,
-  GITHUB_USERNAMES,
   PORT,
   S3_ACCESS_KEY,
   S3_BUCKET,

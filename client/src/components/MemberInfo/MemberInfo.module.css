@@ -1,16 +1,16 @@
 .info {
-  color: white;
+  color: var(--color-fg-main);
   font-weight: bold;
   white-space: pre-wrap;
 }
 
 .name,
 .bracket-1 {
-  color: #feff8d;
+  color: var(--syntax-highlight-yellow);
 }
 
 .bracket-2 {
-  color: #fb00fa;
+  color: var(--syntax-highlight-purple);
 }
 
 .const,
@@ -18,17 +18,17 @@
 .undefined,
 .boolean,
 .bracket-3 {
-  color: #0078d4;
+  color: var(--syntax-highlight-blue);
 }
 
 .key {
-  color: #89fefe;
+  color: var(--syntax-highlight-sky);
 }
 
 .string {
-  color: #f3b371;
+  color: var(--syntax-highlight-orange);
 }
 
 .number {
-  color: #94cea8;
+  color: var(--syntax-highlight-green);
 }
