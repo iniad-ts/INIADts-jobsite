@@ -26,6 +26,11 @@ jobs:
           path: 'client/node_modules'
           key: client-npm-${{ hashFiles('client/package-lock.json') }}
       - uses: actions/cache@v2
+        id: docusaurus-npm-cache
+        with:
+          path: 'docusaurus/node_modules'
+          key: docusaurus-npm-${{ hashFiles('docusaurus/package-lock.json') }}
+      - uses: actions/cache@v2
         id: server-npm-cache
         with:
           path: 'server/node_modules'
@@ -34,6 +39,8 @@ jobs:
         if: steps.root-npm-cache.outputs.cache-hit != 'true'
       - run: npm install --prefix client
         if: steps.client-npm-cache.outputs.cache-hit != 'true'
+      - run: npm install --prefix docusaurus
+        if: steps.docusaurus-npm-cache.outputs.cache-hit != 'true'
       - run: npm install --prefix server
         if: steps.server-npm-cache.outputs.cache-hit != 'true'
       - run: npm run generate
