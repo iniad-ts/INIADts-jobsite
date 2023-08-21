@@ -1,6 +1,6 @@
 import type { DocusaurusConfig } from '@docusaurus/types';
 import { GithubAuthProvider, signInWithPopup } from 'firebase/auth';
-import { createAuth } from 'src/utils/firebase';
+import { createAuth } from './firebase';
 import { returnNull } from './returnNull';
 
 export const loginWithGitHub = async (siteConfig: DocusaurusConfig) => {
