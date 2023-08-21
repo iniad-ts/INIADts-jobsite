@@ -1,7 +1,7 @@
 import styles from './Input.module.css';
 
 type Props = {
-  label: string;
+  label?: string;
   type?: string;
   name: string;
   value?: string | number;
@@ -11,7 +11,7 @@ type Props = {
 };
 
 const Input = ({
-  label,
+  label = '',
   type = 'text',
   name,
   value,
@@ -21,7 +21,7 @@ const Input = ({
 }: Props) => {
   return (
     <div className={styles.container}>
-      <label htmlFor={name}>
+      <label htmlFor={name} className={styles.label}>
         {label}
         <input
           type={type}
