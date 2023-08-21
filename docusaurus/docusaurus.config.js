@@ -1,5 +1,6 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
+require('dotenv').config();
 
 const lightCodeTheme = require('prism-react-renderer/themes/github');
 const darkCodeTheme = require('prism-react-renderer/themes/dracula');
@@ -9,6 +10,11 @@ const config = {
   title: 'My Site',
   tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
+  customFields: {
+    FIREBASE_CONFIG: process.env.FIREBASE_CONFIG,
+    AUTH_EMULATOR_URL: process.env.AUTH_EMULATOR_URL,
+    GA_ID: process.env.GA_ID,
+  },
 
   // Set the production url of your site here
   url: 'https://your-docusaurus-test-site.com',
@@ -76,7 +82,7 @@ const config = {
             position: 'left',
             label: 'Tutorial',
           },
-          {to: '/blog', label: 'Blog', position: 'left'},
+          { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://github.com/facebook/docusaurus',
             label: 'GitHub',

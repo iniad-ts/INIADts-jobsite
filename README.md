@@ -20,6 +20,7 @@ https://nodejs.org/ja/ の左ボタン、LTS をダウンロードしてイン�
 ```sh
 $ npm i
 $ npm i --prefix client
+$ npm i --prefix docusaurus
 $ npm i --prefix server
 ```
 
@@ -27,6 +28,7 @@ $ npm i --prefix server
 
 ```sh
 $ cp client/.env.example client/.env
+$ cp docusaurus/.env.example docusaurus/.env
 $ cp server/.env.example server/.env
 $ cp docker/dev/.env.example docker/dev/.env
 $ cp server/prisma/.env.example server/prisma/.env
@@ -46,7 +48,7 @@ $ docker-compose up -d
 $ npm run notios
 ```
 
-Web ブラウザで http://localhost:3000 を開く
+Web ブラウザで http://localhost:3000 と http://localhost:3001 を開く
 
 開発時のターミナル表示は [notios](https://github.com/frouriojs/notios) で制御している
 
@@ -60,7 +62,7 @@ http://localhost:4000/auth
 
 #### MinIO Console
 
-http://localhost:9001/
+http://localhost:9001
 
 #### PostgreSQL UI
 
@@ -68,4 +70,3 @@ http://localhost:9001/
 $ cd server
 $ npx prisma studio
 ```
-test

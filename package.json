@@ -6,6 +6,7 @@
     "notios": "notios dev",
     "dev": "run-p dev:*",
     "dev:client": "npm run dev --prefix client",
+    "dev:docs": "npm start --prefix docusaurus",
     "dev:server": "npm run dev --prefix server",
     "generate": "run-p generate:*",
     "generate:client": "npm run generate --prefix client",
@@ -13,11 +14,12 @@
     "lint": "run-p lint:js lint:prettier lint:style",
     "lint:js": "eslint --ext .ts,.tsx,.js --ignore-path .gitignore .",
     "lint:prettier": "prettier --check \"./**/*.{ts,tsx,js}\" --ignore-path .gitignore",
-    "lint:style": "stylelint \"client/**/*.ts{,x}\"",
+    "lint:style": "stylelint \"{client,docusaurus}/**/*.ts{,x}\"",
     "lint:fix": "npm run lint:js -- --fix && prettier --write \"./**/*.{ts,tsx,js}\" --ignore-path .gitignore && npm run lint:style -- --fix",
     "test": "npm run test --prefix client && npm run test --prefix server",
     "typecheck": "run-p typecheck:*",
     "typecheck:client": "npm run typecheck --prefix client",
+    "typecheck:docs": "npm run typecheck --prefix docusaurus",
     "typecheck:server": "npm run typecheck --prefix server"
   },
   "devDependencies": {
