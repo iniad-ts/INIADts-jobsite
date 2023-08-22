@@ -82,15 +82,15 @@ const config = {
             position: 'left',
             items: [
               {
-                to: '/members#25',
+                to: '/docs/member/2025',
                 label: '25卒',
               },
               {
-                to: '/members#26',
+                to: '/docs/member/2026',
                 label: '26卒',
               },
               {
-                to: '/members#27',
+                to: '/docs/member/2027',
                 label: '27卒',
               },
             ],
