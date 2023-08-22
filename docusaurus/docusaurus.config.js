@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: 'My Site',
+  title: 'INIAD.ts',
   tagline: 'Dinosaurs are cool',
   favicon: 'img/favicon.ico',
   customFields: {
@@ -17,15 +17,15 @@ const config = {
   },
 
   // Set the production url of your site here
-  url: 'https://your-docusaurus-test-site.com',
+  url: 'https://iniad-ts.com',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'facebook', // Usually your GitHub org/user name.
-  projectName: 'docusaurus', // Usually your repo name.
+  organizationName: 'INIAD.ts', // Usually your GitHub org/user name.
+  projectName: 'INIADts-jobsite', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -34,8 +34,8 @@ const config = {
   // metadata like html lang. For example, if your site is Chinese, you may want
   // to replace "en" with "zh-Hans".
   i18n: {
-    defaultLocale: 'en',
-    locales: ['en'],
+    defaultLocale: 'ja',
+    locales: ['ja'],
   },
 
   presets: [
@@ -70,21 +70,38 @@ const config = {
       // Replace with your project's social card
       image: 'img/docusaurus-social-card.jpg',
       navbar: {
-        title: 'My Site',
+        title: 'INIAD.ts',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'INIAD.ts Logo',
           src: 'img/logo.svg',
         },
         items: [
           {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
+            to: '/members',
+            label: 'メンバー一覧',
             position: 'left',
-            label: 'Tutorial',
+            items: [
+              {
+                to: '/members#25',
+                label: '25卒',
+              },
+              {
+                to: '/members#26',
+                label: '26卒',
+              },
+              {
+                to: '/members#27',
+                label: '27卒',
+              },
+            ],
           },
-          { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/facebook/docusaurus',
+            to: '/contanct',
+            label: 'お問い合わせ',
+            position: 'left',
+          },
+          {
+            href: 'https://github.com/iniad-developers/INIADts-jobsite',
             label: 'GitHub',
             position: 'right',
           },
@@ -94,28 +111,19 @@ const config = {
         style: 'dark',
         links: [
           {
-            title: 'Docs',
+            title: 'Members',
             items: [
               {
-                label: 'Tutorial',
-                to: '/docs/intro',
-              },
-            ],
-          },
-          {
-            title: 'Community',
-            items: [
-              {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: '25卒',
+                to: '/members#25',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
+                label: '26卒',
+                to: '/members#26',
               },
               {
-                label: 'Twitter',
-                href: 'https://twitter.com/docusaurus',
+                label: '27卒',
+                to: '/members#27',
               },
             ],
           },
@@ -123,17 +131,13 @@ const config = {
             title: 'More',
             items: [
               {
-                label: 'Blog',
-                to: '/blog',
-              },
-              {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
+                href: 'https://github.com/iniad-developers/INIADts-jobsite',
               },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} INIAD.ts. Built with Docusaurus.`,
       },
       prism: {
         theme: lightCodeTheme,
