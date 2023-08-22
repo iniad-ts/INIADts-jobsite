@@ -24,7 +24,7 @@ export default function Home(): JSX.Element {
             また、どのような活動をしているかを書く
           </p>
           <div className={styles.link}>
-            <Link to="/about">INIAD.tsメンバー一覧</Link>
+            <Link to="/members">INIAD.tsメンバー一覧</Link>
           </div>
         </div>
         <div className={styles.section}>
