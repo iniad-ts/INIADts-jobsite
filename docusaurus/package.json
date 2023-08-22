@@ -8,6 +8,8 @@
     "start:docs": "docusaurus start --port 3001",
     "start:hcm": "hcm 'src/**/*.module.css' -w",
     "start:aspida": "aspida --watch",
+    "generate": "run-p generate:*",
+    "generate:aspida": "aspida",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
