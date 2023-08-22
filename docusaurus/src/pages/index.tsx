@@ -8,7 +8,7 @@ import styles from './index.module.css';
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout title={`${siteConfig.title}`} description="job site for INIAD.ts">
+    <Layout title={siteConfig.title} description="job site for INIAD.ts">
       <AuthLoader />
       <main>
         <div className={styles.top}>
