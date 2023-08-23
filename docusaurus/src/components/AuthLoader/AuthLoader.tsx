@@ -38,13 +38,11 @@ export const AuthLoader = () => {
     if (!isInitedAuth) return;
 
     const redirectToHome = async () => {
-      if (location.pathname !== '/login') return;
-      window.location.href = '/';
+      //
     };
 
     const redirectToLogin = async () => {
-      if (location.pathname === '/login') return;
-      window.location.href = '/login';
+      //
     };
 
     user ? redirectToHome() : redirectToLogin();

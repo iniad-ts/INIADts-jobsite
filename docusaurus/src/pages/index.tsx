@@ -2,14 +2,12 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import React from 'react';
-import { AuthLoader } from '../components/AuthLoader/AuthLoader';
 import styles from './index.module.css';
 
 export default function Home(): JSX.Element {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Layout title={siteConfig.title} description="job site for INIAD.ts">
-      <AuthLoader />
       <main>
         <div className={styles.top}>
           <h1 className={styles.title}>INIAD.ts</h1>
