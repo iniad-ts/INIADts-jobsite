@@ -19,20 +19,17 @@ const Members = () => {
 
   const gradeList = useMemo(() => {
     if (!members) return [];
+
     const grades = members.members.map((member) => member.graduateYear);
     const gradeSet = grades.filter((grade, i) => grades.indexOf(grade) === i);
-    return gradeSet.sort((a, b) => b - a);
+
+    return gradeSet
+      .sort((a, b) => b - a)
+      .map((grade) => {
+        const gradeMembers = members?.members.filter((member) => member.graduateYear === grade);
+        return { grade, members: gradeMembers };
+      });
   }, [members]);
-
-  const membersInGrade = (grade: number) =>
-    members?.members.filter((member) => member.graduateYear === grade);
-
-  const MemberInfo = (member: MemberListModel['members'][0]) => (
-    <div key={member.githubId} className={styles.member}>
-      <div>id: {member.githubId}</div>
-      <div>name: {member.userName}</div>
-    </div>
-  );
 
   return (
     <Layout title="Members">
@@ -40,11 +37,14 @@ const Members = () => {
         <h1 className={styles.title}>Members</h1>
         <main className={styles.main}>
           {gradeList.map((grade) => (
-            <div key={grade} className={styles.grade}>
-              <h3>{grade}卒</h3>
+            <div key={grade.grade} className={styles.grade}>
+              <h2>{grade.grade}卒</h2>
               <div>
-                {membersInGrade(grade)?.map((member) => (
-                  <MemberInfo {...member} key={member.githubId} />
+                {grade.members.map((member) => (
+                  <div key={member.githubId} className={styles.member}>
+                    <div>{member.githubId}</div>
+                    <div>{member.userName}</div>
+                  </div>
                 ))}
               </div>
             </div>
