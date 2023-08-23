@@ -1,0 +1,27 @@
+.title {
+  font-size: 2.4rem;
+  font-weight: bold;
+  text-shadow: 0 0 4px #fff;
+  width: fit-content;
+  margin: 32px auto;
+  padding: 0 16px;
+  background-image: linear-gradient(to bottom, transparent, transparent 55%, #1d76d0 55%, #1d76d0);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 4vmin;
+}
+
+.grade {
+  width: 50vmin;
+}
+
+.member {
+  background-color: #1d76d033;
+  margin-bottom: 16px;
+}

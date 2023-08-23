@@ -1,0 +1,17 @@
+.container {
+  padding: 4vmin;
+}
+
+.title {
+  width: fit-content;
+  padding: 0 0.5em;
+  margin: 0 auto 2em;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 60%,
+    #1d76d0 60%,
+    #1d76d0 100%
+  );
+  text-shadow: 0 0 3px #fff;
+}

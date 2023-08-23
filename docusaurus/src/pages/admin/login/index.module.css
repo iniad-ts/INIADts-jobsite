@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 8vmin 4vmin;
+  width: 100vw;
+}
+
+.button {
+  display: block;
+  background-color: #444;
+  color: white;
+  border: 0;
+  padding: 4px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.1s ease-in;
+}
+
+.button:active {
+  transform: scale(0.9);
+}
