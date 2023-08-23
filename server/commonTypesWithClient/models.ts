@@ -42,10 +42,13 @@ export type MemberModel = {
   updateAt: number;
 };
 
+export type MemberSummaryModel = {
+  githubId: string;
+  userName: string;
+  avatarUrl?: string;
+  graduateYear: number;
+};
+
 export type MemberListModel = {
-  members: {
-    githubId: string;
-    userName: string;
-    graduateYear: number;
-  }[];
+  members: MemberSummaryModel[];
 };
