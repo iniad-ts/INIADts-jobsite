@@ -6,28 +6,38 @@ import { GetObjectCommand, PutObjectCommand } from '@aws-sdk/client-s3';
 import type { Member } from '@prisma/client';
 import { z } from 'zod';
 
-const toMemberModel = (prismaMember: Member): MemberModel => ({
-  githubId: z.string().parse(prismaMember.githubId),
-  userName: z.string().parse(prismaMember.userName),
-  displayName: z.string().parse(prismaMember.displayName),
-  realName: z.string().parse(prismaMember.realName),
-  graduateYear: z.number().min(2000).max(3000).parse(prismaMember.graduateYear),
-  introduction: z.string().nullable().parse(prismaMember.introduction) ?? undefined,
-  avatarUrl: z.string().url().nullable().parse(prismaMember.avatarUrl) ?? undefined,
-  socialLinks: z.array(z.string().url()).nullable().parse(prismaMember.socialLinks) ?? undefined,
-  products:
-    z
-      .array(
-        z.object({
-          title: z.string(),
-          description: z.string(),
-          url: z.string(),
-        })
-      )
-      .nullable()
-      .parse(prismaMember.products) ?? undefined,
-  updateAt: prismaMember.updatedAt.getTime(),
-});
+// eslint-disable-next-line complexity
+const toMemberModel = (prismaMember: Member): MemberModel | null => {
+  try {
+    const memberModel: MemberModel = {
+      githubId: z.string().parse(prismaMember.githubId),
+      userName: z.string().parse(prismaMember.userName),
+      realName: z.string().parse(prismaMember.realName),
+      displayName: z.string().parse(prismaMember.displayName),
+      avatarUrl: z.string().url().nullable().parse(prismaMember.avatarUrl) ?? undefined,
+      graduateYear: z.number().min(2000).max(3000).parse(prismaMember.graduateYear),
+      introduction: z.string().nullable().parse(prismaMember.introduction) ?? undefined,
+      socialLinks:
+        z.array(z.string().url()).nullable().parse(prismaMember.socialLinks) ?? undefined,
+      products:
+        z
+          .array(
+            z.object({
+              title: z.string(),
+              description: z.string(),
+              url: z.string(),
+            })
+          )
+          .nullable()
+          .parse(prismaMember.products) ?? undefined,
+      updateAt: prismaMember.updatedAt.getTime(),
+    };
+    return memberModel;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+};
 
 export const membersRepository = {
   saveToDB: async (member: MemberModel): Promise<MemberModel | null> => {
