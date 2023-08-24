@@ -41,7 +41,7 @@ const Contact = () => {
     e.target.style.height = `${height}px`;
   };
 
-  const canSubmoit = useMemo(() => {
+  const canSubmit = useMemo(() => {
     const term = [
       contactInfo.name !== '',
       contactInfo.email !== '',
@@ -128,7 +128,7 @@ const Contact = () => {
             />
           </div>
           <div className={styles.section}>
-            <button className={styles.button} disabled={!canSubmoit}>
+            <button className={styles.button} disabled={!canSubmit}>
               送信
             </button>
           </div>
