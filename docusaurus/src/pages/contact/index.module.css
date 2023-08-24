@@ -1,0 +1,88 @@
+.container {
+  padding: 4vmin;
+}
+
+.title {
+  margin: 1em auto 2em;
+  width: fit-content;
+  padding: 0 0.5em;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 60%,
+    #1d76d0 60%,
+    #1d76d0 100%
+  );
+  text-shadow: 0 0 3px #fff;
+}
+
+.main {
+  width: min(64vw, 100svh);
+  margin: 0 auto;
+}
+
+.section {
+  margin-bottom: 12px;
+}
+
+.label {
+  font-size: 0.8em;
+  margin-bottom: 0.5em;
+}
+
+.label.isRequired::after {
+  content: '*';
+  color: red;
+}
+
+.form {
+  width: 100%;
+}
+
+.form {
+  display: block;
+  min-height: 36px;
+  border-radius: 6px;
+  border: 0;
+  background-color: #0001;
+  padding: 4px 12px;
+}
+
+textarea.form {
+  min-height: 64px;
+  padding: 12px;
+  resize: vertical;
+}
+
+.form:focus {
+  outline-width: 1px;
+  outline-color: #1d76d0;
+}
+
+.button {
+  display: block;
+  background-color: #1d76d0;
+  border: 0;
+  border-radius: 4px;
+  padding: 4px 8px;
+  color: white;
+  margin: 0 0 0 auto;
+  transition-property: transform, background-color, color, filter;
+  transition-duration: 0.1s, 0.2s, 0.2s, 0.2s;
+  transition-timing-function: ease-in-out;
+  cursor: pointer;
+}
+
+.button:disabled {
+  background-color: #0003;
+  color: #0005;
+  cursor: not-allowed;
+}
+
+.button:hover {
+  filter: brightness(1.2);
+}
+
+.button:active {
+  transform: scale(0.9);
+}
