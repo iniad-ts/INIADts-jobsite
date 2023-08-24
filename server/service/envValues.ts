@@ -5,7 +5,7 @@ dotenv.config();
 const PORT = +(process.env.PORT ?? '8080');
 const API_BASE_PATH = process.env.API_BASE_PATH ?? '';
 const API_ORIGIN = process.env.API_ORIGIN ?? '';
-const CORS_ORIGIN = process.env.CORS_ORIGIN ?? '';
+const CORS_ORIGIN = process.env.CORS_ORIGIN?.split(',') ?? [];
 const FIREBASE_AUTH_EMULATOR_HOST = process.env.FIREBASE_AUTH_EMULATOR_HOST;
 const FIREBASE_SERVER_KEY = process.env.FIREBASE_SERVER_KEY ?? '';
 const S3_ENDPOINT = process.env.S3_ENDPOINT ?? '';
