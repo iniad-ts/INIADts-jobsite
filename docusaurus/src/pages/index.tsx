@@ -1,10 +1,59 @@
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import React from 'react';
+import { Carousel } from '../components/Carousel/Carousel';
 import styles from './index.module.css';
 
 const Home = (): JSX.Element => {
   const { siteConfig } = useDocusaurusContext();
+
+  const products = [
+    {
+      title: 'Gradius',
+      description:
+        'Gradiusは横スクロールの対戦型シューティングゲームでINIAD Fes 2023で発表されました。',
+      image: 'https://github.com/INIAD-Developers.png',
+    },
+    {
+      title: 'Othllo',
+      description:
+        'INIAD.tsでは入会してまず最初にオセロ制作を行い、TypescriptやReactの基礎を学びます。',
+      image: 'https://github.com/INIAD-Developers.png',
+    },
+    {
+      title: 'Tetris',
+      description: 'TetrisはINIAD.ts発祥のパズルゲームで世界中で愛されています。',
+      image: 'https://github.com/INIAD-Developers.png',
+    },
+    {
+      title: 'minesweeper',
+      description: 'Minesweeper',
+      image: 'https://github.com/INIAD-Developers.png',
+    },
+    {
+      title: 'Gradius',
+      description:
+        'Gradiusは横スクロールの対戦型シューティングゲームでINIAD Fes 2023で発表されました。',
+      image: 'https://github.com/INIAD-Developers.png',
+    },
+    {
+      title: 'Othllo',
+      description:
+        'INIAD.tsでは入会してまず最初にオセロ制作を行い、TypescriptやReactの基礎を学びます。',
+      image: 'https://github.com/INIAD-Developers.png',
+    },
+    {
+      title: 'Tetris',
+      description: 'TetrisはINIAD.ts発祥のパズルゲームで世界中で愛されています。',
+      image: 'https://github.com/INIAD-Developers.png',
+    },
+    {
+      title: 'minesweeper',
+      description: 'Minesweeper',
+      image: 'https://github.com/INIAD-Developers.png',
+    },
+  ];
+
   return (
     <Layout title={siteConfig.title} description="INIAD.tsサイト">
       <div className={styles.container}>
@@ -15,7 +64,7 @@ const Home = (): JSX.Element => {
         </div>
         <div className={styles.products}>
           <h2 className={styles.contentTitle}>2023年の主要プロダクト</h2>
-          <div />
+          <Carousel products={products} />
         </div>
         <div className={styles.activity}>
           <div className={styles.activityText}>
