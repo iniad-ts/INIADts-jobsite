@@ -1,63 +1,105 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr 88svmin 1fr;
+  gap: 8vmin;
+}
+
 .top {
+  grid-column: 1 / 4;
+  height: 300px;
   display: flex;
+  background-color: var(--ifm-color-primary);
+  padding: 0 calc(50vw - 44svmin);
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  gap: 8px;
-  width: 100%;
-  padding: 4vmin;
+  align-items: flex-start;
 }
 
-.title {
-  font-size: 4rem;
+.top > .title {
+  font-size: 6vmin;
+  line-height: 6vmin;
+  color: #fff;
   margin: 0;
-  padding: 0 1rem;
-  text-shadow: 0 0 4px #fff;
-  background-image: linear-gradient(to bottom, transparent, transparent 70%, #1d76d0 70%, #1d76d0);
+  vertical-align: text-bottom;
 }
 
-.section {
-  width: 50vmin;
-  margin: 0 auto 64px;
+.top > p {
+  font-size: 1.6vmin;
+  line-height: 2vmin;
+  color: #fff;
 }
 
-.section > h2 {
-  color: #1d76d0;
+.top > button {
+  background-color: #fff;
+  color: var(--ifm-color-primary);
+  border: none;
+  border-radius: 0.5vmin;
+  padding: 0.8vmin 1.2vmin;
+  font-size: 1.4vmin;
+  font-weight: bold;
+  cursor: pointer;
 }
 
-.text {
-  padding-left: 1rem;
-  border-left: solid 1px black;
+.contentTitle {
+  border-left: solid 0.3vmin var(--ifm-color-primary);
+  padding-left: 1vmin;
 }
 
-.link {
-  width: fit-content;
-  margin: 0 auto;
-  background-color: #1d76d0;
-  padding: 8px 36px 6px 16px;
-  border-radius: 20px;
-  transition: background-color 0.2s ease-in-out;
-  position: relative;
+.products {
+  grid-column: 2;
 }
 
-.link:hover {
-  background-color: #195a9c;
+.activity {
+  grid-column: 2;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 4vmin;
 }
 
-.link > a {
-  color: white;
-  text-decoration: none;
+.activityText {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 100%;
 }
 
-.link::after {
-  content: '';
-  display: block;
-  position: absolute;
-  height: 20%;
-  aspect-ratio: 1;
-  top: 40%;
-  right: 16px;
-  border-right: solid 2px white;
-  border-top: solid 2px white;
-  transform: rotate(45deg);
+.activityImage {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 100%;
+  height: 100%;
+  border-radius: 0.4vmin;
+  overflow: hidden;
+}
+
+.activityImage > img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@media screen and (max-aspect-ratio: 3 / 4) {
+  .activity {
+    flex-direction: column;
+    gap: 1vmin;
+  }
+
+  .activityText {
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: auto;
+  }
+
+  .activityImage {
+    aspect-ratio: 16 / 9;
+    margin-bottom: 2vmin;
+  }
+}
+
+.activityText > p {
+  margin: 0;
+}
+
+.members {
+  grid-column: 2;
+  margin-bottom: 4vmin;
 }
