@@ -27,7 +27,6 @@ export const Carousel = ({ products }: { products: Product[] }): JSX.Element => 
         scrollLeft - productSize * 0.4 < (productSize + vmin * 2) * i,
         scrollLeft + carouselSize + productSize * 0.4 > productSize * (i + 1) + vmin * 2 * i,
       ].every(Boolean);
-      console.log(isActive);
 
       if (isActive) {
         dot.classList.add(styles.dotActive);
