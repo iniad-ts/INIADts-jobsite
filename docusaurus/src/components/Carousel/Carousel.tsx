@@ -1,6 +1,6 @@
 import type { Product } from '@site/src/types/type';
 import React, { useEffect, useState } from 'react';
-import styles from './Calousel.module.css';
+import styles from './Carousel.module.css';
 
 export const Carousel = ({ products }: { products: Product[] }): JSX.Element => {
   const [productSize, setProductSize] = useState<number>(0);
