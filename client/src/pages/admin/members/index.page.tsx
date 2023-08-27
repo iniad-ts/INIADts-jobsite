@@ -7,7 +7,7 @@ import { apiClient } from 'src/utils/apiClient';
 import styles from './index.module.css';
 
 const AdminMembers = () => {
-  const [members, setMembers] = useState<MemberModel[]>([]);
+  const [members, setMembers] = useState<(MemberModel | null)[]>([]);
   const [memberInfo, setMemberInfo] = useState({
     githubId: '',
     userName: '',
@@ -97,8 +97,8 @@ const AdminMembers = () => {
         <h1 className={styles.title}>#Member一覧</h1>
         <div>
           {members.map((member) => (
-            <div key={member.githubId}>
-              <Link href={`/members/${member.githubId}`}>{member.displayName}</Link>
+            <div key={member?.githubId}>
+              <Link href={`/members/${member?.githubId}`}>{member?.displayName}</Link>
             </div>
           ))}
         </div>

@@ -44,6 +44,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          routeBasePath: '/members/',
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
@@ -82,15 +83,15 @@ const config = {
             position: 'left',
             items: [
               {
-                to: '/docs/member/2025',
+                to: '/members/2025',
                 label: '25卒',
               },
               {
-                to: '/docs/member/2026',
+                to: '/members/2026',
                 label: '26卒',
               },
               {
-                to: '/docs/member/2027',
+                to: '/members/2027',
                 label: '27卒',
               },
             ],
@@ -115,15 +116,15 @@ const config = {
             items: [
               {
                 label: '25卒',
-                to: '/members#25',
+                to: '/members/2025',
               },
               {
                 label: '26卒',
-                to: '/members#26',
+                to: '/members/2026',
               },
               {
                 label: '27卒',
-                to: '/members#27',
+                to: '/members/2027',
               },
             ],
           },

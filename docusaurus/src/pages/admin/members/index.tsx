@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './index.module.css';
 
 const Members = () => {
-  const [members, setMembers] = useState<MemberModel[]>();
+  const [members, setMembers] = useState<(MemberModel | null)[]>();
 
   const fetchMembers = async () => {
     const res = await apiClient.members.$get();
@@ -31,9 +31,9 @@ const Members = () => {
           <h2>メンバー一覧</h2>
           <div>
             {members?.map((member) => (
-              <div key={member.githubId}>
-                <div>{member.githubId}</div>
-                <div>{member.userName}</div>
+              <div key={member?.githubId}>
+                <div>{member?.githubId}</div>
+                <div>{member?.userName}</div>
               </div>
             ))}
           </div>
