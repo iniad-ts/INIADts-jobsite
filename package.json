@@ -47,5 +47,8 @@
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "dependencies": {
+    "@types/react": "^18.2.21"
   }
 }
