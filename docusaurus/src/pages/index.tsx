@@ -1,44 +1,54 @@
-import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import React from 'react';
 import styles from './index.module.css';
 
-export default function Home(): JSX.Element {
+const Home = (): JSX.Element => {
   const { siteConfig } = useDocusaurusContext();
   return (
-    <Layout title={siteConfig.title} description="job site for INIAD.ts">
-      <main>
+    <Layout title={siteConfig.title} description="INIAD.tsサイト">
+      <div className={styles.container}>
         <div className={styles.top}>
           <h1 className={styles.title}>INIAD.ts</h1>
-          <p>INIAD公認サークル(予定)・INIAD.tsのサイトです</p>
+          <p>INIAD(東洋大学情報連携学部)公認サークル</p>
+          <button>詳しく見る</button>
         </div>
-        <div className={styles.section}>
-          <h2># About INIAD.ts</h2>
-          <p className={styles.text}>
-            ここにINIAD.tsについての説明を書く
-            <br />
-            typescriptを主に使用している旨、 <br />
-            また、どのような活動をしているかを書く
-          </p>
-          <div className={styles.link}>
-            <Link to="/members">INIAD.tsメンバー一覧</Link>
+        <div className={styles.products}>
+          <h2 className={styles.contentTitle}>2023年の主要プロダクト</h2>
+          <div />
+        </div>
+        <div className={styles.activity}>
+          <div className={styles.activityText}>
+            <h2 className={styles.contentTitle}>主な活動</h2>
+            <p>
+              INIAD.tsでは、毎週水曜日に活動を行っています。
+              活動内容は、プロダクト開発や、勉強会、LT会などです。
+              また、毎年夏には、合宿を行っています。
+              2021年度は、新型コロナウイルスの影響により、オンラインでの活動を行っています。
+              2022年度以降は、東洋大学のキャンパスでの活動を予定しています。
+              活動に興味がある方は、ぜひ、お気軽にお問い合わせください。
+              また、INIAD.tsでは、毎年新入生を募集しています。
+              新入生の方は、ぜひ、お気軽にお問い合わせください。
+              お問い合わせは、TwitterのDM、または、メールにてお願いします。
+              <br />
+              <br />
+              This sentence is written by GitHub Copilot.
+            </p>
+          </div>
+          <div className={styles.activityImage}>
+            <img
+              src="https://www.toyo.ac.jp/nyushi/img/about/campus/akabanedai/gallery_img_03.jpg"
+              alt="仮にINIADの写真を置いています"
+            />
           </div>
         </div>
-        <div className={styles.section}>
-          <h2># About this site</h2>
-          <p className={styles.text}>
-            この就職サイトについての説明を書く
-            <br />
-            我々の目的や、双方へのメリットを記載する
-            <br />
-            また、どのような機能やページがあるかをわかりやすくまとめる
-          </p>
-          <div className={styles.link}>
-            <Link to="/contact">お問い合わせ</Link>
-          </div>
+        <div className={styles.members}>
+          <h2 className={styles.contentTitle}>メンバー</h2>
+          <div />
         </div>
-      </main>
+      </div>
     </Layout>
   );
-}
+};
+
+export default Home;
