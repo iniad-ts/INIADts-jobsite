@@ -2,10 +2,13 @@ import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import React from 'react';
+import { Carousel } from '../components/Carousel/Carousel';
+import { products } from '../data/products';
 import styles from './index.module.css';
 
 const Home = (): JSX.Element => {
   const { siteConfig } = useDocusaurusContext();
+
   return (
     <Layout title={siteConfig.title} description="INIAD.tsサイト">
       <div className={styles.container}>
@@ -16,7 +19,7 @@ const Home = (): JSX.Element => {
         </div>
         <div className={styles.products}>
           <h2 className={styles.contentTitle}>2023年の主要プロダクト</h2>
-          <div />
+          <Carousel products={products} />
         </div>
         <div className={styles.activity}>
           <div className={styles.activityText}>
