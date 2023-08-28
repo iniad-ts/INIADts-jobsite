@@ -19,7 +19,7 @@ const Home = (): JSX.Element => {
         </div>
         <div className={styles.products}>
           <h2 className={styles.contentTitle}>2023年の主要プロダクト</h2>
-          <Carousel products={products} />
+          <Carousel carouselData={products} />
         </div>
         <div className={styles.activity}>
           <div className={styles.activityText}>
