@@ -105,6 +105,7 @@
   transition-duration: 0.2s, 0.1s;
   transition-timing-function: ease-in-out, ease-in;
   position: relative;
+  cursor: pointer;
 }
 
 .button:hover {
