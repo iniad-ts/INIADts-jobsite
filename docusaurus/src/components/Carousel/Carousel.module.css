@@ -124,6 +124,40 @@
   grid-area: right;
 }
 
+.right::before,
+.left::before,
+.right::after,
+.left::after {
+  content: '';
+  display: block;
+  width: 0.8svmin;
+  height: 0.2svmin;
+  position: absolute;
+  top: 0.9svmin;
+  margin: 0 1.5svmin;
+  background-color: #fff;
+}
+
+.right::before,
+.right::after {
+  transform-origin: calc(100% - 0.1svmin) 0.1svmin;
+}
+
+.left::before,
+.left::after {
+  transform-origin: 0.1svmin 0.1svmin;
+}
+
+.right::after,
+.left::before {
+  transform: rotate(45deg);
+}
+
+.right::before,
+.left::after {
+  transform: rotate(-45deg);
+}
+
 @media screen and (max-aspect-ratio: 3 / 4) {
   .buttons {
     display: none;
