@@ -116,6 +116,27 @@
   transform: scale(0.9);
 }
 
+.buttonInner {
+  width: 100%;
+  height: 100%;
+}
+
+.left:hover > .buttonInner {
+  animation: pyokopyoko-left 0.8s ease-in-out infinite forwards;
+}
+
+.right:hover > .buttonInner {
+  animation: pyokopyoko-right 0.8s ease-in-out infinite forwards;
+}
+
+.left:active > .buttonInner {
+  animation-iteration-count: 1;
+}
+
+.right:active > .buttonInner {
+  animation-iteration-count: 1;
+}
+
 .left {
   grid-area: left;
 }
@@ -124,10 +145,8 @@
   grid-area: right;
 }
 
-.right::before,
-.left::before,
-.right::after,
-.left::after {
+.buttonInner::before,
+.buttonInner::after {
   content: '';
   display: block;
   width: 0.8svmin;
@@ -138,28 +157,52 @@
   background-color: #fff;
 }
 
-.right::before,
-.right::after {
+.right > .buttonInner::before,
+.right > .buttonInner::after {
   transform-origin: calc(100% - 0.1svmin) 0.1svmin;
 }
 
-.left::before,
-.left::after {
+.left > .buttonInner::before,
+.left > .buttonInner::after {
   transform-origin: 0.1svmin 0.1svmin;
 }
 
-.right::after,
-.left::before {
+.right > .buttonInner::after,
+.left > .buttonInner::before {
   transform: rotate(45deg);
 }
 
-.right::before,
-.left::after {
+.right > .buttonInner::before,
+.left > .buttonInner::after {
   transform: rotate(-45deg);
 }
 
 @media screen and (max-aspect-ratio: 3 / 4) {
   .buttons {
     display: none;
+  }
+}
+
+@keyframes pyokopyoko-left {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-0.5svmin);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes pyokopyoko-right {
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(0.5svmin);
+  }
+  100% {
+    transform: translateX(0);
   }
 }

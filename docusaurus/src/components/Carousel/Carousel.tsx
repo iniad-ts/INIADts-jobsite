@@ -95,8 +95,12 @@ export const Carousel = ({ carouselData }: Props): JSX.Element => {
         ))}
       </div>
       <div className={styles.buttons}>
-        <button className={`${styles.left} ${styles.button}`} onClick={() => scrollTo('left')} />
-        <button className={`${styles.right} ${styles.button}`} onClick={() => scrollTo('right')} />
+        <button className={`${styles.left} ${styles.button}`} onClick={() => scrollTo('left')}>
+          <div className={styles.buttonInner} />
+        </button>
+        <button className={`${styles.right} ${styles.button}`} onClick={() => scrollTo('right')}>
+          <div className={styles.buttonInner} />
+        </button>
       </div>
     </div>
   );
