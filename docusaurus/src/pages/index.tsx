@@ -2,6 +2,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import React from 'react';
 import { Carousel } from '../components/Carousel/Carousel';
+import { Members } from '../components/Members/Members';
 import { products } from '../data/products';
 import styles from './index.module.css';
 
@@ -47,6 +48,7 @@ const Home = (): JSX.Element => {
         </div>
         <div className={styles.members}>
           <h2 className={styles.contentTitle}>メンバー</h2>
+          <Members />
           <div />
         </div>
       </div>
