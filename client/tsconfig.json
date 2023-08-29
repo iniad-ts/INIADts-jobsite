@@ -5,7 +5,8 @@
     "baseUrl": ".",
     "strict": true,
     "forceConsistentCasingInFileNames": true,
-    "incremental": true
+    "incremental": true,
+    "moduleResolution": "node"
   },
   "include": ["**/*.ts", "**/*.tsx", "*.js", ".eslintrc.js"],
   "exclude": ["node_modules"]

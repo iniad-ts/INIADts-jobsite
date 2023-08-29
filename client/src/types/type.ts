@@ -1,18 +1,18 @@
-export type product = {
+export type Product = {
   title: string;
   description: string;
   image: string;
 };
 
-export type membersummary = {
+export type MemberSummary = {
   userName: string;
   displayName: string;
   graduateYear: number;
   avatarUrl?: string;
 };
 
-export type member = membersummary & {
+export type Member = MemberSummary & {
   introduction?: string;
   socialLinks?: string[];
-  products?: product[];
+  products?: Product[];
 };
