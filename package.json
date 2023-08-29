@@ -12,7 +12,7 @@
     "lint": "run-p lint:js lint:prettier lint:style",
     "lint:js": "eslint --ext .ts,.tsx,.js --ignore-path .gitignore .",
     "lint:prettier": "prettier --check \"./**/*.{ts,tsx,js}\" --ignore-path .gitignore",
-    "lint:style": "stylelint \"client/**/*.ts{,x}\"",
+    "lint:style": "stylelint \"client/**/*.css\"",
     "lint:fix": "npm run lint:js -- --fix && prettier --write \"./**/*.{ts,tsx,js}\" --ignore-path .gitignore && npm run lint:style -- --fix",
     "test": "npm run test --prefix client && npm run test --prefix server",
     "typecheck": "run-p typecheck:*",

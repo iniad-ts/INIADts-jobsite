@@ -5,21 +5,21 @@
 }
 
 .top {
-  grid-column: 1 / 4;
-  height: 300px;
   display: flex;
-  background-color: var(--ifm-color-primary);
-  padding: 0 calc(50vw - 44svmin);
   flex-direction: column;
-  justify-content: center;
+  grid-column: 1 / 4;
   align-items: flex-start;
+  justify-content: center;
+  height: 300px;
+  padding: 0 calc(50vw - 44svmin);
+  background-color: var(--ifm-color-primary);
 }
 
 .top > .title {
+  margin: 0;
   font-size: 6vmin;
   line-height: 6vmin;
   color: #fff;
-  margin: 0;
   vertical-align: text-bottom;
 }
 
@@ -31,17 +31,17 @@
 
 .top > a {
   display: inline-block;
-  background-color: #ffffff;
-  color: var(--ifm-color-primary);
-  border: none;
-  border-radius: 0.5vmin;
   padding: 0.8vmin 1.2vmin;
   font-size: 1.4vmin;
   font-weight: bold;
+  color: var(--ifm-color-primary);
   text-decoration: none;
-  transition-property: background-color, transform;
-  transition-duration: 0.2s, 0.1s;
+  background-color: #fff;
+  border: none;
+  border-radius: 0.5vmin;
   transition-timing-function: ease-in-out, ease-in;
+  transition-duration: 0.2s, 0.1s;
+  transition-property: background-color, transform;
 }
 
 .top > a:hover {
@@ -53,8 +53,8 @@
 }
 
 .contentTitle {
-  border-left: solid 0.3vmin var(--ifm-color-primary);
   padding-left: 1vmin;
+  border-left: solid 0.3vmin var(--ifm-color-primary);
 }
 
 .products {
@@ -62,25 +62,21 @@
 }
 
 .activity {
-  grid-column: 2;
   display: flex;
   flex-direction: row-reverse;
+  grid-column: 2;
   gap: 4vmin;
 }
 
 .activityText {
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 100%;
+  flex: 1 1 100%;
 }
 
 .activityImage {
-  flex-grow: 1;
-  flex-shrink: 1;
-  flex-basis: 100%;
+  flex: 1 1 100%;
   height: 100%;
-  border-radius: 0.4vmin;
   overflow: hidden;
+  border-radius: 0.4vmin;
 }
 
 .activityImage > img {
@@ -96,9 +92,7 @@
   }
 
   .activityText {
-    flex-grow: 0;
-    flex-shrink: 0;
-    flex-basis: auto;
+    flex: 0 0 auto;
   }
 
   .activityImage {

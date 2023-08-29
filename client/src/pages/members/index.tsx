@@ -1,6 +1,6 @@
 import { members } from '@site/src/data/members';
 import Layout from '@theme/Layout';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import styles from './index.module.css';
 
 const Members = () => {
