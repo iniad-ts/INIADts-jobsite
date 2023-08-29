@@ -5,10 +5,6 @@ node_modules/
 /.pnp
 .pnp.js
 
-# next.js
-/client/.next/
-/client/out/
-
 # misc
 .DS_Store
 *.pem
