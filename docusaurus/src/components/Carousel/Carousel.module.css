@@ -9,11 +9,11 @@
 .carousel {
   grid-area: image;
   width: 100%;
+  padding: 0;
   overflow-x: scroll;
+  border-radius: 1svmin;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
-  border-radius: 1svmin;
-  padding: 0;
 }
 
 .carousel::-webkit-scrollbar {
@@ -22,20 +22,18 @@
 
 .carouselList {
   display: flex;
-  margin: 0;
-  padding: 0;
-  list-style: none;
   gap: 2svmin;
+  padding: 0;
+  margin: 0;
+  list-style: none;
 }
 
 .carouselItem {
-  flex-shrink: 0;
-  flex-grow: 0;
-  flex-basis: min(300px, 43svmin);
-  scroll-snap-align: center;
+  flex: 0 0 min(300px, 43svmin);
+  overflow: hidden;
   background-color: var(--ifm-background-surface-color);
   border-radius: 1svmin;
-  overflow: hidden;
+  scroll-snap-align: center;
   scroll-snap-align: start;
 }
 
@@ -54,34 +52,34 @@
 }
 
 .carouselText {
-  overflow: hidden;
   padding: 2svmin;
+  overflow: hidden;
 }
 
 .carouselText > p {
-  overflow: hidden;
   display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4;
-  margin: 0;
 }
 
 .dots {
-  grid-area: dot;
   display: flex;
-  justify-content: space-between;
+  grid-area: dot;
   gap: min(0.6svh, 1vw);
+  justify-content: space-between;
 }
 
 .dot {
+  align-self: center;
   width: min(0.6svh, 1vw);
   height: min(0.6svh, 1vw);
-  border-radius: 50%;
   background-color: #aaa;
-  transition-property: background-color, transform;
-  transition-duration: 0.2s, 0.1s;
+  border-radius: 50%;
   transition-timing-function: ease-in-out;
-  align-self: center;
+  transition-duration: 0.2s, 0.1s;
+  transition-property: background-color, transform;
 }
 
 .dotActive {
@@ -94,18 +92,18 @@
 }
 
 .button {
+  position: relative;
   width: 4svmin;
   height: 2svmin;
-  border-radius: 0.6svmin;
-  background-color: var(--ifm-color-primary-lightest);
-  color: #fff;
   font-weight: bold;
-  border: 0;
-  transition-property: background-color, transform;
-  transition-duration: 0.2s, 0.1s;
-  transition-timing-function: ease-in-out, ease-in;
-  position: relative;
+  color: #fff;
   cursor: pointer;
+  background-color: var(--ifm-color-primary-lightest);
+  border: 0;
+  border-radius: 0.6svmin;
+  transition-timing-function: ease-in-out, ease-in;
+  transition-duration: 0.2s, 0.1s;
+  transition-property: background-color, transform;
 }
 
 .button:hover {
@@ -148,13 +146,13 @@
 
 .buttonInner::before,
 .buttonInner::after {
-  content: '';
+  position: absolute;
+  top: 0.9svmin;
   display: block;
   width: 0.8svmin;
   height: 0.2svmin;
-  position: absolute;
-  top: 0.9svmin;
   margin: 0 1.5svmin;
+  content: '';
   background-color: #fff;
 }
 
@@ -188,9 +186,11 @@
   0% {
     transform: translateX(0);
   }
+
   50% {
     transform: translateX(-0.5svmin);
   }
+
   100% {
     transform: translateX(0);
   }
@@ -200,9 +200,11 @@
   0% {
     transform: translateX(0);
   }
+
   50% {
     transform: translateX(0.5svmin);
   }
+
   100% {
     transform: translateX(0);
   }
