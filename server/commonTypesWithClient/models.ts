@@ -24,31 +24,3 @@ export type GitHubActivityModel = {
   }[];
   githubId: string;
 };
-
-export type MemberModel = {
-  githubId: string;
-  userName: string;
-  realName: string;
-  displayName: string;
-  avatarUrl?: string;
-  graduateYear: number;
-  introduction?: string;
-  products?: {
-    title: string;
-    description: string;
-    url: string;
-  }[];
-  socialLinks?: string[];
-  updateAt: number;
-};
-
-export type MemberSummaryModel = {
-  githubId: string;
-  userName: string;
-  avatarUrl?: string;
-  graduateYear: number;
-};
-
-export type MemberListModel = {
-  members: MemberSummaryModel[];
-};
