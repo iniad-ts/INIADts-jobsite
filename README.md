@@ -1,6 +1,6 @@
 # INIAD.ts 公式サイト
 
-フロントエンドは src ディレクトリの [Next.js](https://nextjs.org/) 、バックエンドは server ディレクトリの [frourio](https://frourio.com/) で構築された TypeScript で一気通貫開発が可能なモノレポサービス
+フロントエンドは client ディレクトリの [Docusaurus](https://docusaurus.io) 、バックエンドは server ディレクトリの [frourio](https://frourio.com/) で構築された TypeScript で一気通貫開発が可能なモノレポサービス
 
 本番環境 - https://iniad-ts.com
 開発環境 - https://dev.iniad-ts.com
@@ -19,14 +19,14 @@ https://nodejs.org/ja/ の左ボタン、LTS をダウンロードしてイン�
 
 ```sh
 $ npm i
-$ npm i --prefix docusaurus
+$ npm i --prefix client
 $ npm i --prefix server
 ```
 
 ### 環境変数ファイルの作成
 
 ```sh
-$ cp docusaurus/.env.example docusaurus/.env
+$ cp client/.env.example client/.env
 $ cp server/.env.example server/.env
 $ cp docker/dev/.env.example docker/dev/.env
 $ cp server/prisma/.env.example server/prisma/.env
