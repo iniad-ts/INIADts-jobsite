@@ -1,6 +1,6 @@
 module.exports = {
   parserOptions: {
-    project: './docusaurus/tsconfig.json',
+    project: './client/tsconfig.json',
   },
   rules: { '@typescript-eslint/no-var-requires': 'off' },
 };
