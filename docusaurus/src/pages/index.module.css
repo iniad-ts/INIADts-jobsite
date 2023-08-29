@@ -29,15 +29,27 @@
   color: #fff;
 }
 
-.top > button {
-  background-color: #fff;
+.top > a {
+  display: inline-block;
+  background-color: #ffffff;
   color: var(--ifm-color-primary);
   border: none;
   border-radius: 0.5vmin;
   padding: 0.8vmin 1.2vmin;
   font-size: 1.4vmin;
   font-weight: bold;
-  cursor: pointer;
+  text-decoration: none;
+  transition-property: background-color, transform;
+  transition-duration: 0.2s, 0.1s;
+  transition-timing-function: ease-in-out, ease-in;
+}
+
+.top > a:hover {
+  background-color: #f5f5f5;
+}
+
+.top > a:active {
+  transform: scale(0.9);
 }
 
 .contentTitle {
