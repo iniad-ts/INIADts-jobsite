@@ -27,7 +27,7 @@ beforeAll(async () => {
     GithubAuthProvider.credential(JSON.stringify({ sub: testUser.name, email: testUser.email }))
   );
   const idToken = await result.user.getIdToken();
-  const res = await apiClient.session.post({ body: { idToken } });
+  const res = await apiClient.session.post({ body: { id: idToken } });
   agent.defaults.headers.Cookie = res.headers['set-cookie'][0].split(';')[0];
 });
 
