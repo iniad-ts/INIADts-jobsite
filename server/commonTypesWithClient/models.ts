@@ -5,7 +5,6 @@ export type UserModel = {
   email: string;
   displayName: string | undefined;
   photoURL: string | undefined;
-  githubId: string;
 };
 
 export type TaskModel = {
@@ -23,4 +22,15 @@ export type GitHubActivityModel = {
     level: 0 | 1 | 2 | 3 | 4;
   }[];
   githubId: string;
+};
+
+export type MemberSummaryModel = {
+  githubId: string;
+  userName: string;
+  avatarUrl?: string;
+  graduateYear: number;
+};
+
+export type MemberListModel = {
+  members: MemberSummaryModel[];
 };
