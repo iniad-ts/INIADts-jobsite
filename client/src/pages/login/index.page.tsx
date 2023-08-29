@@ -1,3 +1,4 @@
+import { APP_TITLE } from 'commonConstantsWithClient';
 import Head from 'next/head';
 import { GithubIcon } from 'src/components/icons/GithubIcon';
 import { staticPath } from 'src/utils/$path';
@@ -22,7 +23,7 @@ const Login = () => {
         <title>Login | INIAD.ts</title>
       </Head>
       <div className={styles.main}>
-        <div className={styles.title}>next-frourio-starter</div>
+        <div className={styles.title}>{APP_TITLE}</div>
         <div style={{ marginTop: '16px' }} onClick={login}>
           <div className={styles.btn}>
             <GithubIcon size={18} fill="#fff" />
