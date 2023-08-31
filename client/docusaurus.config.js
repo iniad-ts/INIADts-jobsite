@@ -61,6 +61,9 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+        pages: {
+          exclude: ['**/*.css.d.ts'],
+        },
       }),
     ],
   ],
@@ -97,7 +100,7 @@ const config = {
             ],
           },
           {
-            to: '/contanct',
+            to: '/contact',
             label: 'お問い合わせ',
             position: 'left',
           },
