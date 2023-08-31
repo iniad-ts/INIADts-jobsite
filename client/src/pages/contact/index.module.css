@@ -1,5 +1,85 @@
 .container {
-  background-color: #333;
-  min-height: 100%;
+  padding: 4vmin;
 }
 
+.title {
+  width: fit-content;
+  padding: 0 0.5em;
+  margin: 1em auto 2em;
+  text-shadow: 0 0 3px #fff;
+  background-image: linear-gradient(
+    to bottom,
+    transparent 0%,
+    transparent 60%,
+    #1d76d0 60%,
+    #1d76d0 100%
+  );
+}
+
+.main {
+  width: min(64vw, 100svh);
+  margin: 0 auto;
+}
+
+.section {
+  margin-bottom: 12px;
+}
+
+.label {
+  margin-bottom: 0.5em;
+  font-size: 0.8em;
+}
+
+.label.isRequired::after {
+  color: red;
+  content: '*';
+}
+
+.form {
+  display: block;
+  width: 100%;
+  min-height: 36px;
+  padding: 4px 12px;
+  background-color: #0001;
+  border: 0;
+  border-radius: 6px;
+}
+
+textarea.form {
+  min-height: 64px;
+  padding: 12px;
+  resize: vertical;
+}
+
+.form:focus {
+  outline-width: 1px;
+  outline-color: #1d76d0;
+}
+
+.button {
+  display: block;
+  padding: 4px 8px;
+  margin: 0 0 0 auto;
+  color: white;
+  cursor: pointer;
+  background-color: #1d76d0;
+  border: 0;
+  border-radius: 4px;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.1s, 0.2s, 0.2s, 0.2s;
+  transition-property: transform, background-color, color, filter;
+}
+
+.button:disabled {
+  color: #0005;
+  cursor: not-allowed;
+  background-color: #0003;
+}
+
+.button:hover {
+  filter: brightness(1.2);
+}
+
+.button:active {
+  transform: scale(0.9);
+}
