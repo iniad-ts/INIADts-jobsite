@@ -100,7 +100,7 @@ const config = {
             ],
           },
           {
-            to: '/contanct',
+            to: '/contact',
             label: 'お問い合わせ',
             position: 'left',
           },
