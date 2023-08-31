@@ -1,9 +1,0 @@
-.container {
-  height: 100%;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(40px, 1fr));
-}
-
-.member img {
-  border-radius: 50%;
-}

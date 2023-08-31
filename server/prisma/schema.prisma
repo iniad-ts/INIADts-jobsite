@@ -13,17 +13,3 @@ model Task {
   done      Boolean
   createdAt DateTime
 }
-
-model Member {
-  githubId     String   @id
-  userName     String
-  displayName  String
-  realName     String
-  avatarUrl    String?
-  graduateYear Int?
-  introduction String?
-  socialLinks  Json?
-  products     Json?
-  createdAt    DateTime
-  updatedAt    DateTime
-}
