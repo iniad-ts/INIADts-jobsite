@@ -1,7 +1,7 @@
-import MemberCard from '@site/src/components/MemberCard/MemberCard';
 import { members } from '@site/src/data/members';
 import Layout from '@theme/Layout';
 import React, { useMemo } from 'react';
+import MemberCard from '../../components/MemberCard/MemberCard';
 import styles from './index.module.css';
 
 const Members = () => {
