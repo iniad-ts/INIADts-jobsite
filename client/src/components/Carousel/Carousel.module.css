@@ -95,6 +95,7 @@
   position: relative;
   width: 4svmin;
   height: 2svmin;
+  padding: 0;
   font-weight: bold;
   color: #fff;
   cursor: pointer;
@@ -128,14 +129,6 @@
   animation: pyokopyoko-right 0.8s ease-in-out infinite forwards;
 }
 
-.left:active > .buttonInner {
-  animation-iteration-count: 1;
-}
-
-.right:active > .buttonInner {
-  animation-iteration-count: 1;
-}
-
 .left {
   grid-area: left;
 }
@@ -148,6 +141,8 @@
 .buttonInner::after {
   position: absolute;
   top: 0.9svmin;
+  right: auto;
+  left: auto;
   display: block;
   width: 0.8svmin;
   height: 0.2svmin;
