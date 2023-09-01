@@ -1,3 +1,4 @@
+import MemberCard from '@site/src/components/MemberCard/MemberCard';
 import { members } from '@site/src/data/members';
 import Layout from '@theme/Layout';
 import React, { useMemo } from 'react';
@@ -29,9 +30,9 @@ const Members = () => {
               <li key={grade.grade} className={styles.grade}>
                 <h2>{grade.grade}年卒</h2>
                 <ul className={styles.memberList}>
-                  {grade.members.map((member) => (
-                    <li key={member.userName} className={styles.member}>
-                      <p>ここは @imoken777 がコンポーネント化</p>
+                  {grade.members.map((member, i) => (
+                    <li key={`${member.userName}-${i}`} className={styles.member}>
+                      <MemberCard member={member} />
                     </li>
                   ))}
                 </ul>
