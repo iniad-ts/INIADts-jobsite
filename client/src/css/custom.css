@@ -37,7 +37,7 @@ html,
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
     'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  font-size: clamp(0.8rem, 2svmin, 1.6rem);
+  font-size: clamp(0.8rem, 1.6svmin, 1.4rem);
   letter-spacing: 0.1rem;
 }
 
