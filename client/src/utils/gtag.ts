@@ -1,7 +1,7 @@
-export const GA_ID = process.env.NEXT_PUBLIC_GA_ID ?? '';
+import type { DocusaurusConfig } from '@docusaurus/types';
 
-export const gaPageview = (url: string) => {
-  window.gtag('config', GA_ID, { page_path: url });
+export const gaPageview = (url: string, siteConfig: DocusaurusConfig) => {
+  window.gtag('config', siteConfig.customFields?.GA_ID as string, { page_path: url });
 };
 
 export const gaEvent = ({

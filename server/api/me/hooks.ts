@@ -21,7 +21,6 @@ export default defineHooks(() => ({
       email: user.email ?? '',
       displayName: user.displayName,
       photoURL: user.photoURL,
-      githubId: user.providerData[0].uid,
     };
   },
 }));
