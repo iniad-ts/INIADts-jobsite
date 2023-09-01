@@ -28,7 +28,9 @@ const Members = () => {
           <ul className={styles.members}>
             {memberList.map((grade) => (
               <li key={grade.grade} className={styles.grade}>
-                <h2>{grade.grade}年卒</h2>
+                <h2 id={`${grade.grade}`}>
+                  <a href={`#${grade.grade}`}>{grade.grade}</a>
+                </h2>
                 <ul className={styles.memberList}>
                   {grade.members.map((member, i) => (
                     <li key={`${member.userName}-${i}`} className={styles.member}>

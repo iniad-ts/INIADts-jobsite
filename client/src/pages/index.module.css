@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 1fr 88svmin 1fr;
   gap: 8vmin;
+  width: 100%;
 }
 
 .top {
@@ -16,23 +17,24 @@
 }
 
 .top > .title {
+  flex: 0 0 3.2rem;
   margin: 0;
-  font-size: 6vmin;
-  line-height: 6vmin;
+  font-size: 3rem;
+  line-height: 3.2rem;
   color: #fff;
-  vertical-align: text-bottom;
+  vertical-align: bottom;
 }
 
 .top > p {
-  font-size: 1.6vmin;
-  line-height: 2vmin;
+  font-size: 1rem;
+  line-height: 1.4rem;
   color: #fff;
 }
 
 .top > a {
   display: inline-block;
   padding: 0.8vmin 1.2vmin;
-  font-size: 1.4vmin;
+  font-size: 0.8rem;
   font-weight: bold;
   color: var(--ifm-color-primary);
   text-decoration: none;
@@ -53,8 +55,8 @@
 }
 
 .contentTitle {
-  padding-left: 1vmin;
-  border-left: solid 0.3vmin var(--ifm-color-primary);
+  padding-left: 0.8rem;
+  border-left: solid 0.2rem var(--ifm-color-primary);
 }
 
 .products {
@@ -70,6 +72,12 @@
 
 .activityText {
   flex: 1 1 100%;
+  margin: 0;
+}
+
+.activityText > p {
+  font-size: 1rem;
+  line-height: 1.6rem;
 }
 
 .activityImage {
@@ -99,10 +107,6 @@
     aspect-ratio: 16 / 9;
     margin-bottom: 2vmin;
   }
-}
-
-.activityText > p {
-  margin: 0;
 }
 
 .members {

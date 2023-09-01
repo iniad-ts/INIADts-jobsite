@@ -52,29 +52,36 @@
 }
 
 .carouselText {
-  padding: 2svmin;
+  padding: 1.4rem;
   overflow: hidden;
+}
+
+.carouselText > h3 {
+  margin: 0 0 1svmin;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
 }
 
 .carouselText > p {
   display: -webkit-box;
   margin: 0;
   overflow: hidden;
+  font-size: 1rem;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 5;
 }
 
 .dots {
   display: flex;
   grid-area: dot;
-  gap: min(0.6svh, 1vw);
+  gap: 0.4rem;
   justify-content: space-between;
 }
 
 .dot {
   align-self: center;
-  width: min(0.6svh, 1vw);
-  height: min(0.6svh, 1vw);
+  width: 0.4rem;
+  height: 0.4rem;
   background-color: #aaa;
   border-radius: 50%;
   transition-timing-function: ease-in-out;
@@ -95,6 +102,7 @@
   position: relative;
   width: 4svmin;
   height: 2svmin;
+  padding: 0;
   font-weight: bold;
   color: #fff;
   cursor: pointer;
@@ -128,14 +136,6 @@
   animation: pyokopyoko-right 0.8s ease-in-out infinite forwards;
 }
 
-.left:active > .buttonInner {
-  animation-iteration-count: 1;
-}
-
-.right:active > .buttonInner {
-  animation-iteration-count: 1;
-}
-
 .left {
   grid-area: left;
 }
@@ -148,6 +148,8 @@
 .buttonInner::after {
   position: absolute;
   top: 0.9svmin;
+  right: auto;
+  left: auto;
   display: block;
   width: 0.8svmin;
   height: 0.2svmin;

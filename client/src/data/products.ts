@@ -8,7 +8,7 @@ export const products: Product[] = [
     image: 'https://github.com/INIAD-Developers.png',
   },
   {
-    title: 'Othllo',
+    title: 'Othello',
     description:
       'INIAD.tsでは入会してまず最初にオセロ制作を行い、TypescriptやReactの基礎を学びます。',
     image: 'https://github.com/INIAD-Developers.png',
@@ -30,7 +30,7 @@ export const products: Product[] = [
     image: 'https://github.com/INIAD-Developers.png',
   },
   {
-    title: 'Othllo',
+    title: 'Othello',
     description:
       'INIAD.tsでは入会してまず最初にオセロ制作を行い、TypescriptやReactの基礎を学びます。',
     image: 'https://github.com/INIAD-Developers.png',
