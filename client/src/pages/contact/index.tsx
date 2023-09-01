@@ -1,3 +1,4 @@
+import { members } from '@site/src/data/members';
 import Layout from '@theme/Layout';
 import type { ChangeEvent } from 'react';
 import React, { useMemo, useState } from 'react';
@@ -8,18 +9,21 @@ type ContactDetail = {
   mail: string;
   group?: string;
   category: string;
+  forMember?: string;
   content: string;
 };
 
 type Inputs = ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>;
 
+const defaultDetail = {
+  name: '',
+  mail: '',
+  category: '',
+  content: '',
+};
+
 const Contact = () => {
-  const [contactDetail, setContactDetail] = useState<ContactDetail>({
-    name: '',
-    mail: '',
-    category: '',
-    content: '',
-  });
+  const [contactDetail, setContactDetail] = useState<ContactDetail>(defaultDetail);
 
   const changeTextAreaHeight = (e: ChangeEvent<HTMLTextAreaElement>) => {
     const target = e.target as HTMLTextAreaElement;
@@ -49,11 +53,20 @@ const Contact = () => {
       contactDetail.name !== '',
       isEmail(contactDetail.mail),
       contactDetail.category !== '',
+      !(
+        contactDetail.category === 'forMember' &&
+        (contactDetail.forMember === '' || contactDetail.forMember === undefined)
+      ),
       contactDetail.content !== '',
     ];
 
     return !terms.every(Boolean);
   }, [contactDetail]);
+
+  const submit = () => {
+    console.table(contactDetail);
+    setContactDetail(defaultDetail);
+  };
 
   return (
     <Layout title="Contact">
@@ -95,11 +108,30 @@ const Contact = () => {
               </option>
             </select>
           </div>
+          {contactDetail.category === 'forMember' && (
+            <div className={`${styles.input} ${styles.isRequired}`}>
+              <label htmlFor="forMember">メンバー</label>
+              <select name="forMember" onChange={handleInput}>
+                <option value="" hidden>
+                  --- 未選択 ---
+                </option>
+                {members.map((member) => (
+                  <option
+                    value={member.userName}
+                    selected={contactDetail.forMember === member.userName}
+                    key={member.userName}
+                  >
+                    {member.displayName}
+                  </option>
+                ))}
+              </select>
+            </div>
+          )}
           <div className={`${styles.input} ${styles.isRequired}`}>
             <label htmlFor="content">内容</label>
             <textarea name="content" onChange={handleInput} value={contactDetail.content} />
           </div>
-          <button disabled={isDisabled} className={styles.button}>
+          <button disabled={isDisabled} className={styles.button} onClick={submit}>
             送信
           </button>
         </main>
