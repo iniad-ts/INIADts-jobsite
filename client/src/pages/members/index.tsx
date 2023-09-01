@@ -5,7 +5,10 @@ import styles from './index.module.css';
 
 const Members = () => {
   const memberList = useMemo(() => {
-    const gradeList = Array.from(new Set(members.map((member) => member.graduateYear)));
+    const gradeList = Array.from(new Set(members.map((member) => member.graduateYear))).sort(
+      (a, b) => b - a
+    );
+
     const memberList = gradeList.map((grade) => {
       const gradeMembers = members.filter((member) => member.graduateYear === grade);
       return {
@@ -13,6 +16,7 @@ const Members = () => {
         members: gradeMembers,
       };
     });
+
     return memberList;
   }, []);
 
@@ -28,7 +32,7 @@ const Members = () => {
             {memberList.map((grade) => (
               <li key={grade.grade} className={styles.grade}>
                 <h2 id={`${grade.grade}`}>
-                  <a href={`#${grade.grade}`}>{grade.grade}</a>
+                  <a href={`#${grade.grade}`}>{2028 - grade.grade}年生</a>
                 </h2>
                 <ul className={styles.memberList}>
                   {grade.members.map((member) => (
