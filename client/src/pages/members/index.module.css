@@ -8,21 +8,20 @@
   display: flex;
   flex-direction: column;
   grid-column: 2;
-  gap: 1svmin;
-  margin: 4svmin 0;
+  margin: 8svmin 0 6svmin;
 }
 
 .title > h1 {
   margin: 0;
-  font-size: 4svmin;
-  line-height: 4svmin;
+  font-size: 2.4rem;
+  line-height: 3rem;
 }
 
 .title > p {
   margin: 0;
-  font-size: 2svmin;
+  font-size: 1.2rem;
   font-weight: bold;
-  line-height: 2svmin;
+  line-height: 2rem;
   color: var(--ifm-color-primary);
 }
 
@@ -45,8 +44,13 @@
 .grade > h2 {
   margin: 0;
   margin-bottom: 1svmin;
-  font-size: 3svmin;
-  line-height: 3svmin;
+  font-size: 1.6rem;
+  line-height: 2rem;
+}
+
+.grade > h2 > a {
+  color: inherit;
+  text-decoration: none;
 }
 
 .memberList {
