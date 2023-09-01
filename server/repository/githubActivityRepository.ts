@@ -6,7 +6,7 @@ export const githubActivityRepository = {
   upload: async (githubId: string, data: string): Promise<void> => {
     const params = {
       Bucket: S3_BUCKET,
-      Key: `members/${githubId}/githubActivity.json`,
+      Key: `${githubId}/activity.json`,
       Body: data,
     };
 
