@@ -1,85 +1,146 @@
 .container {
-  padding: 4vmin;
+  width: 88svmin;
+  margin: 0 auto 12svmin;
 }
 
 .title {
-  width: fit-content;
-  padding: 0 0.5em;
-  margin: 1em auto 2em;
-  text-shadow: 0 0 3px #fff;
-  background-image: linear-gradient(
-    to bottom,
-    transparent 0%,
-    transparent 60%,
-    #1d76d0 60%,
-    #1d76d0 100%
-  );
+  display: flex;
+  flex-direction: column;
+  grid-column: 2;
+  margin: 8svmin 0 6svmin;
+}
+
+.title > h1 {
+  margin: 0;
+  font-size: 2.4rem;
+  line-height: 3rem;
+}
+
+.title > p {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 2rem;
+  color: var(--ifm-color-primary);
 }
 
 .main {
-  width: min(64vw, 100svh);
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2svmin;
 }
 
-.section {
-  margin-bottom: 12px;
+.input {
+  width: 100%;
 }
 
-.label {
-  margin-bottom: 0.5em;
-  font-size: 0.8em;
+.input > label {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 0.8rem;
 }
 
-.label.isRequired::after {
-  color: red;
+.isRequired > label::after {
+  color: var(--ifm-color-danger);
   content: '*';
 }
 
-.form {
+.input > :is(input, textarea, select) {
   display: block;
   width: 100%;
-  min-height: 36px;
-  padding: 4px 12px;
-  background-color: #0001;
+  height: 2.4rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: var(--ifm-background-surface-color);
   border: 0;
-  border-radius: 6px;
+  border-radius: 0.4rem;
 }
 
-textarea.form {
+.input > :is(input, textarea, select):focus {
+  outline: 0;
+}
+
+.input > :is(input, textarea, select):focus-visible {
+  outline: solid 0.2rem var(--ifm-color-primary);
+}
+
+.input > select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.input:has(> select) {
+  position: relative;
+}
+
+.input:has(> select)::before {
+  position: absolute;
+  right: 1.142rem;
+  bottom: 1.1rem;
+  display: block;
+  width: 0.6rem;
+  height: 0.2rem;
+  pointer-events: none;
+  content: '';
+  background-color: var(--ifm-font-color-secondary);
+  border-radius: 0.1rem;
+  transform: rotate(45deg);
+}
+
+.input:has(> select)::after {
+  position: absolute;
+  right: 0.859rem;
+  bottom: 1.1rem;
+  display: block;
+  width: 0.6rem;
+  height: 0.2rem;
+  pointer-events: none;
+  content: '';
+  background-color: var(--ifm-font-color-secondary);
+  border-radius: 0.1rem;
+  transform: rotate(-45deg);
+}
+
+.input > textarea {
+  height: auto;
   min-height: 64px;
-  padding: 12px;
-  resize: vertical;
+  line-height: 1.4rem;
+  resize: none;
+  transition: height 2s ease-in-out;
 }
 
-.form:focus {
-  outline-width: 1px;
-  outline-color: #1d76d0;
+.input > textarea::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+.input > textarea::-webkit-scrollbar-thumb {
+  background-color: var(--ifm-color-primary-lightest);
+  border-radius: 0.4rem;
 }
 
 .button {
-  display: block;
-  padding: 4px 8px;
-  margin: 0 0 0 auto;
-  color: white;
+  align-self: flex-end;
+  padding: 0.4svmin 0.8svmin;
+  font-size: 0.8rem;
+  color: #fff;
   cursor: pointer;
-  background-color: #1d76d0;
+  background-color: var(--ifm-color-primary);
   border: 0;
-  border-radius: 4px;
-  transition-timing-function: ease-in-out;
-  transition-duration: 0.1s, 0.2s, 0.2s, 0.2s;
-  transition-property: transform, background-color, color, filter;
+  border-radius: 0.2rem;
+  transition-timing-function: ease-in-out, ease-in;
+  transition-duration: 0.2s, 0.1s;
+  transition-property: background-color, transform;
 }
 
-.button:disabled {
-  color: #0005;
+.button[disabled] {
   cursor: not-allowed;
-  background-color: #0003;
+  background-color: var(--ifm-color-primary-lightest);
 }
 
-.button:hover {
-  filter: brightness(1.2);
+.button:not([disabled]):hover {
+  background-color: var(--ifm-color-primary-lighter);
 }
 
-.button:active {
-  transform: scale(0.9);
+.button:not([disabled]):active {
+  transform: scale(0.95);
 }
