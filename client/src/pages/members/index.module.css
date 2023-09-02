@@ -61,9 +61,6 @@
 }
 
 .member {
-  aspect-ratio: 3 / 4;
+  display: block;
   list-style: none;
-  background-color: var(--ifm-background-surface-color);
-  border-radius: 1svmin;
-  box-shadow: 0 0 0.4svmin #0001;
 }
