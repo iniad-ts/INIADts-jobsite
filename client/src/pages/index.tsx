@@ -14,8 +14,8 @@ const Home = (): JSX.Element => {
 
   return (
     <Layout title={siteConfig.title} description="INIAD.tsサイト">
+      <Banner />
       <div className={styles.container}>
-        <Banner />
         <div className={styles.products}>
           <h2 className={styles.contentTitle}>2023年の主要プロダクト</h2>
           <Carousel carouselData={products} />
