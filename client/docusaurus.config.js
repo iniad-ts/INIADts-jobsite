@@ -103,6 +103,11 @@ const config = {
             position: 'left',
           },
           {
+            to: '/contact/business',
+            label: '企業・団体の方へ',
+            position: 'left',
+          },
+          {
             href: 'https://github.com/iniad-developers/INIADts-jobsite',
             label: 'GitHub',
             position: 'right',
