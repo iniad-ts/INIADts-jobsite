@@ -5,6 +5,7 @@ import React from 'react';
 import { ActivityHistory } from '../components/ActivityHistry/ActivityHistry';
 import { Carousel } from '../components/Carousel/Carousel';
 import { MemberIcons } from '../components/MemberIcons/MemberIcons';
+import MainProducts from '../components/Products/MainProducts';
 import { products } from '../data/products';
 import styles from './index.module.css';
 
@@ -26,6 +27,9 @@ const Home = (): JSX.Element => {
         <div className={styles.activityHistory}>
           <h2 className={styles.contentTitle}>活動履歴</h2>
           <ActivityHistory />
+        </div>
+        <div className={styles.products}>
+          <MainProducts />
         </div>
         <div className={styles.members}>
           <h2 className={styles.contentTitle}>メンバー</h2>
