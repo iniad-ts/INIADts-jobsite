@@ -1,0 +1,71 @@
+.container {
+  width: 88svmin;
+  margin: 0 auto;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2;
+  margin: 8svmin 0 6svmin;
+}
+
+.title > h1 {
+  margin: 0;
+  font-size: 2.4rem;
+  line-height: 3rem;
+}
+
+.title > p {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 2rem;
+  color: var(--ifm-color-primary);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 6svmin;
+  margin-bottom: 12svmin;
+}
+
+.contentTitle {
+  padding-left: 0.8rem;
+  font-size: 1.6rem;
+  line-height: 2rem;
+  border-left: solid 0.2rem var(--ifm-color-primary);
+}
+
+.contentText {
+  margin: 0.4rem 0;
+  font-size: 1rem;
+  line-height: 1.6rem;
+}
+
+.contentList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  padding: 0.4rem 0 0 1.6rem;
+}
+
+.contentList > li {
+  position: relative;
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6rem;
+  list-style: none;
+}
+
+.contentList > li::before {
+  position: absolute;
+  top: 0.8rem;
+  left: -1.4rem;
+  width: 0.6rem;
+  height: 0.2rem;
+  content: '';
+  background-color: var(--ifm-color-primary-darkest);
+  border-radius: 0.1rem;
+}
