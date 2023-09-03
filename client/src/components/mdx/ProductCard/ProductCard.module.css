@@ -1,31 +1,12 @@
-*,
-*::before,
-*::after {
-  box-sizing: inherit;
-  padding: 0;
-  margin: 0;
-}
-
 .grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 1.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  grid-gap: 1rem;
   align-items: start;
   width: 50%;
 }
-@media (max-width: 60em) {
-  .grid {
-    grid-template-columns: 1fr; /* モバイルビューでは1列にする */
-    grid-gap: 3rem;
-  }
-
-  .gridItem {
-    margin: 0 auto;
-  }
-}
 
 .gridItem {
-  width: 15rem;
   overflow: hidden;
   cursor: pointer;
   background-color: var(--ifm-background-surface-color);
@@ -75,9 +56,13 @@
   border-radius: 0.4rem;
 }
 
-.cardBtnGithub {
+.cardbtngithub {
   margin: auto;
   margin-right: 0.2rem;
+}
+
+[data-theme='dark'] .cardbtngithub {
+  fill: #dce4ff;
 }
 
 .cardBtn span {
@@ -87,10 +72,10 @@
 
 .cardBtn:hover,
 .cardBtn:active {
-  background-color: #dce4ff;
+  background-color: var(--ifm-color-primary-dark);
 }
 
 .cardBtn:hover span,
 .cardBtn:active span {
-  margin-left: 1.5rem;
+  color: #dce4ff;
 }
