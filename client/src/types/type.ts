@@ -11,5 +11,6 @@ export type Member = {
   introduction?: string;
   socialLinks?: string[];
   products?: Product[];
+  skills?: string[];
   findy?: number;
 };
