@@ -67,5 +67,11 @@
 
 .cardBtn:hover span,
 .cardBtn:active span {
-  color: #dce4ff;
+  fill: #dce4ff;
+}
+
+.cardBtn > svg {
+  margin: auto;
+  margin-right: 0.2rem;
+  fill: var(--ifm-font-color-base);
 }
