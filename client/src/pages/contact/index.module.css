@@ -1,5 +1,146 @@
 .container {
-  background-color: #333;
-  min-height: 100%;
+  width: 88svmin;
+  margin: 0 auto 12svmin;
 }
 
+.title {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2;
+  margin: 8svmin 0 6svmin;
+}
+
+.title > h1 {
+  margin: 0;
+  font-size: 2.4rem;
+  line-height: 3rem;
+}
+
+.title > p {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 2rem;
+  color: var(--ifm-color-primary);
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  gap: 2svmin;
+}
+
+.input {
+  width: 100%;
+}
+
+.input > label {
+  display: block;
+  margin-bottom: 0.2rem;
+  font-size: 0.8rem;
+}
+
+.isRequired > label::after {
+  color: var(--ifm-color-danger);
+  content: '*';
+}
+
+.input > :is(input, textarea, select) {
+  display: block;
+  width: 100%;
+  height: 2.4rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+  background-color: var(--ifm-background-surface-color);
+  border: 0;
+  border-radius: 0.4rem;
+}
+
+.input > :is(input, textarea, select):focus {
+  outline: 0;
+}
+
+.input > :is(input, textarea, select):focus-visible {
+  outline: solid 0.2rem var(--ifm-color-primary);
+}
+
+.input > select {
+  appearance: none;
+  cursor: pointer;
+}
+
+.input:has(> select) {
+  position: relative;
+}
+
+.input:has(> select)::before {
+  position: absolute;
+  right: 1.142rem;
+  bottom: 1.1rem;
+  display: block;
+  width: 0.6rem;
+  height: 0.2rem;
+  pointer-events: none;
+  content: '';
+  background-color: var(--ifm-font-color-secondary);
+  border-radius: 0.1rem;
+  transform: rotate(45deg);
+}
+
+.input:has(> select)::after {
+  position: absolute;
+  right: 0.859rem;
+  bottom: 1.1rem;
+  display: block;
+  width: 0.6rem;
+  height: 0.2rem;
+  pointer-events: none;
+  content: '';
+  background-color: var(--ifm-font-color-secondary);
+  border-radius: 0.1rem;
+  transform: rotate(-45deg);
+}
+
+.input > textarea {
+  height: auto;
+  min-height: 64px;
+  line-height: 1.4rem;
+  resize: none;
+  transition: height 2s ease-in-out;
+}
+
+.input > textarea::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+.input > textarea::-webkit-scrollbar-thumb {
+  background-color: var(--ifm-color-primary-lightest);
+  border-radius: 0.4rem;
+}
+
+.button {
+  align-self: flex-end;
+  padding: 0.4svmin 0.8svmin;
+  font-size: 0.8rem;
+  color: #fff;
+  cursor: pointer;
+  background-color: var(--ifm-color-primary);
+  border: 0;
+  border-radius: 0.2rem;
+  transition-timing-function: ease-in-out, ease-in;
+  transition-duration: 0.2s, 0.1s;
+  transition-property: background-color, transform;
+}
+
+.button[disabled] {
+  cursor: not-allowed;
+  background-color: var(--ifm-color-primary-lightest);
+}
+
+.button:not([disabled]):hover {
+  background-color: var(--ifm-color-primary-lighter);
+}
+
+.button:not([disabled]):active {
+  transform: scale(0.95);
+}

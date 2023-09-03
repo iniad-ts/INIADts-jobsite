@@ -1,5 +1,66 @@
 .container {
-  background-color: var(--color-bg-main);
-  color: var(--color-fg-main);
-  min-height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 88svmin 1fr;
+  gap: 2svmin;
+}
+
+.title {
+  display: flex;
+  flex-direction: column;
+  grid-column: 2;
+  margin: 8svmin 0 6svmin;
+}
+
+.title > h1 {
+  margin: 0;
+  font-size: 2.4rem;
+  line-height: 3rem;
+}
+
+.title > p {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  line-height: 2rem;
+  color: var(--ifm-color-primary);
+}
+
+.main {
+  grid-column: 2;
+  margin-bottom: 4svmin;
+}
+
+.members {
+  display: flex;
+  flex-direction: column;
+  gap: 4svmin;
+  padding: 0;
+}
+
+.grade {
+  list-style: none;
+}
+
+.grade > h2 {
+  margin: 0;
+  margin-bottom: 1svmin;
+  font-size: 1.6rem;
+  line-height: 2rem;
+}
+
+.grade > h2 > a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.memberList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(80svw, 25svh), 1fr));
+  gap: 2svmin;
+  padding: 0;
+}
+
+.member {
+  display: block;
+  list-style: none;
 }
