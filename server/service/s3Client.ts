@@ -5,8 +5,5 @@ export const s3Client = new S3Client({
   endpoint: S3_ENDPOINT,
   region: S3_REGION,
   forcePathStyle: true,
-  credentials: {
-    accessKeyId: S3_ACCESS_KEY,
-    secretAccessKey: S3_SECRET_KEY,
-  },
+  credentials: { accessKeyId: S3_ACCESS_KEY, secretAccessKey: S3_SECRET_KEY },
 });

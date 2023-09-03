@@ -1,43 +1,62 @@
 {
   "name": "client",
-  "version": "0.1.0",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "dev": "run-p dev:*",
-    "dev:client": "next dev -p 3000",
-    "dev:hcm": "hcm 'src/**/*.module.css' -w",
-    "dev:aspida": "aspida --watch",
-    "dev:path": "pathpida --ignorePath ../.gitignore -s -w",
-    "build": "npm run generate && next build",
+    "docusaurus": "docusaurus",
+    "start": "run-p start:*",
+    "start:docs": "docusaurus start --port 3000",
+    "start:hcm": "hcm 'src/**/*.module.css' -w",
+    "start:aspida": "aspida --watch",
     "generate": "run-p generate:*",
     "generate:aspida": "aspida",
-    "generate:path": "pathpida --ignorePath ../.gitignore -s",
+    "build": "docusaurus build",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "clear": "docusaurus clear",
+    "serve": "docusaurus serve",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids",
     "hcm": "hcm 'src/**/*.module.css'",
-    "test": "vitest run",
-    "test:watch": "vitest",
-    "test:updateSnapshot": "vitest -u",
-    "typecheck": "npm run hcm && tsc --noEmit"
+    "typecheck": "tsc"
   },
   "dependencies": {
     "@aspida/axios": "^1.13.3",
+    "@docusaurus/core": "2.4.1",
+    "@docusaurus/preset-classic": "2.4.1",
+    "@mdx-js/react": "^1.6.22",
     "api": "file:../server/api",
     "axios": "^1.4.0",
+    "clsx": "^1.2.1",
     "commonTypesWithClient": "file:../server/commonTypesWithClient",
     "firebase": "^10.1.0",
-    "jotai": "^2.2.3",
-    "next": "^13.4.12",
-    "react": "^18.2.0",
+    "jotai": "^2.3.1",
+    "prism-react-renderer": "^1.3.5",
+    "react": "^17.0.2",
     "react-activity-calendar": "^2.0.2",
-    "react-dom": "^18.2.0"
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@types/react": "^18.2.18",
+    "@docusaurus/module-type-aliases": "2.4.1",
+    "@tsconfig/docusaurus": "^1.0.5",
     "@types/react-dom": "^18.2.7",
     "dotenv": "^16.3.1",
     "happy-css-modules": "^2.1.2",
-    "notios": "^0.4.1",
-    "pathpida": "^0.21.0"
+    "typescript": "^5.1.6"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=16.14"
   }
 }

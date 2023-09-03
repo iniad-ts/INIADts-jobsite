@@ -1,0 +1,48 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-background-color: #f3f3fb;
+  --ifm-background-surface-color: #fff;
+  --ifm-color-primary: #3dafe3;
+  --ifm-color-primary-dark: #24a5df;
+  --ifm-color-primary-darker: #1f9dd6;
+  --ifm-color-primary-darkest: #1981b0;
+  --ifm-color-primary-light: #56b9e7;
+  --ifm-color-primary-lighter: #63bfe8;
+  --ifm-color-primary-lightest: #89ceee;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgb(0 0 0 / 10%);
+}
+
+/* For readability concerns, you should choose a lighter palette in dark mode. */
+[data-theme='dark'] {
+  --ifm-background-color: #333;
+  --ifm-background-surface-color: #424242;
+  --ifm-color-primary: #3f7bc5;
+  --ifm-color-primary-dark: #366eb4;
+  --ifm-color-primary-darker: #3368aa;
+  --ifm-color-primary-darkest: #2a568c;
+  --ifm-color-primary-light: #5389cb;
+  --ifm-color-primary-lighter: #5d90ce;
+  --ifm-color-primary-lightest: #7ba4d7;
+  --docusaurus-highlighted-code-line-bg: rgb(0 0 0 / 30%);
+}
+
+html,
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-size: clamp(0.8rem, 1.6svmin, 1.4rem);
+  letter-spacing: 0.1rem;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}

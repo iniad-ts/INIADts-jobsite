@@ -1,8 +1,8 @@
 # INIAD.ts 公式サイト
 
-フロントエンドは src ディレクトリの [Next.js](https://nextjs.org/) 、バックエンドは server ディレクトリの [frourio](https://frourio.com/) で構築された TypeScript で一気通貫開発が可能なモノレポサービス
+フロントエンドは client ディレクトリの [Docusaurus](https://docusaurus.io) 、バックエンドは server ディレクトリの [frourio](https://frourio.com/) で構築された TypeScript で一気通貫開発が可能なモノレポサービス
 
-本番環境 - https://iniad-ts.com  
+本番環境 - https://iniad-ts.com
 開発環境 - https://dev.iniad-ts.com
 
 ## 開発手順
@@ -46,7 +46,7 @@ $ docker-compose up -d
 $ npm run notios
 ```
 
-Web ブラウザで http://localhost:3000 を開く
+Web ブラウザで http://localhost:3000 と http://localhost:3001 を開く
 
 開発時のターミナル表示は [notios](https://github.com/frouriojs/notios) で制御している
 
@@ -60,7 +60,7 @@ http://localhost:4000/auth
 
 #### MinIO Console
 
-http://localhost:9001/
+http://localhost:9001
 
 #### PostgreSQL UI
 
@@ -68,4 +68,3 @@ http://localhost:9001/
 $ cd server
 $ npx prisma studio
 ```
-test
