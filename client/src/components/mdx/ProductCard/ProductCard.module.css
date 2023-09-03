@@ -56,15 +56,6 @@
   border-radius: 0.4rem;
 }
 
-.cardbtngithub {
-  margin: auto;
-  margin-right: 0.2rem;
-}
-
-[data-theme='dark'] .cardbtngithub {
-  fill: #dce4ff;
-}
-
 .cardBtn span {
   display: inline-block;
   align-items: center;
