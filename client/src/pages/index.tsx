@@ -4,6 +4,7 @@ import Layout from '@theme/Layout';
 import React from 'react';
 import { Carousel } from '../components/Carousel/Carousel';
 import { MemberIcons } from '../components/MemberIcons/MemberIcons';
+import MainProducts from '../components/Products/MainProducts';
 import { products } from '../data/products';
 import styles from './index.module.css';
 
@@ -46,6 +47,9 @@ const Home = (): JSX.Element => {
               alt="仮にINIADの写真を置いています"
             />
           </div>
+        </div>
+        <div className={styles.products}>
+          <MainProducts />
         </div>
         <div className={styles.members}>
           <h2 className={styles.contentTitle}>メンバー</h2>
