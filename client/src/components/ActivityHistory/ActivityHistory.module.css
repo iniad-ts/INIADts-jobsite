@@ -1,0 +1,97 @@
+.container {
+  display: grid;
+  grid-template:
+    'image1 description1'
+    'description2 image2';
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6svmin;
+}
+
+@media screen and (max-aspect-ratio: 3 / 4) {
+  .container {
+    grid-template-areas:
+      'image1'
+      'description1'
+      'image2'
+      'description2';
+    grid-template-rows: repeat(4, 1fr);
+  }
+}
+
+.image1,
+.image2,
+.descriptions1,
+.descriptions2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2svmin;
+  border-radius: 2svmin;
+}
+
+.image1 {
+  grid-area: image1;
+  width: 100%;
+  height: 100%;
+  background-color: var(--ifm-background-surface-color);
+}
+
+.descriptions1 {
+  grid-area: description1;
+}
+
+.image2 {
+  grid-area: image2;
+  width: 100%;
+  height: 100%;
+  background-color: var(--ifm-background-surface-color);
+}
+
+.image2 > img,
+.image1 > img {
+  background-color: #aaa;
+}
+
+.descriptions2 {
+  grid-area: description2;
+}
+
+.descriptions2,
+.descriptions1 {
+  display: grid;
+  gap: 2svmin;
+  padding: 1.4rem;
+  margin: 0;
+  background-color: var(--ifm-background-surface-color);
+}
+
+.description {
+  display: grid;
+  grid-template:
+    'month description'
+    'month    tech    '
+    'month   course   ';
+  grid-template-rows: 3fr 1fr 1fr;
+  grid-template-columns: 2fr 8fr;
+}
+
+.description:not(:last-child) {
+  border-bottom: solid 1px #aaa;
+}
+
+.description > div {
+  display: flex;
+}
+
+.description > h3 {
+  grid-area: month;
+}
+
+.right {
+  margin: 0 0 0 auto;
+}
+
+.marginLeft {
+  margin-left: 1svmin;
+}

@@ -63,6 +63,10 @@
   grid-column: 2;
 }
 
+.activityHistory {
+  grid-column: 2;
+}
+
 .activity {
   display: flex;
   flex-direction: row-reverse;
