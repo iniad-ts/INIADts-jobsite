@@ -1,6 +1,7 @@
 import Link from '@docusaurus/Link';
 import type { Member } from '@site/src/types/type';
 import React, { useMemo } from 'react';
+import { Findy } from '../Findy/Findy';
 import styles from './MemberCard.module.css';
 
 const MemberCard = ({ member }: { member: Member }) => {
@@ -18,12 +19,21 @@ const MemberCard = ({ member }: { member: Member }) => {
         <div className={styles.avatar}>
           <img src={image} alt={`${member.userName}'s avatar`} />
         </div>
-        <div className={styles.text}>
+        <div className={styles.info}>
           <h4 className={styles.name}>{member.displayName}</h4>
           <p className={styles.username}>@{member.userName}</p>
-          <Link className={styles.button} to={`members/${member.userName}`}>
-            詳しく見る
-          </Link>
+        </div>
+        <div className={styles.text}>{member.introduction}</div>
+        <div className={styles.findy}>
+          <Findy score={member.findy ?? 0} />
+        </div>
+        <div className={styles.skills}>
+          {member.skills?.map((skill, i) => (
+            <div key={`${skill}-${i}`}>{skill}</div>
+          ))}
+        </div>
+        <div className={styles.button}>
+          <Link to={`members/${member.userName}`}>詳しく見る</Link>
         </div>
       </div>
     </div>
