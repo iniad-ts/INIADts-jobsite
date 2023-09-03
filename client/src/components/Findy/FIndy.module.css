@@ -1,0 +1,39 @@
+.container {
+  width: 10svmin;
+  aspect-ratio: 1;
+  padding: 1%;
+  background: linear-gradient(181deg, rgb(188 222 255) 0%, rgb(83 168 255 / 99%) 100%) 0% 0%
+    no-repeat padding-box padding-box transparent;
+  border-radius: 50%;
+}
+
+.inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background-image: linear-gradient(to bottom, #0000, #0000 50%, #1d6dcb 50%, #1d6dcb);
+  border-radius: 50%;
+}
+
+.score {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  font-size: 2svmin;
+  font-weight: bold;
+  color: #fff;
+  text-align: center;
+}
+
+.wave {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 50%;
+  transform: rotate(180deg);
+}
