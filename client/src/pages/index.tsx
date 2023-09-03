@@ -4,7 +4,7 @@ import Layout from '@theme/Layout';
 import React from 'react';
 import { ActivityHistory } from '../components/ActivityHistory/ActivityHistory';
 import { Carousel } from '../components/Carousel/Carousel';
-import { MemberIcons } from '../components/MemberIcons/MemberIcons';
+import { CourseDescription } from '../components/CourseDescription/CourseDescription';
 import MainProducts from '../components/Products/MainProducts';
 import { products } from '../data/products';
 import styles from './index.module.css';
@@ -32,8 +32,8 @@ const Home = (): JSX.Element => {
           <MainProducts />
         </div>
         <div className={styles.members}>
-          <h2 className={styles.contentTitle}>メンバー</h2>
-          <MemberIcons />
+          <h2 className={styles.contentTitle}>コース</h2>
+          <CourseDescription />
           <div />
         </div>
       </div>
