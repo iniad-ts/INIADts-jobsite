@@ -1,0 +1,20 @@
+{
+  "unversionedId": "member/2027/ddd",
+  "id": "member/2027/ddd",
+  "title": "fff",
+  "description": "自己紹介",
+  "source": "@site/docs/member/2027/ddd.mdx",
+  "sourceDirName": "member/2027",
+  "slug": "/member/2027/ddd",
+  "permalink": "/members/member/2027/ddd",
+  "draft": false,
+  "editUrl": "https://github.com/facebook/docusaurus/tree/main/packages/create-docusaurus/templates/shared/docs/member/2027/ddd.mdx",
+  "tags": [],
+  "version": "current",
+  "frontMatter": {},
+  "sidebar": "memberSidebar",
+  "previous": {
+    "title": "27 卒",
+    "permalink": "/members/2027"
+  }
+}
