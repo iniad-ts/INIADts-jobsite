@@ -5,7 +5,7 @@ import React from 'react';
 import { ActivityHistory } from '../components/ActivityHistory/ActivityHistory';
 import { Carousel } from '../components/Carousel/Carousel';
 import { CourseDescription } from '../components/CourseDescription/CourseDescription';
-import MainProducts from '../components/Products/MainProducts';
+import MainProducts from '../components/MainProducts/MainProducts';
 import { products } from '../data/products';
 import styles from './index.module.css';
 
