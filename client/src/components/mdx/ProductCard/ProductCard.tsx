@@ -1,7 +1,7 @@
 // Card.js
 import React from 'react';
 
-import { GithubIcon } from './GithubIcon/GithubIcon';
+import { GithubIcon } from '../../icons/GithubIcon';
 import styles from './ProductCard.module.css';
 export interface Props {
   imageUrl: string;

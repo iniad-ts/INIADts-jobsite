@@ -1,70 +1,73 @@
 .container {
   display: grid;
-  grid-template:
-    'image1 description1'
-    'description2 image2';
   grid-template-rows: repeat(2, 1fr);
+  gap: 1.6svmin;
+}
+
+.wrap {
+  display: grid;
+  grid-template: 'image descriptions';
+  grid-template-rows: 1fr;
   grid-template-columns: repeat(2, 1fr);
   gap: 1.6svmin;
 }
 
+.wrap:last-child {
+  grid-template-areas: 'descriptions image';
+}
+
 @media screen and (max-aspect-ratio: 3 / 4) {
-  .container {
+  .wrap {
     grid-template:
-      'image1'
-      'description1'
-      'image2'
-      'description2';
-    grid-template-rows: repeat(4, 1fr);
+      'image'
+      'descriptions';
+    grid-template-rows: repeat(2, 1fr);
     grid-template-columns: 1fr;
+  }
+
+  .wrap:last-child {
+    grid-template:
+      'descriptions'
+      'image';
   }
 }
 
-.image1,
-.image2,
-.descriptions1,
-.descriptions2 {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.descriptions {
+  display: grid;
+  grid-area: descriptions;
+  gap: 2svmin;
   padding: 2svmin;
+  padding: 1.4rem;
+  margin: 0;
+  font-size: 1rem;
+  background-color: var(--ifm-background-surface-color);
   border-radius: 2svmin;
 }
 
-.image1 {
-  grid-area: image1;
+.image {
+  display: flex;
+  flex-direction: column;
+  grid-area: image;
+  gap: 2svmin;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   height: 100%;
+  padding: 2svmin;
   background-color: var(--ifm-background-surface-color);
+  border-radius: 2svmin;
 }
 
-.descriptions1 {
-  grid-area: description1;
-}
-
-.image2 {
-  grid-area: image2;
-  width: 100%;
-  height: 100%;
-  background-color: var(--ifm-background-surface-color);
-}
-
-.image2 > img,
-.image1 > img {
+.image > img {
   background-color: #aaa;
+}
+
+.image > h3 {
+  display: flex;
 }
 
 .descriptions2 {
   grid-area: description2;
-}
-
-.descriptions2,
-.descriptions1 {
-  display: grid;
-  gap: 2svmin;
-  padding: 1.4rem;
-  margin: 0;
-  background-color: var(--ifm-background-surface-color);
 }
 
 .description {
@@ -73,8 +76,9 @@
     'month description'
     'month    tech    '
     'month   course   ';
-  grid-template-rows: 3fr 1fr 1fr;
+  grid-template-rows: repeat(3);
   grid-template-columns: 2fr 8fr;
+  gap: 1svmin;
 }
 
 .description:not(:last-child) {
@@ -90,9 +94,24 @@
 }
 
 .right {
-  margin: 0 0 0 auto;
+  margin: 0 2svmin 0 auto;
 }
 
 .marginLeft {
-  margin-left: 1svmin;
+  margin-left: 0.5rem;
+}
+
+.techsRow {
+  display: grid;
+  grid-template-columns: 3rem 1fr;
+}
+
+.techs {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.courses {
+  display: flex;
+  flex-wrap: wrap;
 }

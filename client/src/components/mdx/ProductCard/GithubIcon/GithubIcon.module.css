@@ -1,8 +1,0 @@
-.githubLogo {
-  margin: auto;
-  margin-right: 0.2rem;
-}
-
-[data-theme='dark'] .githubLogo {
-  fill: #dce4ff;
-}

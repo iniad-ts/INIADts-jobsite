@@ -25,6 +25,6 @@ export type ActivityHistory = {
   description: string;
   image: string;
   creator?: string;
-  tech: ReactElement[];
-  course: Corse[];
+  techs: ReactElement[];
+  courses: Corse[];
 };
