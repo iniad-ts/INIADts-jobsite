@@ -1,0 +1,69 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+
+  /* 今は仮でお台場を背景にしている */
+  background-image: url('/img/odaiba.jpg');
+}
+
+.logoBox {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 5%;
+}
+
+.iniadTs {
+  width: auto;
+  height: 8rem;
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+
+.iniad {
+  width: auto;
+  height: 8rem;
+  margin-top: 1rem;
+  margin-right: 1rem;
+}
+
+.textBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: 95%;
+  margin-left: 3rem;
+}
+
+.title {
+  font-size: 10rem;
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+}
+
+.description {
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    background-size: cover;
+  }
+
+  .title {
+    font-size: 5rem;
+  }
+
+  .iniadTs {
+    height: 5rem;
+  }
+
+  .iniad {
+    width: 15rem;
+    height: 5rem;
+  }
+}
