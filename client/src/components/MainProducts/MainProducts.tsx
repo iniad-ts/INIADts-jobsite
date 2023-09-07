@@ -8,18 +8,10 @@ const MainProducts = () => {
         <img src="/img/odaiba.jpg" alt="" />
       </div>
       <div className={styles.wrapper}>
-        <div>
-          <video controls src="/img/furya.mp4" />
-        </div>
-        <div>
-          <video controls src="/img/furya.mp4" />
-        </div>
-        <div>
-          <video controls src="/img/furya.mp4" />
-        </div>
-        <div>
-          <video controls src="/img/furya.mp4" />
-        </div>
+        <video controls src="/img/furya.mp4" width={'100%'} />
+        <video controls src="/img/furya.mp4" width={'100%'} />
+        <video controls src="/img/furya.mp4" width={'100%'} />
+        <video controls src="/img/furya.mp4" width={'100%'} />
       </div>
     </div>
   );
