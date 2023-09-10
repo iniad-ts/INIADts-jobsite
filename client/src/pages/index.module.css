@@ -1,6 +1,6 @@
 .container {
   display: grid;
-  grid-template-columns: 1fr 88svmin 1fr;
+  grid-template-columns: 1fr min(100svh, 80vw) 1fr;
   gap: 8vmin;
   width: 100%;
 }
