@@ -2,7 +2,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import React from 'react';
 import { ActivityHistory } from '../components/ActivityHistory/ActivityHistory';
-import { Banner } from '../components/Banner/Baanner';
+import { Banner } from '../components/Banner/Banner';
 import { Carousel } from '../components/Carousel/Carousel';
 import { CourseDescription } from '../components/CourseDescription/CourseDescription';
 import MainProducts from '../components/MainProducts/MainProducts';
