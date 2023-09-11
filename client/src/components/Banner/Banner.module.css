@@ -49,6 +49,15 @@
   white-space: nowrap;
 }
 
+.typing::after {
+  display: inline-block;
+  width: 0.2svmin;
+  height: 1rem;
+  content: '';
+  background-color: #fff;
+  animation: typing 1.2s steps(1) infinite;
+}
+
 .scroll {
   display: flex;
   flex-direction: column;
@@ -74,7 +83,7 @@
 }
 
 .scroll:hover > .button {
-  animation: pikupiku 0.8s infinite ease-in-out;
+  animation: pikupiku 0.4s infinite ease-in-out;
 }
 
 .scroll > span {
@@ -95,5 +104,19 @@
 
   100% {
     transform: translateY(0) rotate(45deg);
+  }
+}
+
+@keyframes typing {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
   }
 }
