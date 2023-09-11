@@ -8,8 +8,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'INIAD.ts',
-  tagline: 'Dinosaurs are cool',
-  favicon: 'img/favicon.ico',
+  tagline: 'TypeScript is cool',
+  favicon: 'img/INIADts-logo.png',
   customFields: {
     FIREBASE_CONFIG: process.env.FIREBASE_CONFIG,
     AUTH_EMULATOR_URL: process.env.AUTH_EMULATOR_URL,
@@ -70,12 +70,12 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/INIADts-logo.png',
       navbar: {
         title: 'INIAD.ts',
         logo: {
           alt: 'INIAD.ts Logo',
-          src: 'img/logo.svg',
+          src: 'img/INIADts-logo.png',
         },
         items: [
           {
@@ -144,8 +144,9 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} INIAD.ts. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} INIAD.ts.`,
       },
+
       prism: {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme,
