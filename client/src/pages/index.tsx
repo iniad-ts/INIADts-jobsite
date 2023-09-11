@@ -17,18 +17,30 @@ const Home = (): JSX.Element => {
       <div className={styles.container}>
         <Banner />
         <div className={styles.products}>
-          <h2 className={styles.contentTitle}>2023年の主要プロダクト</h2>
+          <h2 className={styles.contentTitle} id="products">
+            <a href="/#products">
+              <span>Products</span>
+              <p>プロダクト</p>
+            </a>
+          </h2>
           <Carousel carouselData={products} />
         </div>
         <div className={styles.activityHistory}>
-          <h2 className={styles.contentTitle}>活動履歴</h2>
-          <ActivityHistory />
-        </div>
-        <div className={styles.products}>
-          <MainProducts />
+          <h2 className={styles.contentTitle} id="activity">
+            <a href="/#activity">
+              <span>Activity</span>
+              <p>活動内容</p>
+            </a>
+          </h2>
+          <Activity />
         </div>
         <div className={styles.members}>
-          <h2 className={styles.contentTitle}>コース</h2>
+          <h2 className={styles.contentTitle} id="coruses">
+            <a href="/#courses">
+              <span>Courses</span>
+              <p>コース一覧</p>
+            </a>
+          </h2>
           <CourseDescription />
           <div />
         </div>
