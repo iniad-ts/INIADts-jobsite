@@ -1,8 +1,8 @@
-import { Css } from '../components/icons/Css';
-import { Github } from '../components/icons/Github';
-import Prisma from '../components/icons/Prisma';
-import { ReactImg } from '../components/icons/React';
-import { TypeScript } from '../components/icons/TypeScript';
+import { Css } from '../components/icons/IconCSS3';
+import { Github } from '../components/icons/IconGitHub';
+import Prisma from '../components/icons/IconPrisma';
+import { ReactImg } from '../components/icons/IconReact';
+import { TypeScript } from '../components/icons/IconTypeScript';
 import type { ActivityHistory } from '../types/type';
 
 export const activityHistory: ActivityHistory[] = [
