@@ -3,6 +3,7 @@
  * bundles Infima by default. Infima is a CSS framework designed to
  * work well for content-centric websites.
  */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Zen+Kaku+Gothic+New:wght@400;700&display=swap');
 
 /* You can override the default Infima variables here. */
 :root {
@@ -17,6 +18,11 @@
   --ifm-color-primary-lightest: #89ceee;
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgb(0 0 0 / 10%);
+  --ifm-font-family-base: 'Roboto', 'Zen Kaku Gothic New', 'Helvetica Neue', arial,
+    'Hiragino Kaku Gothic ProN', 'Hiragino Sans', meiryo, sans-serif;
+  --ifm-font-family-monospace: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', 'Courier',
+    'monospace';
+  --ifm-font-size-base: 1rem;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -35,8 +41,8 @@
 
 html,
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
-    'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: Roboto, 'Zen Kaku Gothic New', 'Helvetica Neue', arial, 'Hiragino Kaku Gothic ProN',
+    'Hiragino Sans', meiryo, sans-serif;
   font-size: clamp(0.8rem, 1.6svmin, 1.4rem);
   letter-spacing: 0.1rem;
 }
@@ -45,4 +51,18 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+::-webkit-scrollbar {
+  width: 0.2rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--ifm-background-color);
+  background-color: #777;
+  border-radius: 0.1rem;
 }
