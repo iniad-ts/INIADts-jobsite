@@ -4,8 +4,8 @@ import React from 'react';
 import { ActivityHistory } from '../components/ActivityHistory/ActivityHistory';
 import { Banner } from '../components/Banner/Banner';
 import { Carousel } from '../components/Carousel/Carousel';
-import { CourseDescription } from '../components/CourseDescription/CourseDescription';
 import MainProducts from '../components/MainProducts/MainProducts';
+import { Courses } from '../components/Courses/Courses';
 import { products } from '../data/products';
 import styles from './index.module.css';
 
@@ -41,7 +41,7 @@ const Home = (): JSX.Element => {
               <p>コース一覧</p>
             </a>
           </h2>
-          <CourseDescription />
+          <Courses />
           <div />
         </div>
       </div>
