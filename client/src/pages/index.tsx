@@ -2,7 +2,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
 import React from 'react';
 import { ActivityHistory } from '../components/ActivityHistory/ActivityHistory';
-import { Banner } from '../components/Banner/Baanner';
+import { Banner } from '../components/Banner/Banner';
 import { Carousel } from '../components/Carousel/Carousel';
 import { CourseDescription } from '../components/CourseDescription/CourseDescription';
 import MainProducts from '../components/MainProducts/MainProducts';
@@ -14,8 +14,8 @@ const Home = (): JSX.Element => {
 
   return (
     <Layout title={siteConfig.title} description="INIAD.tsサイト">
-      <Banner />
       <div className={styles.container}>
+        <Banner />
         <div className={styles.products}>
           <h2 className={styles.contentTitle}>2023年の主要プロダクト</h2>
           <Carousel carouselData={products} />
