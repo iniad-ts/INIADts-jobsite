@@ -1,5 +1,3 @@
-import type { ReactElement } from 'react';
-
 export type Product = {
   title: string;
   description: string;
@@ -16,15 +14,12 @@ export type Member = {
   skills?: string[];
   findy?: number;
 };
-
-export type Corse = 'standard' | 'stoic' | 'solufa';
-
-export type ActivityHistory = {
-  month: number;
+export type Activity = {
   title: string;
   description: string;
-  image: string;
-  creator?: string;
-  techs: ReactElement[];
-  courses: Corse[];
+  image?: string;
+  date: {
+    year: number;
+    month: number;
+  };
 };
