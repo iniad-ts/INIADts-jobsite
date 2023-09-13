@@ -17,7 +17,7 @@ const Home = (): JSX.Element => {
           <h2 className={styles.contentTitle} id="activity">
             <a href="/#activity">
               <span>Activity</span>
-              <p>活動内容</p>
+              <p>今年度の活動</p>
             </a>
           </h2>
           <Activity />
