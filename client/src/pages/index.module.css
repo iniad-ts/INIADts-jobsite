@@ -6,8 +6,53 @@
 }
 
 .contentTitle {
-  padding-left: 0.8rem;
-  border-left: solid 0.2rem var(--ifm-color-primary);
+  position: relative;
+  margin: 0 0 2svmin;
+  font-size: 2.4rem;
+  font-weight: normal;
+  color: transparent;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+}
+
+.contentTitle span {
+  background-image: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-lightest) 0%,
+    var(--ifm-color-primary) 40%,
+    var(--ifm-color-primary-darker) 100%
+  );
+  background-clip: text;
+}
+
+.contentTitle > a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.contentTitle p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--ifm-font-color-base);
+  opacity: 0.8;
+}
+
+.contentTitle::before {
+  position: absolute;
+  top: 0;
+  left: -2rem;
+  display: block;
+  width: 1rem;
+  color: var(--ifm-color-primary-lightest);
+  content: '#';
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.contentTitle:hover::before {
+  opacity: 1;
 }
 
 .products {

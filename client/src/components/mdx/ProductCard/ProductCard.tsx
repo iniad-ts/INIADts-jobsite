@@ -1,8 +1,7 @@
-// Card.js
 import React from 'react';
-
-import { GithubIcon } from '../../icons/GithubIcon';
+import { IconGithub } from '../../icons/IconGitHub';
 import styles from './ProductCard.module.css';
+
 export interface Props {
   imageUrl: string;
   altText: string;
@@ -26,7 +25,7 @@ const Card = ({ imageUrl, altText, title, description, githubUrl, websiteUrl }: 
         {githubUrl !== null && (
           <div>
             <a className={styles.cardBtn} href={githubUrl}>
-              <GithubIcon />
+              <IconGithub />
               <span>Github</span>
             </a>
           </div>

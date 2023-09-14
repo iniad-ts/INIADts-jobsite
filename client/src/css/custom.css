@@ -39,12 +39,13 @@
   --docusaurus-highlighted-code-line-bg: rgb(0 0 0 / 30%);
 }
 
-html,
-body {
+html {
   font-family: Roboto, 'Zen Kaku Gothic New', 'Helvetica Neue', arial, 'Hiragino Kaku Gothic ProN',
     'Hiragino Sans', meiryo, sans-serif;
   font-size: clamp(0.8rem, 1.6svmin, 1.4rem);
   letter-spacing: 0.1rem;
+  scroll-padding-top: calc(var(--ifm-navbar-height) + 2svmin);
+  scroll-behavior: smooth;
 }
 
 * {
