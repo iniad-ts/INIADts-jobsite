@@ -23,6 +23,7 @@
   --ifm-font-family-monospace: 'SFMono-Regular', 'Consolas', 'Liberation Mono', 'Menlo', 'Courier',
     'monospace';
   --ifm-font-size-base: 1rem;
+  --ifm-footer-background-color: #2f2f3d;
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
@@ -37,6 +38,7 @@
   --ifm-color-primary-lighter: #5d90ce;
   --ifm-color-primary-lightest: #7ba4d7;
   --docusaurus-highlighted-code-line-bg: rgb(0 0 0 / 30%);
+  --ifm-footer-background-color: #0d0d0f;
 }
 
 html {

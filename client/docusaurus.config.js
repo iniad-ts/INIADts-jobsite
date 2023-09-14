@@ -115,8 +115,20 @@ const config = {
         ],
       },
       footer: {
-        style: 'dark',
         links: [
+          {
+            title: 'Contents',
+            items: [
+              {
+                label: '活動内容',
+                to: '/#activity',
+              },
+              {
+                label: 'コース一覧',
+                to: '/#courses',
+              },
+            ],
+          },
           {
             title: 'Members',
             items: [
@@ -131,6 +143,10 @@ const config = {
               {
                 label: '27卒',
                 to: '/members/2027',
+              },
+              {
+                label: '一覧',
+                to: '/members',
               },
             ],
           },
