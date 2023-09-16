@@ -32,7 +32,7 @@ export const members: Member[] = [
     userName: 'yossuli',
     displayName: 'yossuli',
     graduateYear: 2027,
-    introduction: 'INIAD.tsのyossuliですうううう。よろしくお願いしますうううううううう。',
+    introduction: 'INIAD.tsのyossuliです。よろしくお願いします。',
     socialLinks: ['https://github.com/yossuli', 'https://twitter.com/yossuli'],
     status: ['タートル募集中', 'インターン募集中'],
     findy: 60,
