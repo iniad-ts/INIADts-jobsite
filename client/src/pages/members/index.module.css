@@ -6,23 +6,68 @@
 
 .title {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   grid-column: 2;
+  gap: 4svmin;
   margin: 8svmin 0 6svmin;
 }
 
 .title > h1 {
+  flex: 1 1 100%;
   margin: 0;
   font-size: 2.4rem;
   line-height: 3rem;
 }
 
-.title > p {
+.title p {
   margin: 0;
   font-size: 1.2rem;
   font-weight: bold;
   line-height: 2rem;
   color: var(--ifm-color-primary);
+}
+
+.title > .select {
+  position: relative;
+  flex: 0 0 fit-content;
+  height: 2.4rem;
+}
+
+.title > .select > select {
+  height: 100%;
+  padding: 0 3rem 0 1rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  background-color: var(--ifm-background-surface-color);
+  border: 0;
+  border-radius: 0.4rem;
+  appearance: none;
+}
+
+.title > .select::after {
+  position: absolute;
+  top: calc(50% - 0.1rem);
+  right: 0.8rem;
+  width: 0.6rem;
+  height: 0.2rem;
+  pointer-events: none;
+  content: '';
+  background-color: #fff;
+  border-radius: 0.1rem;
+  transform: translateX(calc(-0.2rem / 1.414)) rotate(45deg);
+}
+
+.title > .select::before {
+  position: absolute;
+  top: calc(50% - 0.1rem);
+  right: 0.8rem;
+  width: 0.6rem;
+  height: 0.2rem;
+  pointer-events: none;
+  content: '';
+  background-color: #fff;
+  border-radius: 0.1rem;
+  transform: translateX(calc(0.2rem / 1.414)) rotate(-45deg);
 }
 
 .main {
