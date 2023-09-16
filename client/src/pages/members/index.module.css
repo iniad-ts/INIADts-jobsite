@@ -33,8 +33,26 @@
 .members {
   display: flex;
   flex-direction: column;
+  gap: 8svmin;
+  padding: 0;
+}
+
+.memberList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(80svw, 25svh), 1fr));
   gap: 4svmin;
   padding: 0;
+}
+
+.member {
+  display: block;
+  list-style: none;
+}
+
+.member > a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
 }
 
 .grade {
@@ -42,6 +60,7 @@
 }
 
 .grade > h2 {
+  position: relative;
   margin: 0;
   margin-bottom: 1svmin;
   font-size: 1.6rem;
@@ -53,14 +72,25 @@
   text-decoration: none;
 }
 
-.memberList {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(80svw, 25svh), 1fr));
-  gap: 2svmin;
-  padding: 0;
+.grade > h2::before {
+  position: absolute;
+  top: 0;
+  left: -1.6rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: 2rem;
+  color: transparent;
+  content: '#';
+  background-image: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-lightest) 0%,
+    var(--ifm-color-primary-dark) 100%
+  );
+  background-clip: text;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
 }
 
-.member {
-  display: block;
-  list-style: none;
+.grade > h2:hover::before {
+  opacity: 1;
 }
