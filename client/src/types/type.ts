@@ -10,10 +10,10 @@ export type Member = {
   avatarUrl?: string;
   introduction?: string;
   socialLinks?: string[];
-  products?: Product[];
-  skills?: string[];
+  status?: string[];
   findy?: number;
 };
+
 export type Activity = {
   title: string;
   description: string;

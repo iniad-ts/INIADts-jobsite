@@ -1,24 +1,51 @@
 .card {
   width: 100%;
   height: 100%;
+  overflow: hidden;
   background-color: var(--ifm-background-surface-color);
-  border-radius: 1svmin;
-  box-shadow: 0 0 0.4svmin #0001;
+  border-radius: 0.4rem;
+  box-shadow: 0 0 0.4svmin #0001, inset 0 0 100vw #7772;
   container-type: inline-size;
+  transition: box-shadow 0.2s ease-in-out;
+}
+
+[data-theme='dark'] .card {
+  box-shadow: 0 0 0.4svmin #0001, inset 0 0 100vw #0004;
+}
+
+.card:hover {
+  box-shadow: 0 0 1.2svmin var(--ifm-color-primary), inset 0 0 100vw #0004;
+}
+
+[data-theme='dark'] .card:hover {
+  box-shadow: 0 0 1.2svmin var(--ifm-color-primary), inset 0 0 100vw #0008;
 }
 
 .cardInner {
+  position: relative;
   display: grid;
   grid-template:
-    'avatar avatar info' 35cqmin
-    'text   text   text' 1fr
-    'findy  skills skills' auto
-    'button button button' 10cqmin / 25cqmin 2cqmin 1fr;
+    'avatar info' 25cqmin
+    'text   text' auto
+    'status  status' auto / 25cqmin 1fr;
   gap: 8cqmin;
   align-items: center;
   width: 100%;
   height: 100%;
-  padding: 8cqmin;
+  padding: 10cqmin;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 50%,
+    92% 64%,
+    92% 66%,
+    100% 52%,
+    100% 54%,
+    92% 68%,
+    92% 100%,
+    0 100%
+  );
+  background-color: var(--ifm-background-surface-color);
 }
 
 .avatar {
@@ -34,139 +61,135 @@
   display: block;
   width: 100%;
   height: 100%;
+  user-select: none;
 }
 
 .info {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
   grid-area: info;
   justify-content: flex-start;
-}
-
-.name {
-  margin: 0;
-  font-size: 1.4rem;
-}
-
-.username {
-  margin: 0;
-  font-size: 1rem;
-  opacity: 0.7;
-}
-
-.text {
-  grid-area: text;
-  align-self: self-start;
-  margin: 0;
-  font-size: 1rem;
-}
-
-.findy {
-  grid-area: findy;
-  align-self: self-end;
-  width: 100%;
-  aspect-ratio: 1;
-  font-size: 4cqmin;
-}
-
-.skills {
-  grid-area: skills;
   width: 100%;
   height: 100%;
 }
 
-.skills > div {
-  display: inline-block;
-  flex-grow: 0;
-  flex-shrink: 0;
-  padding: 0 0.8svmin;
-  margin: 0 0.5rem 0.3rem 0;
-  overflow: hidden;
+.name {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.6rem;
+}
+
+.username {
+  margin: 0;
   font-size: 0.8rem;
+  line-height: 1.2rem;
+  opacity: 0.6;
+}
+
+.findy {
+  width: fit-content;
+  margin: 0;
+  margin-top: 0.2rem;
+  overflow: hidden;
+  font-size: 0.7rem;
+  line-height: 1rem;
+  text-overflow: ellipsis;
+  text-shadow: 0 0 0.2rem #aaa;
+  white-space: nowrap;
+  vertical-align: bottom;
+  background-image: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-lightest) 0%,
+    var(--ifm-color-primary) 100%
+  );
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100% 20%;
+}
+
+.findy > span {
+  font-size: 1.2rem;
+}
+
+.text {
+  position: relative;
+  z-index: 2;
+  grid-area: text;
+  width: 100%;
+  height: 100%;
+}
+
+.status {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-flow: row wrap;
+  grid-area: status;
+  gap: 0.4rem;
+  width: 100%;
+  height: 100%;
+}
+
+.status > div {
+  height: 1.4rem;
+  padding: 0 0.4rem;
+  overflow: hidden;
+  font-size: 0.6rem;
+  font-weight: bold;
+  line-height: 1.4rem;
   color: #fff;
   text-overflow: ellipsis;
-  background-color: var(--ifm-color-primary-darkest);
-  border-radius: 1.2svmin;
+  text-shadow: 0 0 0.4rem #0008;
+  white-space: nowrap;
+  background-image: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-lightest) 0%,
+    var(--ifm-color-primary) 100%
+  );
+  border-radius: 0.7rem;
 }
 
-.button {
-  grid-area: button;
-  width: 100%;
-}
-
-.button > a {
-  display: block;
-  width: fit-content;
-  padding: 0 1rem;
-  margin: 0 auto;
-  font-size: 1rem;
+.count {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 2.4rem;
+  font-style: italic;
   font-weight: bold;
-  line-height: 2rem;
-  color: #fff;
-  text-align: center;
-  cursor: pointer;
-  background-color: var(--ifm-color-primary);
-  border: none;
-  border-radius: 0.4rem;
-  transition-timing-function: ease-in-out, ease-in;
-  transition-duration: 0.2s, 0.1s;
-  transition-property: background-color, transform;
+  opacity: 0.05;
+  transition: opacity 0.2s ease-in-out;
+  transform: rotate(-90deg);
 }
 
-.button > a:hover {
-  color: #fff;
-  text-decoration: none;
-  background-color: var(--ifm-color-primary-dark);
-}
-
-.button > a:active {
-  transform: scale(0.95);
+.cardInner:hover .count {
+  opacity: 0.2;
 }
 
 @container (min-width: 44vmin) {
   .cardInner {
     grid-template:
-      'avatar .  info   findy' auto
-      'avatar .  skills findy' auto
-      'avatar .  text   text' auto
-      '.      .  button button' 4rem / 25cqmin 4cqmin 1fr 15cqmin;
-    gap: 0;
+      'avatar info' auto
+      'avatar   text' auto
+      'status  text' auto / 25cqmin 1fr;
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% 92%,
+      62% 92%,
+      54% 100%,
+      52% 100%,
+      60% 92%,
+      58% 92%,
+      50% 100%,
+      0 100%
+    );
   }
 
-  .avatar {
-    position: sticky;
-    top: calc(var(--ifm-navbar-height) + 8cqmin);
-  }
-
-  .info {
-    align-self: center;
-  }
-
-  .skills {
-    padding: 1rem 0.8svmin 0 0;
-  }
-
-  .skills > div {
-    margin: 0 0.4rem 0 0;
-    font-size: 0.6rem;
-  }
-
-  .text {
-    margin-block: 4cqmin;
-  }
-
-  .findy {
-    height: 100%;
-    aspect-ratio: 1;
-    font-size: 2cqmin;
-  }
-
-  .button {
-    align-self: self-end;
-  }
-
-  .button > a {
-    margin-inline: auto 0;
+  .count {
+    top: 0;
+    right: 1rem;
+    bottom: auto;
+    left: auto;
+    transform: none;
   }
 }

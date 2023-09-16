@@ -1,3 +1,4 @@
+import Link from '@docusaurus/Link';
 import { members } from '@site/src/data/members';
 import Layout from '@theme/Layout';
 import React, { useCallback, useMemo } from 'react';
@@ -45,7 +46,9 @@ const Members = () => {
                 <ul className={styles.memberList}>
                   {grade.members.map((member, i) => (
                     <li key={`${member.userName}-${i}`} className={styles.member}>
-                      <MemberCard member={member} />
+                      <Link to={`/members/${member.userName}`}>
+                        <MemberCard member={member} count={i} />
+                      </Link>
                     </li>
                   ))}
                 </ul>

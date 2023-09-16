@@ -29,9 +29,13 @@
   font-size: 1.6rem;
 }
 
-.content::before {
+.content > div {
+  position: relative;
+}
+
+.content > div::before {
   position: absolute;
-  top: 0.8rem;
+  top: 0.4rem;
   left: -1.8rem;
   z-index: 2;
   display: block;

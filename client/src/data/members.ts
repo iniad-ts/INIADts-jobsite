@@ -1,6 +1,5 @@
 import type { Member } from '../types/type';
 
-// 仮のデータ
 export const members: Member[] = [
   {
     userName: 'g-ratie',
@@ -8,18 +7,8 @@ export const members: Member[] = [
     graduateYear: 2026,
     introduction: 'INIAD.ts代表のラティです。よろしくお願いします。',
     socialLinks: ['https://github.com/g-ratie'],
-    products: [
-      {
-        title: 'INIAD.ts入退出Bot',
-        description: 'INIAD.tsの入退出を管理するDiscord Botです。',
-      },
-      {
-        title: 'INIAD.ts公式サイト',
-        description: 'INIAD.tsの公式サイトです。',
-      },
-    ],
-    skills: ['TypeScript', 'React', 'Next.js', 'CSS3', 'Prisma'],
-    findy: 99,
+    status: ['インターン募集中'],
+    findy: 67,
   },
   {
     userName: 'mst-mkt',
@@ -27,18 +16,8 @@ export const members: Member[] = [
     graduateYear: 2027,
     introduction: 'INIAD.tsの🧶です。よろしくお願いします。',
     socialLinks: ['https://github.com/mst-mkt'],
-    products: [
-      {
-        title: 'オセロ',
-        description: 'オセロです。',
-      },
-      {
-        title: 'INIAD.ts公式サイト',
-        description: 'INIAD.tsの公式サイトです。',
-      },
-    ],
-    skills: ['TypeScript', 'React', 'CSS3'],
-    findy: 63,
+    status: ['インターン募集中'],
+    findy: 60,
   },
   {
     userName: 'jun-eg',
@@ -46,133 +25,34 @@ export const members: Member[] = [
     graduateYear: 2027,
     introduction: 'INIAD.tsのじゅんです。よろしくお願いします。',
     socialLinks: ['https://github.com/mst-mkt'],
-    products: [
-      {
-        title: 'オセロ',
-        description: 'オセロです。',
-      },
-      {
-        title: 'INIAD.ts公式サイト',
-        description: 'INIAD.tsの公式サイトです。',
-      },
-    ],
-    skills: ['TypeScript', 'React', 'CSS3'],
-    findy: 63,
+    status: ['インターン募集中'],
+    findy: 60,
   },
   {
     userName: 'yossuli',
     displayName: 'yossuli',
     graduateYear: 2027,
-    introduction: 'INIAD.tsのyossuliですうううう。よろしくお願いしますうううううううう。',
-    socialLinks: ['https://github.com/yossuli', 'https://twitter.com/yossuli'],
-    products: [
-      {
-        title: 'RPG',
-        description: 'RPGです。',
-      },
-    ],
-    skills: ['turtle', 'TypeScript'],
-    findy: 59,
-  },
-  {
-    userName: 'g-ratie2',
-    displayName: 'ラティ',
-    graduateYear: 2026,
-    introduction: 'INIAD.ts代表のラティです。よろしくお願いします。',
-    socialLinks: ['https://github.com/g-ratie'],
-    products: [
-      {
-        title: 'INIAD.ts入退出Bot',
-        description: 'INIAD.tsの入退出を管理するDiscord Botです。',
-      },
-      {
-        title: 'INIAD.ts公式サイト',
-        description: 'INIAD.tsの公式サイトです。',
-      },
-    ],
-    findy: 99,
-  },
-  {
-    userName: 'mst-mkt2',
-    displayName: '🧶',
-    graduateYear: 2027,
-    introduction: 'INIAD.tsの🧶です。よろしくお願いします。',
-    socialLinks: ['https://github.com/mst-mkt'],
-    products: [
-      {
-        title: 'オセロ',
-        description: 'オセロです。',
-      },
-      {
-        title: 'INIAD.ts公式サイト',
-        description: 'INIAD.tsの公式サイトです。',
-      },
-    ],
-    findy: 61,
-  },
-  {
-    userName: 'yossuli2',
-    displayName: 'yossuli',
-    graduateYear: 2027,
     introduction: 'INIAD.tsのyossuliです。よろしくお願いします。',
     socialLinks: ['https://github.com/yossuli', 'https://twitter.com/yossuli'],
-    products: [
-      {
-        title: 'RPG',
-        description: 'RPGです。',
-      },
-    ],
-    findy: 59,
-  },
-
-  {
-    userName: 'g-ratie3',
-    displayName: 'ラティ',
-    graduateYear: 2026,
-    introduction: 'INIAD.ts代表のラティです。よろしくお願いします。',
-    socialLinks: ['https://github.com/g-ratie'],
-    products: [
-      {
-        title: 'INIAD.ts入退出Bot',
-        description: 'INIAD.tsの入退出を管理するDiscord Botです。',
-      },
-      {
-        title: 'INIAD.ts公式サイト',
-        description: 'INIAD.tsの公式サイトです。',
-      },
-    ],
-    findy: 99,
+    status: ['タートル募集中', 'インターン募集中'],
+    findy: 60,
   },
   {
-    userName: 'mst-mkt3',
-    displayName: '🧶',
+    userName: 'imoken777',
+    displayName: 'いもけん',
     graduateYear: 2027,
-    introduction: 'INIAD.tsの🧶です。よろしくお願いします。',
-    socialLinks: ['https://github.com/mst-mkt'],
-    products: [
-      {
-        title: 'オセロ',
-        description: 'オセロです。',
-      },
-      {
-        title: 'INIAD.ts公式サイト',
-        description: 'INIAD.tsの公式サイトです。',
-      },
-    ],
-    findy: 61,
+    introduction: 'INIAD.tsのいもけんです。よろしくお願いします。',
+    socialLinks: ['https://github.com/imoken777'],
+    status: ['ロシア旅行中'],
+    findy: 60,
   },
   {
-    userName: 'yossuli3',
-    displayName: 'yossuli',
+    userName: 'enbipaipu',
+    displayName: 'haruki',
     graduateYear: 2027,
-    introduction: 'INIAD.tsのyossuliです。よろしくお願いします。',
-    socialLinks: ['https://github.com/yossuli', 'https://twitter.com/yossuli'],
-    products: [
-      {
-        title: 'RPG',
-        description: 'RPGです。',
-      },
-    ],
-    findy: 59,
+    introduction: 'INIAD.tsのharukiです。よろしくお願いします。',
+    socialLinks: ['https://github.com/enbipaipu'],
+    status: ['インターン募集中'],
+    findy: 60,
   },
 ];
