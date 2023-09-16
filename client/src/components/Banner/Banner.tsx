@@ -23,7 +23,9 @@ export const Banner = () => {
 
         clearInterval(typingIntervalID);
 
+        subTitleElm.classList.add(styles.typingAnim);
         setTimeout(() => {
+          subTitleElm.classList.remove(styles.typingAnim);
           subTitleElm.classList.remove(styles.typing);
         }, 3000);
       }

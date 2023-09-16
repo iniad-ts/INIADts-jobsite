@@ -7,7 +7,7 @@
   height: calc(100svh - var(--ifm-navbar-height));
   padding: 4svmin;
   overflow: hidden;
-  background-image: linear-gradient(135deg, #1b2033 0%, #3c314c 30%, #172943 70%, #10121b 100%);
+  background-image: linear-gradient(135deg, #090a10 0%, #090f29 30%, #060c15 70%, #10121b 100%);
 }
 
 .logos {
@@ -55,6 +55,9 @@
   height: 1rem;
   content: '';
   background-color: #fff;
+}
+
+.typing.typingAnim::after {
   animation: typing 1.2s steps(1) infinite;
 }
 
