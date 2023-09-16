@@ -9,8 +9,16 @@
   transition: box-shadow 0.2s ease-in-out;
 }
 
+[data-theme='dark'] .card {
+  box-shadow: 0 0 0.4svmin #0001, inset 0 0 100vw #0004;
+}
+
 .card:hover {
   box-shadow: 0 0 1.2svmin var(--ifm-color-primary), inset 0 0 100vw #0004;
+}
+
+[data-theme='dark'] .card:hover {
+  box-shadow: 0 0 1.2svmin var(--ifm-color-primary), inset 0 0 100vw #0008;
 }
 
 .cardInner {
@@ -78,20 +86,29 @@
   opacity: 0.6;
 }
 
-.count {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  font-size: 2.4rem;
-  font-style: italic;
-  font-weight: bold;
-  opacity: 0.05;
-  transition: opacity 0.2s ease-in-out;
-  transform: rotate(-90deg);
+.findy {
+  width: fit-content;
+  margin: 0;
+  margin-top: 0.2rem;
+  overflow: hidden;
+  font-size: 0.7rem;
+  line-height: 1rem;
+  text-overflow: ellipsis;
+  text-shadow: 0 0 0.2rem #aaa;
+  white-space: nowrap;
+  vertical-align: bottom;
+  background-image: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-lightest) 0%,
+    var(--ifm-color-primary) 100%
+  );
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: 100% 20%;
 }
 
-.cardInner:hover .count {
-  opacity: 0.2;
+.findy > span {
+  font-size: 1.2rem;
 }
 
 .text {
@@ -132,29 +149,20 @@
   border-radius: 0.7rem;
 }
 
-.findy {
-  width: fit-content;
-  margin: 0;
-  margin-top: 0.2rem;
-  overflow: hidden;
-  font-size: 0.7rem;
-  line-height: 1rem;
-  text-overflow: ellipsis;
-  text-shadow: 0 0 0.2rem #aaa;
-  white-space: nowrap;
-  vertical-align: bottom;
-  background-image: linear-gradient(
-    135deg,
-    var(--ifm-color-primary-lightest) 0%,
-    var(--ifm-color-primary) 100%
-  );
-  background-repeat: no-repeat;
-  background-position: bottom;
-  background-size: 100% 20%;
+.count {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 2.4rem;
+  font-style: italic;
+  font-weight: bold;
+  opacity: 0.05;
+  transition: opacity 0.2s ease-in-out;
+  transform: rotate(-90deg);
 }
 
-.findy > span {
-  font-size: 1.2rem;
+.cardInner:hover .count {
+  opacity: 0.2;
 }
 
 @container (min-width: 44vmin) {
