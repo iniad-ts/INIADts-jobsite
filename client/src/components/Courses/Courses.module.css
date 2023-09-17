@@ -1,0 +1,108 @@
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(50vw, 25svh), 1fr));
+  gap: min(6vw, 3svh);
+  width: 100%;
+  margin-bottom: 8svmin;
+}
+
+.card {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0.1rem 0.1rem 0.2rem #aaa2);
+  container-type: inline-size;
+}
+
+.cardInner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(0 0, 100% 0, 100% calc(100% - 8cqmin), calc(100% - 8cqmin) 100%, 0 100%);
+  background-color: var(--ifm-background-surface-color);
+}
+
+.image {
+  display: flex;
+  flex-grow: 0;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+}
+
+.image > img {
+  width: 100%;
+  height: 100%;
+  transition-timing-function: ease-in-out, ease-out;
+  transition-duration: 0.4s;
+  transition-property: transform, filter;
+  object-fit: cover;
+}
+
+.image:hover > img {
+  filter: brightness(0.5);
+  transform: scale(1.2);
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  flex-shrink: 1;
+  gap: 1svmin;
+  padding: 3svmin;
+  background-image: linear-gradient(45deg, #6666880f 0%, #6666880f 45%, #9990 45%, #9990 100%);
+}
+
+.description > h3 {
+  margin: 0;
+  overflow: hidden;
+  font-size: 1.6rem;
+  font-weight: normal;
+  text-overflow: ellipsis;
+  letter-spacing: 0.2rem;
+  white-space: nowrap;
+}
+
+.description > h3::after {
+  display: block;
+  width: 100%;
+  height: 0.2rem;
+  margin-top: 0.4rem;
+  content: '';
+  background-image: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-lightest) 0%,
+    var(--ifm-color-primary) 40%,
+    var(--ifm-color-primary-darker) 100%
+  );
+  opacity: 0.7;
+}
+
+.description > p {
+  margin: 0;
+}
+
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  line-height: 0.8rem;
+  opacity: 0.9;
+}
+
+@container (min-width: 50vw) {
+  .cardInner {
+    flex-direction: row;
+  }
+
+  .image {
+    width: 40cqw;
+    aspect-ratio: 1;
+  }
+}

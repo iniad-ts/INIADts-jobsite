@@ -1,65 +1,65 @@
 .container {
   display: grid;
-  grid-template-columns: 1fr 88svmin 1fr;
+  grid-template-columns: 1fr min(100svh, 80vw) 1fr;
   gap: 8vmin;
   width: 100%;
 }
 
-.top {
-  display: flex;
-  flex-direction: column;
-  grid-column: 1 / 4;
-  align-items: flex-start;
-  justify-content: center;
-  height: 300px;
-  padding: 0 calc(50vw - 44svmin);
-  background-color: var(--ifm-color-primary);
-}
-
-.top > .title {
-  flex: 0 0 3.2rem;
-  margin: 0;
-  font-size: 3rem;
-  line-height: 3.2rem;
-  color: #fff;
-  vertical-align: bottom;
-}
-
-.top > p {
-  font-size: 1rem;
-  line-height: 1.4rem;
-  color: #fff;
-}
-
-.top > a {
-  display: inline-block;
-  padding: 0.8vmin 1.2vmin;
-  font-size: 0.8rem;
-  font-weight: bold;
-  color: var(--ifm-color-primary);
-  text-decoration: none;
-  background-color: #fff;
-  border: none;
-  border-radius: 0.5vmin;
-  transition-timing-function: ease-in-out, ease-in;
-  transition-duration: 0.2s, 0.1s;
-  transition-property: background-color, transform;
-}
-
-.top > a:hover {
-  background-color: #f5f5f5;
-}
-
-.top > a:active {
-  transform: scale(0.9);
-}
-
 .contentTitle {
-  padding-left: 0.8rem;
-  border-left: solid 0.2rem var(--ifm-color-primary);
+  position: relative;
+  margin: 0 0 2svmin;
+  font-size: 2.4rem;
+  font-weight: normal;
+  color: transparent;
+  letter-spacing: 0.2rem;
+  cursor: pointer;
+}
+
+.contentTitle span {
+  background-image: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-lightest) 0%,
+    var(--ifm-color-primary) 40%,
+    var(--ifm-color-primary-darker) 100%
+  );
+  background-clip: text;
+}
+
+.contentTitle > a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
+}
+
+.contentTitle p {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--ifm-font-color-base);
+  opacity: 0.8;
+}
+
+.contentTitle::before {
+  position: absolute;
+  top: 0;
+  left: -2rem;
+  display: block;
+  width: 1rem;
+  color: var(--ifm-color-primary-lightest);
+  content: '#';
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.contentTitle:hover::before {
+  opacity: 1;
 }
 
 .products {
+  grid-column: 2;
+}
+
+.activityHistory {
   grid-column: 2;
 }
 

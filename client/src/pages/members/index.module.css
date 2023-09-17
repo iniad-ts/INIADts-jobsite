@@ -6,23 +6,75 @@
 
 .title {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   grid-column: 2;
+  gap: 4svmin;
   margin: 8svmin 0 6svmin;
 }
 
 .title > h1 {
+  flex: 1 1 100%;
   margin: 0;
   font-size: 2.4rem;
   line-height: 3rem;
 }
 
-.title > p {
+.title p {
   margin: 0;
   font-size: 1.2rem;
   font-weight: bold;
   line-height: 2rem;
-  color: var(--ifm-color-primary);
+  color: transparent;
+  background-image: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-lightest) 0%,
+    var(--ifm-color-primary) 40%,
+    var(--ifm-color-primary-darker) 100%
+  );
+  background-clip: text;
+}
+
+.title > .select {
+  position: relative;
+  flex: 0 0 fit-content;
+  height: 2.4rem;
+}
+
+.title > .select > select {
+  height: 100%;
+  padding: 0 3rem 0 1rem;
+  font-size: 0.8rem;
+  cursor: pointer;
+  background-color: var(--ifm-background-surface-color);
+  border: 0;
+  border-radius: 0.4rem;
+  appearance: none;
+}
+
+.title > .select::after {
+  position: absolute;
+  top: calc(50% - 0.1rem);
+  right: 0.8rem;
+  width: 0.6rem;
+  height: 0.2rem;
+  pointer-events: none;
+  content: '';
+  background-color: #fff;
+  border-radius: 0.1rem;
+  transform: translateX(calc(-0.2rem / 1.414)) rotate(45deg);
+}
+
+.title > .select::before {
+  position: absolute;
+  top: calc(50% - 0.1rem);
+  right: 0.8rem;
+  width: 0.6rem;
+  height: 0.2rem;
+  pointer-events: none;
+  content: '';
+  background-color: #fff;
+  border-radius: 0.1rem;
+  transform: translateX(calc(0.2rem / 1.414)) rotate(-45deg);
 }
 
 .main {
@@ -33,8 +85,26 @@
 .members {
   display: flex;
   flex-direction: column;
+  gap: 8svmin;
+  padding: 0;
+}
+
+.memberList {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(80svw, 25svh), 1fr));
   gap: 4svmin;
   padding: 0;
+}
+
+.member {
+  display: block;
+  list-style: none;
+}
+
+.member > a {
+  display: block;
+  color: inherit;
+  text-decoration: none;
 }
 
 .grade {
@@ -42,6 +112,7 @@
 }
 
 .grade > h2 {
+  position: relative;
   margin: 0;
   margin-bottom: 1svmin;
   font-size: 1.6rem;
@@ -53,14 +124,25 @@
   text-decoration: none;
 }
 
-.memberList {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(80svw, 25svh), 1fr));
-  gap: 2svmin;
-  padding: 0;
+.grade > h2::before {
+  position: absolute;
+  top: 0;
+  left: -1.6rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  line-height: 2rem;
+  color: transparent;
+  content: '#';
+  background-image: linear-gradient(
+    135deg,
+    var(--ifm-color-primary-lightest) 0%,
+    var(--ifm-color-primary-dark) 100%
+  );
+  background-clip: text;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
 }
 
-.member {
-  display: block;
-  list-style: none;
+.grade > h2:hover::before {
+  opacity: 1;
 }

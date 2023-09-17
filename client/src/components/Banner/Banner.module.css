@@ -1,0 +1,125 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / 4;
+  justify-content: space-between;
+  width: 100%;
+  height: calc(100svh - var(--ifm-navbar-height));
+  padding: 4svmin;
+  overflow: hidden;
+  background-image: linear-gradient(135deg, #090a10 0%, #090f29 30%, #060c15 70%, #10121b 100%);
+}
+
+.logos {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: min(8vw, 5svh);
+}
+
+.logos > img {
+  display: block;
+  width: auto;
+  height: 100%;
+}
+
+.title {
+  display: block;
+}
+
+.title > h1 {
+  margin: 0;
+  overflow: hidden;
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 5rem;
+  color: #fff;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.title > p {
+  margin: 0;
+  overflow: hidden;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.typing::after {
+  display: inline-block;
+  width: 0.2svmin;
+  height: 1rem;
+  content: '';
+  background-color: #fff;
+}
+
+.typing.typingAnim::after {
+  animation: typing 1.2s steps(1) infinite;
+}
+
+.scroll {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6svmin;
+  align-items: center;
+  padding: 4svmin 0 0;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+.scroll > .button {
+  display: block;
+  width: 2svmin;
+  height: 2svmin;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  border-top: 0;
+  border-right: 0.2svmin solid #fff;
+  border-bottom: 0.2svmin solid #fff;
+  border-left: 0;
+  transform: rotate(45deg);
+}
+
+.scroll:hover > .button {
+  animation: pikupiku 0.4s infinite ease-in-out;
+}
+
+.scroll > span {
+  font-family: var(--ifm-font-family-monospace);
+  font-size: 1rem;
+  color: #fff;
+  user-select: none;
+}
+
+@keyframes pikupiku {
+  0% {
+    transform: translateY(0) rotate(45deg);
+  }
+
+  50% {
+    transform: translateY(0.4svmin) rotate(45deg);
+  }
+
+  100% {
+    transform: translateY(0) rotate(45deg);
+  }
+}
+
+@keyframes typing {
+  0% {
+    opacity: 0;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
