@@ -7,7 +7,20 @@
   height: calc(100svh - var(--ifm-navbar-height));
   padding: 4svmin;
   overflow: hidden;
-  background-image: linear-gradient(135deg, #090a10 0%, #090f29 30%, #060c15 70%, #10121b 100%);
+  background-image: linear-gradient(70deg, #121825 0%, #141f36 55%, #0000 55%, #0000 100%),
+    linear-gradient(0deg, #0007 0%, #0007 100%), url('/img/banner_office.jpg');
+  background-size: cover;
+}
+
+@media screen and (max-aspect-ratio: 1/1) {
+  .container {
+    background-image: linear-gradient(160deg, #121825 0%, #141f36 55%, #0000 55%, #0000 100%),
+      linear-gradient(0deg, #0007 0%, #0007 100%), url('/img/banner_office.jpg');
+  }
+
+  .title {
+    margin-bottom: 12rem;
+  }
 }
 
 .logos {
