@@ -4,6 +4,7 @@ import React from 'react';
 import { Activity } from '../components/Activity/Activity';
 import { Banner } from '../components/Banner/Banner';
 import { Courses } from '../components/Courses/Courses';
+import { Leader } from '../components/Leader/Leader';
 import styles from './index.module.css';
 
 const Home = (): JSX.Element => {
@@ -13,6 +14,7 @@ const Home = (): JSX.Element => {
     <Layout title={siteConfig.title} description="INIAD.tsサイト">
       <div className={styles.container}>
         <Banner />
+        <Leader />
         <div className={styles.activityHistory}>
           <h2 className={styles.contentTitle} id="activity">
             <a href="/#activity">
