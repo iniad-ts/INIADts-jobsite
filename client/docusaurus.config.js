@@ -102,16 +102,6 @@ const config = {
             label: 'お問い合わせ',
             position: 'left',
           },
-          {
-            to: '/contact/business',
-            label: '企業・団体の方へ',
-            position: 'left',
-          },
-          {
-            href: 'https://github.com/iniad-developers/INIADts-jobsite',
-            label: 'GitHub',
-            position: 'right',
-          },
         ],
       },
       footer: {
@@ -154,8 +144,12 @@ const config = {
             title: 'More',
             items: [
               {
+                label: 'お問い合わせ',
+                to: '/contact',
+              },
+              {
                 label: 'GitHub',
-                href: 'https://github.com/iniad-developers/INIADts-jobsite',
+                href: 'https://github.com/iniad-developers/',
               },
             ],
           },

@@ -1,0 +1,105 @@
+.container {
+  grid-column: 1 / 4;
+  background-color: var(--ifm-background-surface-color);
+}
+
+.inner {
+  display: flex;
+  gap: 4svmin;
+  width: min(100svh, 80vw);
+  padding: 8svmin 0 4svmin;
+  margin: 0 auto;
+}
+
+.inner:nth-child(odd) {
+  flex-direction: row;
+}
+
+.inner:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.image {
+  position: sticky;
+  top: calc(var(--ifm-navbar-height) + 4svmin);
+  flex: 0 0 auto;
+  height: 25svmin;
+  overflow: hidden;
+  border-radius: 5%;
+}
+
+.image > img {
+  display: block;
+  height: 100%;
+}
+
+.text {
+  display: grid;
+  flex: 1 1 100%;
+  grid-template:
+    'title       links' 1rem
+    'name        links' 3.6rem
+    'description description' auto / 1fr auto;
+}
+
+.title {
+  grid-area: title;
+  margin: 0;
+  font-size: 1rem;
+  color: var(--ifm-color-primary);
+}
+
+.name {
+  grid-area: name;
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
+  line-height: 2.4rem;
+}
+
+.links {
+  grid-area: links;
+}
+
+.links > a {
+  display: inline-block;
+  aspect-ratio: 1;
+  padding: 0.4rem;
+  cursor: pointer;
+  border-radius: 20%;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.links > a:hover {
+  background-color: #8882;
+}
+
+.links > a:active {
+  background-color: #8884;
+}
+
+.links > a > svg {
+  display: block;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+
+.links [href^="https://github.com"] > svg
+{
+  fill: var(--ifm-font-color-base);
+}
+
+.links [href*='/members/'] > svg {
+  stroke: var(--ifm-font-color-base);
+}
+
+.description {
+  grid-area: description;
+  word-break: break-all;
+}
+
+@media screen and (max-aspect-ratio: 3 / 4) {
+  .image {
+    display: none;
+  }
+}

@@ -1,0 +1,40 @@
+.container {
+  display: grid;
+  grid-template-rows: min-content;
+  grid-template-columns: repeat(auto-fit, minmax(30svh, 1fr));
+  gap: 4svmin;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 4svmin;
+}
+
+.image {
+  width: 100%;
+  aspect-ratio: 2;
+  overflow: hidden;
+  border-radius: 0.4rem;
+}
+
+.image > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  user-select: none;
+  transition-timing-function: ease-in-out;
+  transition-duration: 0.4s;
+  transition-property: transform, filter;
+  object-fit: cover;
+}
+
+.image:hover > img {
+  filter: brightness(0.8);
+  transform: scale(1.1);
+}
+
+.text {
+  padding: 2svmin 0;
+}
+
+.text > p {
+  margin: 0;
+}
