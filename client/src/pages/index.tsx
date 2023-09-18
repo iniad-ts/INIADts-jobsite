@@ -6,6 +6,7 @@ import { Activity } from '../components/Activity/Activity';
 import { Banner } from '../components/Banner/Banner';
 import { Courses } from '../components/Courses/Courses';
 import { Leader } from '../components/Leader/Leader';
+import { MemberCount } from '../components/MemberCount/MemberCount';
 import styles from './index.module.css';
 
 const Home = (): JSX.Element => {
@@ -24,6 +25,7 @@ const Home = (): JSX.Element => {
           </h2>
           <About />
         </div>
+        <MemberCount />
         <Leader />
         <div className={styles.activity}>
           <h2 className={styles.contentTitle} id="activity">
