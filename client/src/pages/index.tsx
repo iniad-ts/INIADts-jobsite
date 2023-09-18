@@ -4,7 +4,6 @@ import React from 'react';
 import { About } from '../components/About/About';
 import { Activity } from '../components/Activity/Activity';
 import { Banner } from '../components/Banner/Banner';
-import { Courses } from '../components/Courses/Courses';
 import { Leader } from '../components/Leader/Leader';
 import { MemberCount } from '../components/MemberCount/MemberCount';
 import styles from './index.module.css';
@@ -35,16 +34,6 @@ const Home = (): JSX.Element => {
             </a>
           </h2>
           <Activity />
-        </div>
-        <div className={styles.members}>
-          <h2 className={styles.contentTitle} id="courses">
-            <a href="/#courses">
-              <span>Courses</span>
-              <p>コース一覧</p>
-            </a>
-          </h2>
-          <Courses />
-          <div />
         </div>
       </div>
     </Layout>
