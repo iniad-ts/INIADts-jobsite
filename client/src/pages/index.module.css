@@ -55,19 +55,12 @@
   opacity: 1;
 }
 
-.products {
-  grid-column: 2;
-}
-
-.activityHistory {
+.about {
   grid-column: 2;
 }
 
 .activity {
-  display: flex;
-  flex-direction: row-reverse;
   grid-column: 2;
-  gap: 4vmin;
 }
 
 .activityText {
