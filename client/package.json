@@ -10,7 +10,7 @@
     "start:aspida": "aspida --watch",
     "generate": "run-p generate:*",
     "generate:aspida": "aspida",
-    "build": "docusaurus build",
+    "build": "npm run generate && docusaurus build",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
     "clear": "docusaurus clear",
