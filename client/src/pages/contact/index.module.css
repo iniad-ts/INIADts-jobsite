@@ -24,7 +24,7 @@
   color: var(--ifm-color-primary);
 }
 
-.main {
+.main > form {
   display: flex;
   flex-direction: column;
   gap: 2svmin;
@@ -119,14 +119,16 @@
 }
 
 .button {
-  align-self: flex-end;
-  padding: 0.4svmin 0.8svmin;
-  font-size: 0.8rem;
+  align-self: flex-start;
+  padding: 0.8svmin 2.4svmin;
+  margin: 2rem 0 0;
+  font-size: 1rem;
+  font-weight: bold;
   color: #fff;
   cursor: pointer;
   background-color: var(--ifm-color-primary);
   border: 0;
-  border-radius: 0.2rem;
+  border-radius: 0.3rem;
   transition-timing-function: ease-in-out, ease-in;
   transition-duration: 0.2s, 0.1s;
   transition-property: background-color, transform;

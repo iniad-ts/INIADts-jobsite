@@ -1,72 +1,77 @@
-import { members } from '@site/src/data/members';
 import Layout from '@theme/Layout';
 import type { ChangeEvent } from 'react';
 import React, { useMemo, useState } from 'react';
 import styles from './index.module.css';
 
-type ContactDetail = {
+type Category =
+  | '👀 活動オフィスの見学'
+  | '💰 サークルへの出資'
+  | '🤝 メンバーへの連絡'
+  | '📝 その他';
+
+type FormData = {
   name: string;
   mail: string;
-  group?: string;
-  category: string;
-  forMember?: string;
+  group: string;
+  category: Category | '';
   content: string;
 };
 
-type Inputs = ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>;
-
-const defaultDetail = {
-  name: '',
-  mail: '',
-  category: '',
-  content: '',
+const formKeys: Record<keyof FormData, string> = {
+  name: 'entry.914360394',
+  mail: 'entry.361451444',
+  group: 'entry.750967254',
+  category: 'entry.582132371',
+  content: 'entry.1530640172',
 };
 
+const FORM_URL =
+  'https://docs.google.com/forms/d/e/1FAIpQLSd1XA9NV-tEDgBGW-VhXMO43gra6Ow3_TphAAbE0I0fWBGaQQ/formResponse';
+
 const Contact = () => {
-  const [contactDetail, setContactDetail] = useState<ContactDetail>(defaultDetail);
+  const [formData, setFormData] = useState<FormData>({
+    name: '',
+    mail: '',
+    group: '',
+    category: '',
+    content: '',
+  });
 
-  const changeTextAreaHeight = (e: ChangeEvent<HTMLTextAreaElement>) => {
-    const target = e.target as HTMLTextAreaElement;
-    target.style.height = 'auto';
-    const newHeight = Math.min(Math.max(target.scrollHeight, 64), 200);
-    target.style.height = `${newHeight}px`;
+  const handleInput = (
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+  ) => {
+    setFormData({ ...formData, [e.target.id]: e.target.value });
   };
 
-  const isTextArea = (e: Inputs): e is ChangeEvent<HTMLTextAreaElement> => {
-    return e.target.tagName === 'TEXTAREA';
-  };
+  const handleSubmit = () => {
+    const urlParams = new URLSearchParams();
 
-  const handleInput = (e: Inputs) => {
-    const { name, value, tagName } = e.target;
-    setContactDetail({ ...contactDetail, [name]: value });
+    urlParams.append(formKeys.name, formData.name);
+    urlParams.append(formKeys.mail, formData.mail);
+    urlParams.append(formKeys.group, formData.group);
+    urlParams.append(formKeys.category, formData.category);
+    urlParams.append(formKeys.content, formData.content);
 
-    if (tagName === 'TEXTAREA') isTextArea(e) && changeTextAreaHeight(e);
-  };
+    urlParams.append('submit', 'Submit');
 
-  const isEmail = (mail: string) => {
-    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return regex.test(mail);
+    fetch(`${FORM_URL}?${urlParams.toString()}`, {
+      method: 'GET',
+      mode: 'no-cors',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+      },
+    })
+      .then(() => {
+        window.location.href = 'contact/complete';
+      })
+      .catch(() => {
+        alert('送信に失敗しました。');
+      });
   };
 
   const isDisabled = useMemo(() => {
-    const terms = [
-      contactDetail.name !== '',
-      isEmail(contactDetail.mail),
-      contactDetail.category !== '',
-      !(
-        contactDetail.category === 'forMember' &&
-        (contactDetail.forMember === '' || contactDetail.forMember === undefined)
-      ),
-      contactDetail.content !== '',
-    ];
-
-    return !terms.every(Boolean);
-  }, [contactDetail]);
-
-  const submit = () => {
-    console.table(contactDetail);
-    setContactDetail(defaultDetail);
-  };
+    return Object.entries(formData).some(([key, value]) => key !== 'group' && value === '');
+  }, [formData]);
 
   return (
     <Layout title="Contact">
@@ -76,64 +81,68 @@ const Contact = () => {
           <p>Contact</p>
         </div>
         <main className={styles.main}>
-          <div className={`${styles.input} ${styles.isRequired}`}>
-            <label htmlFor="name">お名前</label>
-            <input type="text" name="name" onChange={handleInput} value={contactDetail.name} />
-          </div>
-          <div className={`${styles.input} ${styles.isRequired}`}>
-            <label htmlFor="mail">メールアドレス</label>
-            <input type="email" name="mail" onChange={handleInput} value={contactDetail.mail} />
-          </div>
-          <div className={styles.input}>
-            <label htmlFor="group">団体・会社名</label>
-            <input type="text" name="group" onChange={handleInput} value={contactDetail.group} />
-          </div>
-          <div className={`${styles.input} ${styles.isRequired}`}>
-            <label htmlFor="category">カテゴリー</label>
-            <select name="category" onChange={handleInput}>
-              <option value="" hidden>
-                --- 未選択 ---
-              </option>
-              <option value="office" selected={contactDetail.category === 'office'}>
-                👀 活動オフィスの見学
-              </option>
-              <option value="sponsor" selected={contactDetail.category === 'sponsor'}>
-                💰 サークルへの出資
-              </option>
-              <option value="forMember" selected={contactDetail.category === 'forMember'}>
-                🤝 メンバーへの連絡
-              </option>
-              <option value="other" selected={contactDetail.category === 'other'}>
-                📝 その他
-              </option>
-            </select>
-          </div>
-          {contactDetail.category === 'forMember' && (
+          <form>
             <div className={`${styles.input} ${styles.isRequired}`}>
-              <label htmlFor="forMember">メンバー</label>
-              <select name="forMember" onChange={handleInput}>
+              <label htmlFor="name">お名前</label>
+              <input
+                type="text"
+                autoComplete="off"
+                required={true}
+                id="name"
+                value={formData.name ?? undefined}
+                onChange={handleInput}
+              />
+            </div>
+            <div className={`${styles.input} ${styles.isRequired}`}>
+              <label htmlFor="mail">メールアドレス</label>
+              <input type="email" required={true} id="mail" onChange={handleInput} />
+            </div>
+            <div className={styles.input}>
+              <label htmlFor="group">団体・会社名</label>
+              <input type="text" autoComplete="off" id="group" onChange={handleInput} />
+            </div>
+            <div className={`${styles.input} ${styles.isRequired}`}>
+              <label htmlFor="category">カテゴリー</label>
+              <select onChange={handleInput} id="category">
                 <option value="" hidden>
                   --- 未選択 ---
                 </option>
-                {members.map((member) => (
-                  <option
-                    value={member.userName}
-                    selected={contactDetail.forMember === member.userName}
-                    key={member.userName}
-                  >
-                    {member.displayName}
-                  </option>
-                ))}
+                <option
+                  value="👀 活動オフィスの見学"
+                  selected={formData.category === '👀 活動オフィスの見学'}
+                >
+                  👀 活動オフィスの見学
+                </option>
+                <option
+                  value="💰 サークルへの出資"
+                  selected={formData.category === '💰 サークルへの出資'}
+                >
+                  💰 サークルへの出資
+                </option>
+                <option
+                  value="🤝 メンバーへの連絡"
+                  selected={formData.category === '🤝 メンバーへの連絡'}
+                >
+                  🤝 メンバーへの連絡
+                </option>
+                <option value="📝 その他" selected={formData.category === '📝 その他'}>
+                  📝 その他
+                </option>
               </select>
             </div>
-          )}
-          <div className={`${styles.input} ${styles.isRequired}`}>
-            <label htmlFor="content">内容</label>
-            <textarea name="content" onChange={handleInput} value={contactDetail.content} />
-          </div>
-          <button disabled={isDisabled} className={styles.button} onClick={submit}>
-            送信
-          </button>
+            <div className={`${styles.input} ${styles.isRequired}`}>
+              <label htmlFor="content">内容</label>
+              <textarea id="content" onChange={handleInput} />
+            </div>
+            <button
+              type="button"
+              onClick={handleSubmit}
+              disabled={isDisabled}
+              className={styles.button}
+            >
+              送信
+            </button>
+          </form>
         </main>
       </div>
     </Layout>
