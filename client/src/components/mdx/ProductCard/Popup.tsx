@@ -23,15 +23,17 @@ const Popup = ({ imageUrlList, title, subtitle, descriptionText, Urls, onclick }
                 </div>
               ))}
             </div>
-            <div className={styles.popupText}>
-              <h2>外部リンク</h2>
-              {Urls?.map((url, index) => (
-                <a key={index} href={url.url}>
-                  <p>{url.title}</p>
-                </a>
-              ))}
-              <p />
-            </div>
+            {Urls !== undefined && (
+              <div className={styles.popupText}>
+                <h2>外部リンク</h2>
+                {Urls?.map((url, index) => (
+                  <a key={index} href={url.url}>
+                    <p>{url.title}</p>
+                  </a>
+                ))}
+                <p />
+              </div>
+            )}
           </div>
         </div>
       </div>
