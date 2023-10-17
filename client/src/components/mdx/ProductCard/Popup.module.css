@@ -16,7 +16,7 @@
   align-items: center;
   justify-content: center;
   width: 70%;
-  height: 80%;
+  height: 70%;
   padding: 20px;
   padding-top: 5px;
   margin: auto;
@@ -31,7 +31,7 @@
 }
 
 .popupHeader {
-  margin: 0.11rem;
+  margin: 1rem;
 }
 
 .popupHeader h1 {
