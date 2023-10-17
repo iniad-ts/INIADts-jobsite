@@ -134,8 +134,13 @@ const Contact = () => {
               <label htmlFor="content">内容</label>
               <textarea id="content" onChange={handleInput} />
             </div>
-            <button type="button" onClick={handleSubmit} disabled={isDisabled}>
-              aaa
+            <button
+              type="button"
+              onClick={handleSubmit}
+              disabled={isDisabled}
+              className={styles.button}
+            >
+              送信
             </button>
           </form>
         </main>
