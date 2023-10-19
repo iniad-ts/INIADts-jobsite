@@ -1,0 +1,74 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 3;
+  width: 100%;
+  height: 100%;
+  background: rgb(100 100 100 / 70%);
+}
+
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 70%;
+  height: 70%;
+  padding: 20px;
+  padding-top: 5px;
+  margin: auto;
+  overflow: scroll;
+  background-color: var(--ifm-background-surface-color);
+  border-radius: 25px;
+  transform: translate(-50%, -50%);
+}
+
+.popupContent {
+  margin: 1rem;
+}
+
+.popupHeader {
+  margin: 1rem;
+}
+
+.popupHeader h1 {
+  margin-bottom: 0;
+}
+
+.popupBody {
+  margin: 1rem;
+}
+
+.popupText {
+  margin: 1rem;
+}
+
+.batsu {
+  position: relative;
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 10px 0 10px auto;
+}
+
+.batsu::before,
+.batsu::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 5px;
+  height: 30px;
+  content: '';
+  background: var(--ifm-color-primary);
+}
+
+.batsu::before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.batsu::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}

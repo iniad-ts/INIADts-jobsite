@@ -1,6 +1,6 @@
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
   grid-gap: 1.5rem;
   align-items: start;
 }
@@ -22,7 +22,7 @@
 .cardImg {
   display: block;
   width: 100%;
-  height: 5rem;
+  height: 10rem;
   object-fit: cover;
 }
 
