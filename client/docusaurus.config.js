@@ -82,20 +82,6 @@ const config = {
             to: '/members',
             label: 'メンバー一覧',
             position: 'left',
-            items: [
-              {
-                to: '/members/2025',
-                label: '25卒',
-              },
-              {
-                to: '/members/2026',
-                label: '26卒',
-              },
-              {
-                to: '/members/2027',
-                label: '27卒',
-              },
-            ],
           },
           {
             to: '/contact',
@@ -117,25 +103,8 @@ const config = {
                 label: 'コース一覧',
                 to: '/#courses',
               },
-            ],
-          },
-          {
-            title: 'Members',
-            items: [
               {
-                label: '25卒',
-                to: '/members/2025',
-              },
-              {
-                label: '26卒',
-                to: '/members/2026',
-              },
-              {
-                label: '27卒',
-                to: '/members/2027',
-              },
-              {
-                label: '一覧',
+                label: 'メンバー一覧',
                 to: '/members',
               },
             ],
