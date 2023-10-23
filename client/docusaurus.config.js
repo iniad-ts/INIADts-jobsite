@@ -7,7 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'INIAD.ts',
   tagline: 'TypeScript is cool',
-  favicon: 'img/INIADts-logo.png',
+  favicon: 'img/logo.png',
   customFields: {
     FIREBASE_CONFIG: process.env.FIREBASE_CONFIG,
     AUTH_EMULATOR_URL: process.env.AUTH_EMULATOR_URL,
@@ -55,12 +55,12 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: 'img/INIADts-logo.png',
+      image: 'img/logo.png',
       navbar: {
         title: 'INIAD.ts',
         logo: {
           alt: 'INIAD.ts Logo',
-          src: 'img/INIADts-logo.png',
+          src: 'img/logo.png',
         },
         items: [
           {

@@ -41,8 +41,8 @@ export const Banner = () => {
   return (
     <div className={styles.container}>
       <div className={styles.logos}>
-        <img src="/img/INIADts-logo.png" alt="INIAD" />
-        <img src="/img/INIAD-long-logo.png" alt="INIAD" />
+        <img src="/img/logo.png" alt="INIAD.ts logo" />
+        <img src="/img/iniad.png" alt="INIAD logo" />
       </div>
       <div className={styles.title}>
         <h1>INIAD.ts</h1>
