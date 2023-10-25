@@ -6,7 +6,7 @@
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://iniad-ts.com/blog"/>
     <subtitle>INIAD.ts Blog</subtitle>
-    <icon>https://iniad-ts.com/img/INIADts-logo.png</icon>
+    <icon>https://iniad-ts.com/img/logo.png</icon>
     <entry>
         <title type="html"><![CDATA[Welcome]]></title>
         <id>https://iniad-ts.com/blog/welcome</id>
