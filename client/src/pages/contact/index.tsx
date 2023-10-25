@@ -1,3 +1,4 @@
+import Link from '@docusaurus/Link';
 import Layout from '@theme/Layout';
 import type { ChangeEvent } from 'react';
 import React, { useMemo, useState } from 'react';
@@ -29,6 +30,7 @@ const FORM_URL =
   'https://docs.google.com/forms/d/e/1FAIpQLSd1XA9NV-tEDgBGW-VhXMO43gra6Ow3_TphAAbE0I0fWBGaQQ/formResponse';
 
 const Contact = () => {
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     name: '',
     mail: '',
@@ -62,16 +64,35 @@ const Contact = () => {
       },
     })
       .then(() => {
-        window.location.href = 'contact/complete';
+        setIsSubmitted(true);
       })
       .catch(() => {
         alert('送信に失敗しました。');
+        setIsSubmitted(false);
       });
   };
 
   const isDisabled = useMemo(() => {
     return Object.entries(formData).some(([key, value]) => key !== 'group' && value === '');
   }, [formData]);
+
+  if (isSubmitted)
+    return (
+      <Layout title="Contact">
+        <div className={styles.container}>
+          <div className={styles.title}>
+            <h1>お問い合わせ</h1>
+            <p>Contact</p>
+          </div>
+          <main className={styles.main}>
+            <p>送信が完了しました。</p>
+            <Link to="/" className={styles.button}>
+              トップページに戻る
+            </Link>
+          </main>
+        </div>
+      </Layout>
+    );
 
   return (
     <Layout title="Contact">

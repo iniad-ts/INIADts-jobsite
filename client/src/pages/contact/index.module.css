@@ -140,6 +140,8 @@
 }
 
 .button:not([disabled]):hover {
+  color: #fff;
+  text-decoration: none;
   background-color: var(--ifm-color-primary-lighter);
 }
 
