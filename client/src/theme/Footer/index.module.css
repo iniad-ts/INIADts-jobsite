@@ -6,9 +6,9 @@
   justify-content: center;
   color: #fff;
   background-color: var(--ifm-footer-background-color);
-  background-image: linear-gradient(135deg, #0000 0%, #222b 100%),
-    radial-gradient(farthest-corner at bottom left, #0098de14 0%, #0000 70%),
-    radial-gradient(farthest-corner at top right, #003fe020 0%, #0000 70%);
+  background-image: radial-gradient(farthest-corner at top right, #200cfe1c 0%, #0000 70%),
+    radial-gradient(farthest-corner at bottom left, #00abfb20 0%, #0000 70%);
+  box-shadow: 0 0 2rem #ffffff0e;
 }
 
 .content {
@@ -45,10 +45,17 @@
 }
 
 .title {
+  width: fit-content;
   margin-bottom: 0.8rem;
   font-size: 1.2rem;
   font-weight: bold;
-  color: var(--ifm-color-primary-darkest);
+  color: transparent;
+  background-image: linear-gradient(
+    45deg,
+    var(--ifm-color-primary-light),
+    var(--ifm-color-primary-darker)
+  );
+  background-clip: text;
 }
 
 .link {
