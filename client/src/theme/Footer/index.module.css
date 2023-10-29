@@ -4,6 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  margin-top: 12rem;
   color: #fff;
   background-color: var(--ifm-footer-background-color);
   background-image: radial-gradient(farthest-corner at top right, #200cfe1c 0%, #0000 70%),
