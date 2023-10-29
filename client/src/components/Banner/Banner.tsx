@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Banner.module.css';
 
-const SUB_TITLE = 'TypeScript エンジニアサークル';
+const SUB_TITLE = 'TypeScript プログラミングサークル';
 
 export const Banner = () => {
   const [subTitle, setSubTitle] = useState('');
