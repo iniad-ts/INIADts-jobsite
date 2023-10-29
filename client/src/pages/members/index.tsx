@@ -60,7 +60,7 @@ const Members = () => {
       <div className={styles.container}>
         <div className={styles.title}>
           <h1>
-            メンバー一覧
+            メンバー
             <p>Members</p>
           </h1>
           <div className={styles.select}>

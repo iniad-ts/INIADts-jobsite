@@ -59,7 +59,7 @@
   height: 0.2rem;
   pointer-events: none;
   content: '';
-  background-color: #fff;
+  background-color: var(--ifm-font-color-base);
   border-radius: 0.1rem;
   transform: translateX(calc(-0.2rem / 1.414)) rotate(45deg);
 }
@@ -72,7 +72,7 @@
   height: 0.2rem;
   pointer-events: none;
   content: '';
-  background-color: #fff;
+  background-color: var(--ifm-font-color-base);
   border-radius: 0.1rem;
   transform: translateX(calc(0.2rem / 1.414)) rotate(-45deg);
 }

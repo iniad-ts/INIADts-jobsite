@@ -32,16 +32,16 @@ export const Leader = () => {
       </div>
       <div className={styles.inner}>
         <div className={styles.image}>
-          <img src="https://github.com/konjikun.png" />
+          <img src="https://github.com/AllenShintani.png" />
         </div>
         <div className={styles.text}>
           <h2 className={styles.title}>副代表</h2>
           <p className={styles.name}>konjikun</p>
           <div className={styles.links}>
-            <Link href="https://github.com/konjikun">
+            <Link href="https://github.com/AllenShintani">
               <IconGithub />
             </Link>
-            <Link to="/members/konjikun">
+            <Link to="/members/AllenShintani">
               <IconArticle />
             </Link>
           </div>
