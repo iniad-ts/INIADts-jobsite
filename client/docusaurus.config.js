@@ -65,7 +65,7 @@ const config = {
         items: [
           {
             to: '/members',
-            label: 'メンバー一覧',
+            label: 'メンバー',
             position: 'left',
           },
           {
@@ -85,11 +85,7 @@ const config = {
                 to: '/#activity',
               },
               {
-                label: 'コース一覧',
-                to: '/#courses',
-              },
-              {
-                label: 'メンバー一覧',
+                label: 'メンバー',
                 to: '/members',
               },
             ],
