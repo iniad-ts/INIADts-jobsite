@@ -1,5 +1,4 @@
 import { isMultiColumnFooterLinks, useThemeConfig } from '@docusaurus/theme-common';
-import React from 'react';
 import MultiColumnLinks from './MultiColumnLinks';
 import SimpleLinks from './SimpleLinks';
 import styles from './index.module.css';

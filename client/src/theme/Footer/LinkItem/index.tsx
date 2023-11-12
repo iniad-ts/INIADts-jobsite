@@ -3,7 +3,6 @@ import isInternalUrl from '@docusaurus/isInternalUrl';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import type { Props } from '@theme/Footer/LinkItem';
 import IconExternalLink from '@theme/Icon/ExternalLink';
-import React from 'react';
 import styles from '../index.module.css';
 
 const LinkItem = ({ item }: Props) => {

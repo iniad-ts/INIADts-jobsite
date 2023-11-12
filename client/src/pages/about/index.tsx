@@ -1,5 +1,4 @@
 import Layout from '@theme/Layout';
-import React from 'react';
 import styles from './index.module.css';
 
 const About = () => {

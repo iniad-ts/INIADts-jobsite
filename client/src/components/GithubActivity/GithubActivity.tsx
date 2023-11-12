@@ -1,6 +1,6 @@
 import { s3Client } from '@site/src/utils/apiClient';
 import type { GitHubActivityModel } from 'commonTypesWithClient/models';
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import type { ThemeInput } from 'react-activity-calendar';
 import ActivityCalendar, { Skeleton } from 'react-activity-calendar';
 

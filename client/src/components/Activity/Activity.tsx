@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import { activities } from '../../data/activity';
 import styles from './Activity.module.css';
 
