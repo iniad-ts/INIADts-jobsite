@@ -1,6 +1,5 @@
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Layout from '@theme/Layout';
-import React from 'react';
 import { About } from '../components/About/About';
 import { Activity } from '../components/Activity/Activity';
 import { Banner } from '../components/Banner/Banner';

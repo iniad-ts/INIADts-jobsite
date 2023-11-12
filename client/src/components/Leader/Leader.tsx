@@ -1,5 +1,4 @@
 import Link from '@docusaurus/Link';
-import React from 'react';
 import { IconArticle } from '../icons/IconArticle';
 import { IconGithub } from '../icons/IconGitHub';
 import styles from './Leader.module.css';

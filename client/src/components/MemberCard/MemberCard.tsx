@@ -1,5 +1,5 @@
 import type { Member } from '@site/src/types/type';
-import React, { useMemo } from 'react';
+import { useMemo } from 'react';
 import styles from './MemberCard.module.css';
 
 type Props = {
