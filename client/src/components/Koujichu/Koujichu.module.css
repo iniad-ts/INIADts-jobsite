@@ -1,0 +1,26 @@
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100lvw;
+  height: 100lvh;
+  background-color: #0005;
+  backdrop-filter: blur(64px);
+}
+
+.text {
+  font-size: 64px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.contact {
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+}

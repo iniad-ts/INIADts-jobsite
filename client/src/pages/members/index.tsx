@@ -1,4 +1,5 @@
 import Link from '@docusaurus/Link';
+import { Koujichu } from '@site/src/components/Koujichu/Koujichu';
 import MemberCard from '@site/src/components/MemberCard/MemberCard';
 import { members } from '@site/src/data/members';
 import Layout from '@theme/Layout';
@@ -57,6 +58,7 @@ const Members = () => {
 
   return (
     <Layout title="Members">
+      <Koujichu />
       <div className={styles.container}>
         <div className={styles.title}>
           <h1>

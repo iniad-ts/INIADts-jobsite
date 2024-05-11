@@ -1,4 +1,5 @@
 import Link from '@docusaurus/Link';
+import { Koujichu } from '@site/src/components/Koujichu/Koujichu';
 import Layout from '@theme/Layout';
 import type { ChangeEvent } from 'react';
 import { useMemo, useState } from 'react';
@@ -79,6 +80,7 @@ const Contact = () => {
   if (isSubmitted)
     return (
       <Layout title="Contact">
+        <Koujichu />
         <div className={styles.container}>
           <div className={styles.title}>
             <h1>お問い合わせ</h1>
@@ -96,6 +98,7 @@ const Contact = () => {
 
   return (
     <Layout title="Contact">
+      <Koujichu />
       <div className={styles.container}>
         <div className={styles.title}>
           <h1>お問い合わせ</h1>
