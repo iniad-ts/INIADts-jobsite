@@ -1,4 +1,5 @@
 import Link from '@docusaurus/Link';
+import { Koujichu } from '@site/src/components/Koujichu/Koujichu';
 import Layout from '@theme/Layout';
 import React from 'react';
 import styles from './index.module.css';
@@ -6,6 +7,7 @@ import styles from './index.module.css';
 const Business = () => {
   return (
     <Layout title="企業・団体様向け">
+      <Koujichu />
       <div className={styles.container}>
         <div className={styles.title}>
           <h1>企業・団体様向け</h1>

@@ -1,3 +1,4 @@
+import { Koujichu } from '@site/src/components/Koujichu/Koujichu';
 import Layout from '@theme/Layout';
 import React from 'react';
 import styles from './index.module.css';
@@ -5,6 +6,7 @@ import styles from './index.module.css';
 const About = () => {
   return (
     <Layout title="About">
+      <Koujichu />
       <div className="container">
         <div className={styles.title}>
           <h1>INIAD.tsについて</h1>
