@@ -4,6 +4,7 @@ import React from 'react';
 import { About } from '../components/About/About';
 import { Activity } from '../components/Activity/Activity';
 import { Banner } from '../components/Banner/Banner';
+import { Koujichu } from '../components/Koujichu/Koujichu';
 import { Leader } from '../components/Leader/Leader';
 import { MemberCount } from '../components/MemberCount/MemberCount';
 import styles from './index.module.css';
@@ -13,6 +14,7 @@ const Home = (): JSX.Element => {
 
   return (
     <Layout title={siteConfig.title} description="INIAD.tsサイト">
+      <Koujichu />
       <div className={styles.container}>
         <Banner />
         <div className={styles.about}>

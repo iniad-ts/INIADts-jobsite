@@ -1,3 +1,4 @@
+import { Koujichu } from '@site/src/components/Koujichu/Koujichu';
 import { members } from '@site/src/data/members';
 import Layout from '@theme/Layout';
 import type { ChangeEvent } from 'react';
@@ -70,6 +71,7 @@ const Contact = () => {
 
   return (
     <Layout title="Contact">
+      <Koujichu />
       <div className={styles.container}>
         <div className={styles.title}>
           <h1>お問い合わせ</h1>
