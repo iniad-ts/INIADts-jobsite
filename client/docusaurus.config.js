@@ -7,6 +7,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 const config = {
   title: 'INIAD.ts',
   tagline: 'TypeScript is cool',
+  noIndex: true,
   favicon: 'img/logo.png',
   customFields: {
     FIREBASE_CONFIG: process.env.FIREBASE_CONFIG,
